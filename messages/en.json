@@ -1,0 +1,41 @@
+{
+  "common": {
+    "call": "Call: {phone}",
+    "callShort": "Call",
+    "checkAvailability": "Check availability",
+    "book": "Book now",
+    "bookThisOption": "Book this option",
+    "notSureCall": "Not sure? Call us.",
+    "nearCenter": "Near Zakopane center · open 24/7",
+    "proof": "★ 4.8 · 800+ Google reviews",
+    "priceFrom": "from {price} PLN"
+  },
+  "trust": {
+    "legal": "Legal routes",
+    "instructor": "Instructor on every trip",
+    "noLicence": "No licence needed",
+    "open24": "Open 24/7"
+  },
+  "home": {
+    "winter": {
+      "h1": "Snowmobile Tours in Zakopane — Ride the Tatras with a Local Guide",
+      "lead": "A guided snowmobile trip in the mountains above Zakopane. Legal, verified routes, local instructors, and the view you came here for."
+    },
+    "shoulder": {
+      "h1": "Buggy 4×4 & Quad Tours in Zakopane — No Snow Needed",
+      "lead": "Snowmobile season is over and the trails are open. 4×4 buggies and quads on scenic routes above Zakopane, with an instructor, no driving licence required."
+    },
+    "summer": {
+      "h1": "Quad & Buggy Tours in Zakopane — No Licence Needed",
+      "lead": "One, two or three hours on scenic mountain trails above Zakopane. No driving licence required, always with a local instructor, always on legal routes."
+    }
+  },
+  "nav": {
+    "quads": "Quad tours",
+    "buggy": "Buggy 4×4",
+    "snowmobiles": "Snowmobiles",
+    "prices": "Prices",
+    "reviews": "Reviews",
+    "contact": "Contact"
+  }
+}

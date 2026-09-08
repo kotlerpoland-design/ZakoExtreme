@@ -1,0 +1,5 @@
+{"connector":"facebook","account":"4813638225522767","date_from":"2026-07-01","date_to":"2026-08-26",
+"result":[
+{"year_month":"2026|7","video_p25":18133,"video_p50":8297,"video_p75":4655,"video_p100":1858,"thruplay":16424,"avg_time_sec":4,"video_plays":234782,"video_views":64706,"reach":106771,"frequency":2.4646},
+{"year_month":"2026|8","video_p25":23750,"video_p50":11032,"video_p75":5932,"video_p100":2412,"thruplay":21607,"avg_time_sec":4,"video_plays":355016,"video_views":76429,"reach":160739,"frequency":2.4494}
+]}

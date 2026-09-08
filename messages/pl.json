@@ -1,0 +1,41 @@
+{
+  "common": {
+    "call": "Zadzwoń: {phone}",
+    "callShort": "Zadzwoń",
+    "checkAvailability": "Sprawdź wolne terminy",
+    "book": "Rezerwuj",
+    "bookThisOption": "Zarezerwuj ten wariant",
+    "notSureCall": "Nie wiesz, co wybrać? Zadzwoń.",
+    "nearCenter": "Blisko centrum Zakopanego · czynne 24 h",
+    "proof": "★ 4,8 · ponad 800 opinii w Google",
+    "priceFrom": "od {price} zł"
+  },
+  "trust": {
+    "legal": "Legalne trasy",
+    "instructor": "Instruktor na każdym wyjeździe",
+    "noLicence": "Bez prawa jazdy",
+    "open24": "Czynne 24 h"
+  },
+  "home": {
+    "winter": {
+      "h1": "Skutery śnieżne w Zakopanem — wyprawy z instruktorem",
+      "lead": "Wyjazd w Tatry na skuterze śnieżnym, z lokalnym instruktorem, legalnymi trasami i widokiem, dla którego się tu przyjechało."
+    },
+    "shoulder": {
+      "h1": "Buggy 4×4 i quady w Zakopanem — przygoda bez śniegu",
+      "lead": "Sezon skuterowy się skończył, trasy są przejezdne. Buggy z napędem 4×4 i quady na widokowych trasach nad Zakopanem — z instruktorem, bez prawa jazdy."
+    },
+    "summer": {
+      "h1": "Quady i buggy w Zakopanem — wyprawy w Tatry z instruktorem",
+      "lead": "Godzina, dwie albo trzy na widokowych trasach nad Zakopanem. Bez prawa jazdy, z lokalnym instruktorem, legalnie. Wolne terminy często jeszcze na dziś."
+    }
+  },
+  "nav": {
+    "quads": "Quady",
+    "buggy": "Buggy 4×4",
+    "snowmobiles": "Skutery śnieżne",
+    "prices": "Cennik",
+    "reviews": "Opinie",
+    "contact": "Kontakt"
+  }
+}

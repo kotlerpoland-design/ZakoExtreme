@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/*
+ * Tokeny marki — wartości ROBOCZE do czasu design systemu (docs/ARCHITEKTURA-INFORMACJI.md §6).
+ * Jeden akcent, tylko na CTA telefonu. Jasny grunt domyślnie — ciemny motyw dopiero po teście kontrastu na słońcu.
+ */
+:root {
+  --background: #f5f6f3;
+  --foreground: #1b2420;
+  --muted: #5b6660;
+  --line: #d6dbd5;
+  --accent: #6fa32b;
+  --accent-foreground: #ffffff;
+  --warn: #c78a1f;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-warn: var(--warn);
+  --font-display: var(--font-oswald), "Arial Narrow", Impact, sans-serif;
+  --font-sans: var(--font-body), system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Miejsce na sticky bar z telefonem (mobile) — nie może zasłaniać treści. */
+main {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
