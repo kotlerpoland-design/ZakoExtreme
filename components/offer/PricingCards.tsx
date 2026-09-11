@@ -67,8 +67,9 @@ export async function PricingCards({ ladder, locale, highlightTier = "PREMIUM", 
   const onRidge = layout === "route";
   // karuzela na mobile otwiera się na wariancie wyróżnionym, nie na pierwszym (PREMIUM leży w środku drabinki)
   const startIndex = data.variants.findIndex(isHighlighted);
-  // desktop: 4 karty (buggy 6-os.: osoby × czas) w jednym rzędzie od lg, 2×2 na md; do trzech kart siatka jak dotąd
-  const gridCols = data.variants.length === 4 ? "md:grid-cols-2 lg:grid-cols-4" : "md:grid-cols-3";
+  // desktop: 4 karty (buggy 6-os.: osoby × czas) w jednym rzędzie od lg, 2×2 na md; 1 karta (Maverick) wypełnia kolumnę
+  // spotlightu obok zdjęcia (PricingSpotlight), na md połowę szerokości; do trzech kart siatka jak dotąd
+  const gridCols = { 1: "md:grid-cols-2 lg:grid-cols-1", 4: "md:grid-cols-2 lg:grid-cols-4" }[data.variants.length] ?? "md:grid-cols-3";
 
   return (
     <div>

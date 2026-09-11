@@ -43,6 +43,9 @@ import gallerySnowmobilesSunsetRender from "@/assets/images/gallery-snowmobiles-
 // quady ~/Desktop/zakoextreme/ChatGPT Image 9 wrz 2026, 12_37_26.png · skutery ~/Downloads/ChatGPT Image 11 wrz 2026, 12_05_26.png
 import sectionStepsQuadsTrailRender from "@/assets/images/section-steps-quads-trail-render.jpg";
 import sectionStepsSnowmobilesDuskRender from "@/assets/images/section-steps-snowmobiles-dusk-render.jpg";
+// render wskazany przez właścicielkę 2026-09-11 do bloku „Maverick XRS" na /buggy-zakopane/ (~/Desktop/zakoextreme/ChatGPT Image
+// 11 wrz 2026, 13_17_50.png, nie w repo; JPG q70, 1448×1086): mobile = tło bloku pod ciemnym gradientem, desktop = zdjęcie po prawej
+import sectionMaverickXrsRender from "@/assets/images/section-maverick-xrs-render.jpg";
 
 /**
  * REJESTR MEDIÓW — jedyne źródło zdjęć na stronie.
@@ -408,6 +411,21 @@ export const media = {
         winter: true,
       }),
     } satisfies Partial<Record<ProductId, MediaItem>>,
+
+    /* Blok „Maverick XRS — 240 KM" na /buggy-zakopane/ (decyzja 2026-09-11): jedyny blok cennika ze zdjęciem —
+       górna kotwica cenowa dostaje „wow". Mobile: tło bloku (gradient trzyma kontrast nagłówka), desktop: po prawej obok karty. */
+    maverick: item({
+      id: "section-maverick-xrs-render",
+      src: sectionMaverickXrsRender,
+      alt: {
+        pl: "Buggy Maverick na szutrowej drodze nad doliną o zachodzie słońca, w tle panorama ośnieżonych Tatr",
+        en: "A Maverick buggy on a gravel track above the valley at sunset, the snow-capped Tatra panorama behind",
+      },
+      confirmed: true,
+      /* pojazd w prawej-środkowej części kadru, szczyty w górnej trzeciej — przy pionowym kadrze na mobile trzymamy środek po prawej */
+      position: "62% 50%",
+      product: "maverick",
+    }),
 
     /* Wzór vouchera — plik od właścicielki (~/Desktop/zakoextreme/voucher.jpg), stara oprawa graficzna.
        Pokazujemy realny produkt, więc NIE podmieniamy grafiki na własną kompozycję; oprawę daje sekcja.
