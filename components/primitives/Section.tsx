@@ -1,12 +1,9 @@
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
-import { SectionNumber } from "./SectionNumber";
 import { Eyebrow } from "./Eyebrow";
 
 type Props = ComponentProps<"section"> & {
-  /** numer porządkowy sekcji w szablonie (docs/ARCHITEKTURA-INFORMACJI.md §3) */
-  n?: number;
   eyebrow?: string;
   title?: string;
   /** H2 renderowany jako display-lg; `intro` pod nim, jednym zdaniem */
@@ -15,18 +12,21 @@ type Props = ComponentProps<"section"> & {
   marginLabel?: string;
   tone?: "fog" | "paper" | "mist";
   headingLevel?: "h2" | "h3";
+  /** warstwa pod całą sekcją (nagłówek + treść), np. zdjęcie tła na mobile — renderowana przed Container; sekcja dostaje `isolate` */
+  backdrop?: ReactNode;
   children: ReactNode;
 };
 
 const TONES = { fog: "bg-background", paper: "bg-card", mist: "bg-muted" } as const;
 
 /**
- * Sekcja strony: numer · eyebrow · H2 · treść. Sekcje oddziela przestrzeń, nie linie.
+ * Sekcja strony: eyebrow · H2 · treść. Sekcje oddziela przestrzeń, nie linie. Bez numerów sekcji (decyzja 2026-09-11).
  */
-export function Section({ n, eyebrow, title, intro, marginLabel, tone = "fog", headingLevel = "h2", className, children, ...props }: Props) {
+export function Section({ eyebrow, title, intro, marginLabel, tone = "fog", headingLevel = "h2", backdrop, className, children, ...props }: Props) {
   const Heading = headingLevel;
   return (
-    <section className={cn("relative", TONES[tone], className)} {...props}>
+    <section className={cn("relative", TONES[tone], backdrop && "isolate", className)} {...props}>
+      {backdrop}
       <Container className="relative py-section lg:py-section-lg">
         {marginLabel ? (
           <span
@@ -36,9 +36,8 @@ export function Section({ n, eyebrow, title, intro, marginLabel, tone = "fog", h
             {marginLabel}
           </span>
         ) : null}
-        {(n || eyebrow || title) && (
+        {(eyebrow || title) && (
           <header className="mb-10 max-w-3xl lg:mb-14">
-            {n ? <SectionNumber n={n} className="mb-4" /> : null}
             {eyebrow ? <Eyebrow className="mb-3">{eyebrow}</Eyebrow> : null}
             {title ? <Heading className="text-display-lg uppercase">{title}</Heading> : null}
             {intro ? <p className="mt-4 max-w-prose text-lg text-ink-2">{intro}</p> : null}

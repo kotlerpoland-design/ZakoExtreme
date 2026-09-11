@@ -70,25 +70,25 @@ export default async function VouchersPage({ params }: Props) {
         />
         <TrustBar />
 
-        <Section n={3} title={t("vouchers.sections.variants")} intro={t("vouchers.sections.variantsIntro")} marginLabel="Zakopane · Tatry" tone="fog">
+        <Section title={t("vouchers.sections.variants")} intro={t("vouchers.sections.variantsIntro")} marginLabel="Zakopane · Tatry" tone="fog">
           <VoucherCards locale={locale} />
         </Section>
 
-        <Section id={VOUCHER_ORDER_ANCHOR} n={4} title={t("vouchers.sections.howTo")} tone="paper">
+        <Section id={VOUCHER_ORDER_ANCHOR} title={t("vouchers.sections.howTo")} tone="paper">
           <VoucherHowTo locale={locale} media={confirmedMedia(media.sections.voucher)} />
         </Section>
 
-        <Section n={5} title={t("vouchers.sections.occasions")} tone="fog">
+        <Section title={t("vouchers.sections.occasions")} tone="fog">
           <Occasions />
         </Section>
 
-        <BookingSection labels={await bookingLabels(t("vouchers.sections.booking"))} sectionNumber={6} />
+        <BookingSection labels={await bookingLabels(t("vouchers.sections.booking"))} />
 
-        <Section n={7} title={t("vouchers.sections.faq")} tone="fog">
+        <Section title={t("vouchers.sections.faq")} tone="fog">
           <FAQ ids={faqSets.vouchery} locale={locale} />
         </Section>
 
-        <Section n={8} title={t("home.sections.contact")} tone="paper">
+        <Section title={t("home.sections.contact")} tone="paper">
           <ContactClose />
         </Section>
       </main>

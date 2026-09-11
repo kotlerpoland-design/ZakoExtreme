@@ -49,7 +49,6 @@ export default async function GalleryPage({ params }: Props) {
           priceFrom={null}
           media={confirmedMedia(media.hero.galeria)}
           eyebrow={t("hero.eyebrowHome")}
-          numbered={false}
         />
         <TrustBar />
 

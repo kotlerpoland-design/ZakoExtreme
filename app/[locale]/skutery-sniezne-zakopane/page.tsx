@@ -100,13 +100,12 @@ export default async function SnowmobilesPage({ params }: Props) {
         <PlacesLine text={t("skutery.placesLine")} linkLabel={t("skutery.placesLink")} href="#dojazd" />
 
         {/* isolate: grzbiet góry w PricingCards leży na -z-10 za nagłówkiem, ale nad tłem sekcji; overflow-hidden: linia trasy wystaje poza pudełko */}
-        <Section n={3} title={t("skutery.sections.pricing")} marginLabel="Zakopane · Tatry" tone="fog" className="isolate overflow-hidden">
+        <Section title={t("skutery.sections.pricing")} marginLabel="Zakopane · Tatry" tone="fog" className="isolate overflow-hidden">
           <PricingCards ladder="skutery" locale={locale} />
         </Section>
 
         <BookingSection
           labels={await bookingLabels(t("skutery.sections.booking"))}
-          sectionNumber={4}
           offSeason={
             inSeason
               ? undefined
@@ -114,36 +113,36 @@ export default async function SnowmobilesPage({ params }: Props) {
           }
         />
 
-        <Section n={5} title={t("skutery.sections.gallery")} tone="fog">
+        <Section title={t("skutery.sections.gallery")} tone="fog">
           <Gallery items={gallery} locale={locale} more={{ href: "/galeria", hash: "skutery", label: t("gallery.seeAll") }} />
         </Section>
 
         {/* id="dojazd": cel kotwicy z paska miejscowości pod paskiem zaufania */}
-        <Section id="dojazd" n={6} title={t("skutery.sections.directions")} tone="paper" className="scroll-mt-header">
+        <Section id="dojazd" title={t("skutery.sections.directions")} tone="paper" className="scroll-mt-header">
           <DirectionsTable locale={locale} />
         </Section>
 
-        <Section n={7} title={t("skutery.sections.forWhom")} tone="fog">
+        <Section title={t("skutery.sections.forWhom")} tone="fog">
           {/* zimą buggy 6-os. nie jeździ — kafel „Rodziny" bez linku */}
           <ForWhom familiesLink={false} />
         </Section>
 
         {/* intencja „wypożyczalnia skuterów śnieżnych" (493 kliki): H2 z frazą + trzy kroki wyprawy; „co zabrać" zostaje niepotwierdzone */}
-        <Section n={8} title={t("skutery.sections.howItWorks")} intro={t("skutery.howItWorksIntro")} tone="paper">
+        <Section title={t("skutery.sections.howItWorks")} intro={t("skutery.howItWorksIntro")} tone="paper">
           <Steps locale={locale} media={confirmedMedia(media.sections.steps.skutery)} />
         </Section>
 
-        <Section n={9} title={t("skutery.sections.faq")} tone="fog">
+        <Section title={t("skutery.sections.faq")} tone="fog">
           <FAQ ids={faqSets.skutery} locale={locale} />
         </Section>
 
         {reviews ? (
-          <Section n={10} title={t("skutery.sections.reviews")} tone="paper">
+          <Section title={t("skutery.sections.reviews")} tone="paper">
             <Reviews limit={3} />
           </Section>
         ) : null}
 
-        <Section n={reviews ? 11 : 10} title={t("home.sections.contact")} tone="fog">
+        <Section title={t("home.sections.contact")} tone="fog">
           <ContactClose />
         </Section>
       </main>

@@ -8,7 +8,6 @@ import { Container } from "@/components/primitives/Container";
 import { DisplayHeading } from "@/components/primitives/DisplayHeading";
 import { PriceFrom } from "@/components/primitives/PriceFrom";
 import { BookCta } from "@/components/primitives/BookCta";
-import { SectionNumber } from "@/components/primitives/SectionNumber";
 import { Eyebrow } from "@/components/primitives/Eyebrow";
 import { WashImage } from "@/components/graphics/WashImage";
 import { WatercolorDefs } from "@/components/graphics/WatercolorDefs";
@@ -33,8 +32,6 @@ type Props = {
   products?: HeroProduct[];
   /** strona główna: slajd na filar w kolejności `products`; id slajdu = `product`. Bez `slides` renderuje się `media`. */
   slides?: HeroSlide[];
-  /** `false` = bez znacznika „01 ——" przed eyebrow (podstrona /galeria/, decyzja 2026-09-10) */
-  numbered?: boolean;
   /**
    * Nadpisanie CTA ekranu 1. Domyślnie „Rezerwuj online" (jedyny pomarańczowy przycisk).
    * Używa tego wyłącznie /vouchery/, gdzie rezerwacja online nie jest właściwą akcją — vouchera nie da się kupić przez SlotWise.
@@ -60,7 +57,7 @@ const SEED: Record<Props["variant"], number> = { home: 7, product: 13, qualifier
  * Budżet wysokości na mobile: CTA rezerwacji kończy się ≤ ~640 px, żeby baner zgód (od ~730 px) go nie zasłonił.
  * Kolejność DOM: zdjęcie (pierwszy <img> = LCP i punkt odniesienia testu budżetu) → rysunek → treść.
  */
-export async function Hero({ variant, locale, h1, lead, priceFrom, media, eyebrow, products, slides, numbered = true, cta }: Props) {
+export async function Hero({ variant, locale, h1, lead, priceFrom, media, eyebrow, products, slides, cta }: Props) {
   const t = await getTranslations("common");
   const list = variant === "home" && products && products.length > 0 ? products : null;
   const rotation = slides && slides.length > 0 ? slides : null;
@@ -97,14 +94,7 @@ export async function Hero({ variant, locale, h1, lead, priceFrom, media, eyebro
             <h1 className="sr-only">{h1}</h1>
           ) : (
             <>
-              {numbered ? (
-                <div className="flex items-center gap-3">
-                  <SectionNumber n={1} />
-                  <Eyebrow>{eyebrow}</Eyebrow>
-                </div>
-              ) : (
-                <Eyebrow>{eyebrow}</Eyebrow>
-              )}
+              <Eyebrow>{eyebrow}</Eyebrow>
               <DisplayHeading text={h1} as="h1" size="xl" className="mt-2 lg:mt-4" />
             </>
           )}

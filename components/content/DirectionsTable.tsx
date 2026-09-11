@@ -4,11 +4,10 @@ import { LocalizedLink } from "@/components/primitives/LocalizedLink";
 import { directions } from "@/content/directions";
 import { site } from "@/config/site";
 import type { Locale } from "@/i18n/routing";
-import { cn } from "@/lib/utils";
 import { PhoneLink } from "@/components/primitives/PhoneLink";
 import { MapEmbed } from "@/components/contact/MapEmbed";
 
-type Props = { locale: Locale; highlight?: "bialka" | "bukowina" };
+type Props = { locale: Locale };
 
 /**
  * Realna tabela dojazdu (579 fraz lokalnych bez własnych stron) + mapa Google z „Nawiguj" (MapEmbed).
@@ -17,7 +16,7 @@ type Props = { locale: Locale; highlight?: "bialka" | "bukowina" };
  * Czasy z content/directions.ts; `minutes: null` = kolumna czasu w ogóle się nie renderuje — nie zgadujemy.
  * Strony lokalne są tylko po polsku, więc linki do nich tylko w PL.
  */
-export async function DirectionsTable({ locale, highlight }: Props) {
+export async function DirectionsTable({ locale }: Props) {
   const t = await getTranslations();
   const anyTime = directions.some((d) => d.minutes !== null);
   return (
@@ -43,7 +42,7 @@ export async function DirectionsTable({ locale, highlight }: Props) {
             {directions.map((d) => {
               const link = locale === "pl" && d.page;
               return (
-                <tr key={d.id} className={cn("border-t border-border", highlight === d.id && "bg-brand-tint/50")}>
+                <tr key={d.id} className="border-t border-border">
                   <th scope="row" className="py-3.5 pr-4 font-display text-lg font-medium text-foreground md:text-xl">
                     {link ? (
                       <LocalizedLink href={d.page!} locale={locale} className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline">

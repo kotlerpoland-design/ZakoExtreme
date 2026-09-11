@@ -45,8 +45,7 @@ export type BookingOffSeason = {
   summerLabel: string;
 };
 
-/** `sectionNumber` pominięty = bez znacznika „06 ——" (podstrona /galeria/, decyzja 2026-09-10). */
-export function BookingSection({ labels, sectionNumber, offSeason }: { labels: BookingLabels; sectionNumber?: number; offSeason?: BookingOffSeason }) {
+export function BookingSection({ labels, offSeason }: { labels: BookingLabels; offSeason?: BookingOffSeason }) {
   const [chip, setChip] = useState<Chip>("today");
   const [inView, setInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -74,12 +73,6 @@ export function BookingSection({ labels, sectionNumber, offSeason }: { labels: B
     <section id="rezerwacja" className="scroll-mt-header bg-card" data-booking>
       <div className="mx-auto w-full max-w-7xl px-5 py-section md:px-8 lg:px-12 lg:py-section-lg">
         <header className="mb-8 max-w-3xl">
-          {sectionNumber ? (
-            <span className="mb-4 inline-flex items-center gap-3" aria-hidden>
-              <span className="font-display text-sm font-semibold tabular text-brand">{String(sectionNumber).padStart(2, "0")}</span>
-              <span className="h-px w-8 bg-brand" />
-            </span>
-          ) : null}
           <h2 className="text-display-lg uppercase">{labels.heading}</h2>
           <p className="mt-3 text-ink-2">{offSeason ? offSeason.lead : businessId ? labels.lead : labels.fallbackLead}</p>
         </header>

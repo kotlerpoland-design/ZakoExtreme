@@ -7,7 +7,7 @@ Język wizualny („ciemny wysokogórski" od 2026-09-09 — chłodny grafit `#10
 
 ```
 components/
-├── primitives/  Container, Section (numer · eyebrow · H2), SectionNumber, Eyebrow,
+├── primitives/  Container, Section (eyebrow · H2), Eyebrow,
 │                DisplayHeading (H1 dzielony wizualnie na „ — ", pełny tekst w DOM), PriceFrom,
 │                BookCta (jedyne CTA — jedyny pomarańczowy przycisk, decyzje 2026-09-09/10), PhoneLink (KAŻDY numer telefonu; tylko stopka, sekcja Kontakt i teksty „masz pytania?"),
 │                Reveal (jedyny ruch wejścia)
@@ -18,7 +18,7 @@ components/
 │                InkMountain (ciemne zdjęcie szczytów w tle hero, assets/graphics; nazwa historyczna)
 ├── layout/      SiteHeader (logo pośrodku, 3 + 3 linki), MobileMenu (pełnoekranowe), LocaleSwitch, StickyCallBar, SiteFooter,
 │                ConsentBanner, Wordmark (logo PNG z assets/brand), nav.ts (NAV_GROUPS left/right + FOOTER_EXTRA)
-├── hero/        Hero (variant: home | product | qualifier | local; `cta` = nadpisanie CTA ekranu 1, używa go tylko /vouchery/; `numbered={false}` = bez „01 ——" — /galeria/, gdzie sekcje też są bez numerów;
+├── hero/        Hero (variant: home | product | qualifier | local; `cta` = nadpisanie CTA ekranu 1, używa go tylko /vouchery/;
 │                home dostaje listę 01/02/03 z heroProducts.ts i slajdy,
 │                bez eyebrow/ceny/proof, H1 tylko sr-only — decyzja 2026-09-09),
 │                HeroSlides (client: rotacja 3 zdjęć co 3 s zsynchronizowana z listą — jedyny wyjątek od „zero karuzel") — ekran 1,

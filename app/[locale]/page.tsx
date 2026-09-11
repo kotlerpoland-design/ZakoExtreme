@@ -89,41 +89,41 @@ export default async function HomePage({ params }: Props) {
 
         {/* isolate: grzbiet góry w ProductCards leży na -z-10 za nagłówkiem, ale nad tłem sekcji; overflow-hidden: linia trasy wystaje poza pudełko */}
         {/* numeracja: hero = 01 (nie drukuje numeru), pasek zaufania bez numeru, widoczna numeracja startuje od 02 (decyzja 2026-09-10) */}
-        <Section n={2} title={t("home.sections.products")} marginLabel="Zakopane · Tatry" tone="fog" className="isolate overflow-hidden">
+        <Section title={t("home.sections.products")} marginLabel="Zakopane · Tatry" tone="fog" className="isolate overflow-hidden">
           <ProductCards season={season} locale={locale} />
         </Section>
 
-        <BookingSection labels={await bookingLabels(t("home.sections.booking"))} sectionNumber={3} />
+        <BookingSection labels={await bookingLabels(t("home.sections.booking"))} />
 
         {/* id="galeria": kotwica pomocnicza (stare linki /#galeria); menu i link pod siatką prowadzą na podstronę /galeria/ (2026-09-10) */}
-        <Section id="galeria" n={4} title={t("home.sections.gallery")} tone="fog">
+        <Section id="galeria" title={t("home.sections.gallery")} tone="fog">
           <Gallery items={gallery} locale={locale} more={{ href: "/galeria", label: t("gallery.seeAll") }} />
         </Section>
 
-        <Section n={5} title={t("home.sections.forWhom")} tone="paper">
+        <Section title={t("home.sections.forWhom")} tone="paper">
           <ForWhom />
         </Section>
 
-        <Section n={6} title={t("home.sections.whyUs")} tone="fog" marginLabel="ZakoExtreme">
+        <Section title={t("home.sections.whyUs")} tone="fog" marginLabel="ZakoExtreme">
           <WhyUs />
         </Section>
 
-        <Section n={7} title={t("home.sections.directions")} tone="paper">
+        <Section title={t("home.sections.directions")} tone="paper">
           <DirectionsTable locale={locale} />
         </Section>
 
-        <Section n={8} title={t("home.sections.faq")} tone="fog">
+        <Section title={t("home.sections.faq")} tone="fog">
           {/* zdjęcie po prawej tylko na lg+ (decyzja 2026-09-10), zatopione jak hero */}
           <FAQ ids={faqSets.home} locale={locale} media={confirmedMedia(media.sections.faq)} />
         </Section>
 
         {reviews ? (
-          <Section n={9} title={t("home.sections.reviews")} tone="paper">
+          <Section title={t("home.sections.reviews")} tone="paper">
             <Reviews limit={3} />
           </Section>
         ) : null}
 
-        <Section n={reviews ? 10 : 9} title={t("home.sections.contact")} tone="fog">
+        <Section title={t("home.sections.contact")} tone="fog">
           <ContactClose />
         </Section>
       </main>

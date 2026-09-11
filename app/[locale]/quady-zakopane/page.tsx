@@ -66,39 +66,39 @@ export default async function QuadyPage({ params }: Props) {
         <TrustBar />
 
         {/* isolate: grzbiet góry w PricingCards leży na -z-10 za nagłówkiem, ale nad tłem sekcji; overflow-hidden: linia trasy wystaje poza pudełko */}
-        <Section n={3} title={t("quady.sections.pricing")} marginLabel="Zakopane · Tatry" tone="fog" className="isolate overflow-hidden">
+        <Section title={t("quady.sections.pricing")} marginLabel="Zakopane · Tatry" tone="fog" className="isolate overflow-hidden">
           <PricingCards ladder="quady" locale={locale} />
         </Section>
 
-        <BookingSection labels={await bookingLabels(t("quady.sections.booking"))} sectionNumber={4} />
+        <BookingSection labels={await bookingLabels(t("quady.sections.booking"))} />
 
-        <Section n={5} title={t("quady.sections.gallery")} tone="fog">
+        <Section title={t("quady.sections.gallery")} tone="fog">
           <Gallery items={gallery} locale={locale} intro={t("quady.atv")} more={{ href: "/galeria", label: t("gallery.seeAll") }} />
         </Section>
 
-        <Section n={6} title={t("quady.sections.forWhom")} tone="paper">
+        <Section title={t("quady.sections.forWhom")} tone="paper">
           <ForWhom />
         </Section>
 
-        <Section n={7} title={t("quady.sections.steps")} tone="fog">
+        <Section title={t("quady.sections.steps")} tone="fog">
           <Steps locale={locale} media={confirmedMedia(media.sections.steps.quady)} />
         </Section>
 
-        <Section n={8} title={t("quady.sections.directions")} tone="paper">
+        <Section title={t("quady.sections.directions")} tone="paper">
           <DirectionsTable locale={locale} />
         </Section>
 
-        <Section n={9} title={t("quady.sections.faq")} tone="fog">
+        <Section title={t("quady.sections.faq")} tone="fog">
           <FAQ ids={faqSets.quady} locale={locale} />
         </Section>
 
         {reviews ? (
-          <Section n={10} title={t("quady.sections.reviews")} tone="paper">
+          <Section title={t("quady.sections.reviews")} tone="paper">
             <Reviews limit={3} />
           </Section>
         ) : null}
 
-        <Section n={reviews ? 11 : 10} title={t("home.sections.contact")} tone="fog">
+        <Section title={t("home.sections.contact")} tone="fog">
           <ContactClose />
         </Section>
       </main>

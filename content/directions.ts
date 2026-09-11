@@ -2,6 +2,7 @@
  * „Skąd do nas dojedziesz" — obsługuje 579 fraz lokalnych bez własnych stron.
  * Czasy: [[DO POTWIERDZENIA]] — od Piotrka albo policzone z map i oznaczone „ok.".
  * `minutes: null` = nie publikować wiersza z czasem (pokazać tylko nazwę i link).
+ * `page` ustawiamy dopiero, gdy strona lokalna istnieje w `app/` — inaczej link jest martwy (usunięte 2026-09-11).
  */
 export type DirectionEntry = {
   id: string;
@@ -14,8 +15,8 @@ export type DirectionEntry = {
 
 export const directions: readonly DirectionEntry[] = [
   { id: "zakopane", name: "Zakopane, centrum", minutes: null },
-  { id: "bialka", name: "Białka Tatrzańska", minutes: null, page: "/quady-bialka-tatrzanska" },
-  { id: "bukowina", name: "Bukowina Tatrzańska", minutes: null, page: "/quady-bukowina-tatrzanska" },
+  { id: "bialka", name: "Białka Tatrzańska", minutes: null },
+  { id: "bukowina", name: "Bukowina Tatrzańska", minutes: null },
   { id: "poronin", name: "Poronin", minutes: null },
   { id: "koscielisko", name: "Kościelisko", minutes: null },
   { id: "murzasichle", name: "Murzasichle", minutes: null },
