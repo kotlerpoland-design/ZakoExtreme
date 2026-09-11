@@ -29,38 +29,50 @@ const RIDGE_W = 1536;
 const RIDGE_H = 1024;
 
 /*
- * Skyline grzbietu z pliku źródłowego (ChatGPT Image 10 wrz 2026, 12_30_05.png), co 16 px w osi x.
- * Wykryty progiem jasności 62 % (magick -threshold, „2 jasne piksele w pionie" odfiltrowują cienkie linie siatki w niebie);
- * kolumny x < 48 i x > 1503 nie mają jasnych pikseli (rycina gaśnie przy krawędziach), więc linia zaczyna się od x = 48.
- * Wierzchołek główny (690) i prawy (1230) wstawione poza siatką — na siatce 16 px są ścięte; zapadnięcia w cieniach
- * (80, 128, 224, 256, 688, 1168) i ciemny żleb między lewą granią a masywem (464, 480) wygładzone interpolacją
- * z sąsiadów po nałożeniu linii na obraz (components/README.md „Grafiki").
- * Kropki markerów leżą na tej samej ścieżce, więc siedzą na szczytach przy każdej szerokości.
+ * Trasa po PAGÓRKACH W DOLINIE pod górami — nie po graniach. Testy z użytkownikami (2026-09-11) pokazały, że linia
+ * prowadzona po szczytach sugerowała jazdę po graniach. Punkty (układ 1536×1024) wyznaczone ręcznie z nałożenia
+ * polilinii na obraz (components/README.md „Grafiki"): granica las/zbocze nie ma jednego progu jasności, więc
+ * automatyczne wykrywanie nie działa. Przebieg (runda 4, 2026-09-11) przeniesiony 1:1 z czerwonego szkicu
+ * właścicielki na zrzucie desktopu: linia ZACZYNA SIĘ w sylwetce czarnych drzew pierwszego planu po lewej (x=79, nie
+ * spoza krawędzi — nie ma ich przecinać), schodzi stromo przez kropkę 1 (272, 577; runda 5: cały lewy odcinek ~20 px
+ * niżej niż w szkicu) na górną krawędź NIŻSZEGO pasa szarego lasu (x≈400–530, nie po koronie lewego pagórka) z łagodnym
+ * dołkiem między kropką 1 a 2 (dno 461, 634; runda 6), wchodzi na środkowe wzniesienie (kulminacja ~690), spada
+ * w wyraźny dołek między nim a ciemnym pagórkiem (841, 646), na koronę ciemnego pagórka (931), potem JEDNOSTAJNIE
+ * schodzi do kropki Mavericka na prawym zboczu zaokrąglonego wzgórza (1154, 604) — bez wchodzenia na jego koronę
+ * (runda 6) — i stromszy zjazd, żeby SKOŃCZYĆ w sylwetce czarnego drzewa (1348, 664) — trasa
+ * „wchodzi za las", nie dobiega do prawej krawędzi. Dołki zostają: to one budują narrację „po dolinach".
+ * Kropki markerów leżą na tej samej ścieżce (`yAt`).
  */
-const SKYLINE: readonly (readonly [number, number])[] = [
-  [48, 498], [64, 442], [80, 456], [96, 469], [112, 439], [128, 431], [144, 423], [160, 428], [176, 434], [192, 438],
-  [208, 435], [224, 416], [240, 398], [256, 390], [272, 383], [288, 391], [304, 403], [320, 409], [336, 420], [352, 409],
-  [368, 399], [384, 399], [400, 400], [416, 404], [432, 416], [448, 406], [464, 416], [480, 425], [496, 435], [512, 353],
-  [528, 357], [544, 332], [560, 335], [576, 326], [592, 321], [608, 319], [624, 287], [640, 282], [656, 284], [672, 261],
-  [688, 232], [690, 229], [704, 236], [720, 245], [736, 257], [752, 270], [768, 275], [784, 288], [800, 304], [816, 314],
-  [832, 329], [848, 323], [864, 338], [880, 347], [896, 365], [912, 378], [928, 386], [944, 390], [960, 406], [976, 420],
-  [992, 430], [1008, 442], [1024, 453], [1040, 454], [1056, 457], [1072, 457], [1088, 452], [1104, 447], [1120, 453], [1136, 455],
-  [1152, 444], [1168, 424], [1184, 405], [1200, 415], [1216, 386], [1230, 365], [1232, 390], [1248, 377], [1264, 388], [1280, 392],
-  [1296, 431], [1312, 425], [1328, 427], [1344, 400], [1360, 420], [1376, 422], [1392, 425], [1408, 422], [1424, 454], [1440, 466],
-  [1456, 461], [1472, 475], [1488, 482],
+const VALLEY: readonly (readonly [number, number])[] = [
+  [79, 492], [200, 548], [272, 577], [310, 589], [399, 614], [461, 634], [527, 625], [604, 614], [655, 591], [687, 582],
+  [732, 591], [783, 621], [841, 646], [911, 589], [931, 573], [960, 582], [1005, 591], [1063, 606], [1110, 609],
+  [1154, 604], [1195, 628], [1231, 646], [1282, 659], [1348, 664],
 ];
 
+/** y polilinii `VALLEY` w punkcie x (interpolacja liniowa); poza zakresem — skrajny punkt. */
+function yAt(x: number): number {
+  if (x <= VALLEY[0][0]) return VALLEY[0][1];
+  for (let i = 1; i < VALLEY.length; i++) {
+    const [x1, y1] = VALLEY[i];
+    if (x <= x1) {
+      const [x0, y0] = VALLEY[i - 1];
+      return y0 + ((y1 - y0) * (x - x0)) / (x1 - x0);
+    }
+  }
+  return VALLEY[VALLEY.length - 1][1];
+}
+
 /**
- * Szczyty pod markery, od lewej: lewy grzbiet · główny szczyt · prawy grzbiet · daleki prawy (przed drzewami).
- * Ostatni siedzi niżej, niż wynikałoby z samej grani (1408, 422 to wyższy punkt): przy ~768 px chip „od 750 zł"
- * wchodziłby na chip sąsiada — te dwa markery dzieli w poziomie tylko ~12 % szerokości.
+ * Przystanki pod markery (x wpisane ręcznie, y liczone z `VALLEY`), od lewej: lewe zbocze · kulminacja wzniesienia
+ * w środku doliny · korona ciemnego pagórka (936) · prawe zbocze zaokrąglonego wzgórza (1154, 604 — runda 5:
+ * właścicielka chciała kropkę Mavericka delikatnie niżej niż kulminacja 1126 z rundy 4).
+ * Runda 3 (2026-09-11): Maverick z x=1424 (za żlebem) przeniesiony na zaokrąglone wzgórze, Buggy 6-os. o pagórek
+ * wcześniej. Ciemny pagórek wchodzi TYLKO przy 4 markerach (strona główna) — przy 3 (cennik T1) ULTRA zostaje na
+ * zaokrąglonym wzgórzu, patrz `pickStops`. Dwa prawe dzieli ~10,7 % szerokości — za mało na dwa chipy z ceną i nazwą
+ * nad kropkami (przy 768 px potrzeba ~135 px, jest ~80), dlatego chip 4. markera siedzi pod kropką (`labelBelow`).
  */
-const PEAKS: readonly (readonly [number, number])[] = [
-  [272, 383],
-  [690, 229],
-  [1230, 365],
-  [1424, 454],
-];
+const STOP_XS: readonly number[] = [272, 690, 936, 1154];
+const STOPS: readonly (readonly [number, number])[] = STOP_XS.map((x) => [x, yAt(x)] as const);
 
 /** Wtopienie: las u dołu przechodzi w tło strony, boki gasną, żeby nie było widać prostokąta na szerokim kontenerze. */
 const MASK =
@@ -72,29 +84,36 @@ const IMAGE_STYLE: CSSProperties = {
   WebkitMaskComposite: "source-in",
 };
 
-function pickPeaks(n: number): readonly (readonly [number, number])[] {
-  if (n <= PEAKS.length) return PEAKS.slice(0, n);
-  // więcej ofert niż szczytów (dziś nie zachodzi): równo po skyline
-  return Array.from({ length: n }, (_, i) => SKYLINE[Math.round(((i + 0.5) / n) * (SKYLINE.length - 1))]);
+function pickStops(n: number): readonly (readonly [number, number])[] {
+  // 3 markery (STANDARD · PREMIUM · ULTRA): lewe zbocze · środek (wariant wyróżniony) · zaokrąglone wzgórze — ciemny pagórek pomijany
+  if (n === 3) return [STOPS[0], STOPS[1], STOPS[3]];
+  if (n <= STOPS.length) return STOPS.slice(0, n);
+  // więcej ofert niż przystanków (dziś nie zachodzi): równo wzdłuż doliny
+  return Array.from({ length: n }, (_, i) => {
+    const x = ((i + 0.5) / n) * RIDGE_W;
+    return [x, yAt(x)] as const;
+  });
 }
 
 const pathD = (() => {
-  const [x0, y0] = SKYLINE[0];
-  const [, yN] = SKYLINE[SKYLINE.length - 1];
-  // start poza lewą i koniec poza prawą krawędzią — trasa „przychodzi" i „idzie dalej"
-  return [`M -40 ${y0 + 12}`, `L ${x0} ${y0}`, ...SKYLINE.slice(1).map(([x, y]) => `L ${x} ${y}`), `L 1580 ${yN - 8}`].join(" ");
+  const [x0, y0] = VALLEY[0];
+  // start i koniec w sylwetkach czarnych drzew (lewe i prawe) — trasa „wyłania się" z lasu i „wchodzi za las"
+  return [`M ${x0} ${y0}`, ...VALLEY.slice(1).map(([x, y]) => `L ${x} ${y}`)].join(" ");
 })();
 
 /**
- * „Linia trasy po grzbiecie": zdjęcie szczytów (grafika, nie treść — alt="", aria-hidden) + kropkowana ścieżka SVG
- * po skyline + markery HTML na szczytach. Obraz, SVG (viewBox = wymiary obrazu, preserveAspectRatio none) i markery (%)
+ * „Linia trasy po dolinie": zdjęcie szczytów (grafika, nie treść — alt="", aria-hidden) + kropkowana ścieżka SVG
+ * po pagórkach pod górami + markery HTML na tej ścieżce (decyzja 2026-09-11 po testach z użytkownikami: linia po
+ * szczytach sugerowała jazdę po graniach). Obraz, SVG (viewBox = wymiary obrazu, preserveAspectRatio none) i markery (%)
  * dzielą jedno pudełko o proporcji obrazu, więc wszystko leży dokładnie na sobie przy każdej szerokości.
- * Etykieta NAD kropką: nad szczytem jest ciemne niebo, pod nim biały śnieg, na którym biały tekst ginie.
+ * Etykieta NAD kropką: nad linią jest podstawa gór (śnieg i jasne zbocza), dlatego chip ma własne tło `bg-background/85`.
+ * Wyjątek: przy 4 markerach chip ostatniego (Maverick) siedzi POD kropką — sąsiednie przystanki są za blisko na dwa
+ * chipy w jednym rzędzie (`labelBelow`); pod kropką jest ciemny las, chip czyta się tak samo.
  * Jeden DOM dla obu breakpointów: chip z numerem (`md:hidden`) i chip z ceną + nazwą (`hidden md:flex`).
  * Marker z `href` to <a> z niewidocznym obszarem dotyku ≥ 44 px. Zero animacji — to tło, nie efekt.
  */
 export function RidgeRoute({ markers, className }: Props) {
-  const peaks = pickPeaks(markers.length);
+  const stops = pickStops(markers.length);
   return (
     <div className={cn("relative w-full", className)} style={{ aspectRatio: `${RIDGE_W} / ${RIDGE_H}` }}>
       <Image
@@ -128,9 +147,12 @@ export function RidgeRoute({ markers, className }: Props) {
           vectorEffect="non-scaling-stroke"
         />
       </svg>
-      {peaks.map(([x, y], i) => {
+      {stops.map(([x, y], i) => {
         const m = markers[i];
         const Tag = m.href ? "a" : "div";
+        // 4 markery: ciemny pagórek (936) i zaokrąglone wzgórze (1100) dzieli ~10,7 % szerokości — dwa chipy z ceną
+        // i nazwą nad kropkami nachodziłyby na siebie od md do ~1200 px, więc ostatni chip idzie POD kropkę
+        const labelBelow = stops.length === 4 && i === 3;
         return (
           <Tag
             key={m.id}
@@ -157,7 +179,8 @@ export function RidgeRoute({ markers, className }: Props) {
             ) : null}
             <span
               className={cn(
-                "absolute bottom-5 flex-col items-center whitespace-nowrap rounded-chip bg-background/85 px-2.5 py-1.5 text-center backdrop-blur",
+                "absolute flex-col items-center whitespace-nowrap rounded-chip bg-background/85 px-2.5 py-1.5 text-center backdrop-blur",
+                labelBelow ? "top-5" : "bottom-5",
                 m.number ? "hidden md:flex" : "flex",
               )}
             >

@@ -11,7 +11,7 @@ components/
 │                DisplayHeading (H1 dzielony wizualnie na „ — ", pełny tekst w DOM), PriceFrom,
 │                BookCta (jedyne CTA — jedyny pomarańczowy przycisk, decyzje 2026-09-09/10), PhoneLink (KAŻDY numer telefonu; tylko stopka, sekcja Kontakt i teksty „masz pytania?"),
 │                Reveal (jedyny ruch wejścia)
-├── graphics/    RidgeRoute (zdjęcie grzbietu + trasa po skyline
+├── graphics/    RidgeRoute (zdjęcie grzbietu + trasa po pagórkach w dolinie
 │                + markery-kotwice na szczytach — oferta na stronie głównej i „Warianty i ceny" w T1),
 │                FogImage (next/image rozpływające się w tło), WashImage + WatercolorDefs + watercolor.ts (zdjęcie erodujące
 │                akwarelowo na krawędzi — gradient CSS + filtr SVG na alphie),
@@ -96,15 +96,30 @@ Grafiki (nie zdjęcia) — `assets/graphics/` i `assets/brand/`:
     \( +clone -fill "#101418" -colorize 100 \) -compose Screen -composite \
     -strip -quality 50 -define webp:method=6 assets/graphics/products-ridge.webp
   ```
-  Geometria (skyline co 16 px i 4 szczyty pod markery, w układzie 1536×1024) siedzi w `graphics/RidgeRoute.tsx`; przy nowym
-  obrazie wyznaczyć ją ponownie (`magick -threshold 62%` → pierwszy piksel, od którego idą 2 jasne piksele w pionie;
-  potem wygładzić zapadnięcia w cieniach interpolacją z sąsiadów i wstawić wierzchołki spoza siatki 16 px — sprawdzić,
-  nakładając polilinię na obraz `-draw "polyline …"`). Maska (dół → tło, boki) też w `RidgeRoute`. Obraz, SVG i markery dzielą jedno pudełko 3:2.
+  Geometria (polilinia `VALLEY` po pagórkach w dolinie i 4 przystanki `STOPS` pod markery, w układzie 1536×1024) siedzi
+  w `graphics/RidgeRoute.tsx`. **Linia biegnie po zalesionych wzgórzach POD górami, nie po graniach** — decyzja
+  2026-09-11 po testach z użytkownikami (linia po szczytach sugerowała, że jeździ się po graniach). Kropki mają y liczone
+  z polilinii (`yAt`), tylko x są wpisane ręcznie. Przy nowym obrazie wyznaczyć punkty ponownie ręcznie: granica las/zbocze
+  nie ma jednego progu jasności, więc nałożyć siatkę i polilinię na obraz
+  (`magick … -resize 1536x1024! -fill none -stroke "#f5a524" -draw "polyline …"`), obejrzeć, poprawić, aż linia leży na
+  koronach pagórków (nie na podstawie gór, nie w drzewach pierwszego planu) i jest łagodnie falista. Linia zaczyna się
+  i kończy w sylwetkach czarnych drzew (x≈79 i x≈1340, bez dobiegu/odbiegu poza krawędź) — trasa wyłania się z lasu
+  i wchodzi za las. Przebieg (runda 4, 2026-09-11) przeniesiony 1:1 z czerwonego szkicu właścicielki na zrzucie
+  desktopu: lewa połowa po górnej krawędzi niższego pasa szarego lasu, wyraźny dołek między środkowym wzniesieniem
+  a ciemnym pagórkiem, stromszy zjazd do drzew; runda 5: lewy odcinek ~20 px niżej, Maverick na prawym zboczu wzgórza;
+  runda 6: łagodny dołek między kropką 1 a 2 i jednostajny zjazd z ciemnego pagórka do Mavericka bez wchodzenia na
+  koronę wzgórza. Cztery przystanki: lewe zbocze (272) · kulminacja środkowego wzniesienia (690) ·
+  korona ciemnego pagórka (936) · prawe zbocze zaokrąglonego wzgórza (1154); przy 3 markerach ciemny pagórek jest
+  pomijany (`pickStops`).
+  Maska (dół → tło, boki) też w `RidgeRoute`. Obraz, SVG i markery dzielą jedno pudełko 3:2.
   Markery są linkami do kart (`#oferta-<id>`, `productCardAnchor` w `offer/ProductCard.tsx`; w cenniku `#wariant-<id>`,
   `pricingCardAnchor` w `offer/PricingCards.tsx`): scroll strony i poziomej karuzeli oraz fokus na karcie robi natywna
   nawigacja fragmentowa (karta ma `tabIndex={-1}` i `:target` ring), bez JS.
-  Przy 3 markerach (drabinka quadów/buggy: STANDARD · PREMIUM · ULTRA) `pickPeaks` bierze lewy grzbiet · główny szczyt ·
-  prawy grzbiet — najwyższy jest środkowy, więc na wierzchołku ląduje wariant wyróżniony (`highlightTier`), a nie ostatni.
+  Przy 3 markerach (drabinka quadów/buggy: STANDARD · PREMIUM · ULTRA) `pickStops` bierze przystanki 1, 2 i 4
+  (lewe zbocze · wzniesienie w środku doliny · korona zaokrąglonego wzgórza) — w środkowym ląduje wariant wyróżniony
+  (`highlightTier`), a nie ostatni. Przy 4 (strona główna) dochodzi ciemny pagórek jako trzeci (Buggy 6-os.), Maverick
+  na zaokrąglonym wzgórzu; te dwa przystanki dzieli tylko ~10,7 % szerokości, więc chip Mavericka (cena + nazwa, desktop)
+  siedzi **pod** kropką, nie nad nią (`labelBelow`) — inaczej od md do ~1200 px chipy nachodziłyby na siebie.
 - Logo: `logo-zakoextreme-white.png` (oryginał klienta; domyślne w `Wordmark` — header, stopka, menu) i `-dark.png` (na ewentualne
   jasne powierzchnie) wygenerowany z oryginału:
   `magick logo.png -fill "#14181d" -colorize 100 -strip assets/brand/logo-zakoextreme-dark.png`.
