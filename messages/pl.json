@@ -1,20 +1,47 @@
 {
   "common": {
     "call": "Zadzwoń: {phone}",
-    "callShort": "Zadzwoń",
     "checkAvailability": "Sprawdź wolne terminy",
     "book": "Rezerwuj",
+    "bookOnline": "Rezerwuj online",
     "bookThisOption": "Zarezerwuj ten wariant",
     "notSureCall": "Nie wiesz, co wybrać? Zadzwoń.",
-    "nearCenter": "Blisko centrum Zakopanego · czynne 24 h",
-    "proof": "★ 4,8 · ponad 800 opinii w Google",
-    "priceFrom": "od {price} zł"
+    "nearCenter": "Blisko centrum Zakopanego · Tatry",
+    "proof": "4,8 · ponad 800 opinii w Google",
+    "proofLine": "Najdłużej działająca firma tego typu w Zakopanem",
+    "priceFrom": "od {price} zł",
+    "hours": "{hours} h",
+    "minutes": "{minutes} min"
   },
   "trust": {
     "legal": "Legalne trasy",
     "instructor": "Instruktor na każdym wyjeździe",
     "noLicence": "Bez prawa jazdy",
-    "open24": "Czynne 24 h"
+    "bookOnline24": "Rezerwacja online 24 h"
+  },
+  "header": {
+    "openMenu": "Otwórz menu",
+    "closeMenu": "Zamknij menu",
+    "menuTitle": "Menu",
+    "switchLocale": "English",
+    "switchLocaleAria": "Switch to English",
+    "home": "Strona główna"
+  },
+  "nav": {
+    "quads": "Quady",
+    "buggy": "Buggy 4×4",
+    "snowmobiles": "Skutery śnieżne",
+    "prices": "Cennik",
+    "reviews": "Opinie",
+    "contact": "Kontakt",
+    "vouchers": "Vouchery",
+    "gallery": "Galeria",
+    "kids": "Dzieci i młodzież",
+    "noLicence": "Bez prawa jazdy"
+  },
+  "hero": {
+    "eyebrowHome": "Zakopane · Tatry",
+    "eyebrowProduct": "Zakopane · Rybkówka 16/2"
   },
   "home": {
     "winter": {
@@ -28,14 +55,292 @@
     "summer": {
       "h1": "Quady i buggy w Zakopanem — wyprawy w Tatry z instruktorem",
       "lead": "Godzina, dwie albo trzy na widokowych trasach nad Zakopanem. Bez prawa jazdy, z lokalnym instruktorem, legalnie. Wolne terminy często jeszcze na dziś."
+    },
+    "sections": {
+      "products": "Wybierz swoją wyprawę",
+      "booking": "Zarezerwuj termin",
+      "gallery": "Jak to wygląda",
+      "forWhom": "Dla kogo to jest",
+      "whyUs": "Dlaczego ZakoExtreme",
+      "directions": "Skąd do nas dojedziesz",
+      "faq": "Najczęstsze pytania",
+      "reviews": "Opinie",
+      "contact": "Kontakt — masz pytania? Zadzwoń"
     }
   },
-  "nav": {
-    "quads": "Quady",
-    "buggy": "Buggy 4×4",
-    "snowmobiles": "Skutery śnieżne",
-    "prices": "Cennik",
-    "reviews": "Opinie",
-    "contact": "Kontakt"
+  "products": {
+    "names": {
+      "quady": "Quady i ATV",
+      "buggy": "Buggy 4×4",
+      "buggy6": "Buggy 6-osobowe",
+      "maverick": "Maverick XRS",
+      "skutery": "Skutery śnieżne"
+    },
+    "taglines": {
+      "quady": "wyprawy z instruktorem",
+      "buggy": "napęd na cztery koła",
+      "buggy6": "cała rodzina jednym pojazdem",
+      "maverick": "240 KM",
+      "skutery": "wyprawy w Tatry"
+    },
+    "seeDetails": "Zobacz szczegóły",
+    "snowNotice": "Skutery śnieżne wracają w listopadzie.",
+    "priceOnRequest": "Cenę ustalamy telefonicznie"
+  },
+  "pricing": {
+    "title": "Warianty i ceny",
+    "included": "W cenie każdego wariantu",
+    "secondRider": "+{price} zł za drugą osobę",
+    "spec": {
+      "duration": "Czas",
+      "route": "Trasa",
+      "instructor": "Instruktor na każdym wyjeździe",
+      "noLicence": "Bez prawa jazdy"
+    }
+  },
+  "booking": {
+    "title": "Zarezerwuj termin",
+    "today": "Dziś",
+    "tomorrow": "Jutro",
+    "other": "Inny termin",
+    "lead": "Wybierz dzień, a kalendarz pokaże wolne godziny.",
+    "fallbackLead": "Najszybciej online — rezerwacja 24h, zobaczysz co jest wolne i dostaniesz potwierdzenie na maila.",
+    "loading": "Ładujemy kalendarz rezerwacji…"
+  },
+  "gallery": {
+    "playVideo": "Odtwórz wideo",
+    "seeAll": "Zobacz galerię",
+    "lightbox": {
+      "open": "Powiększ zdjęcie",
+      "close": "Zamknij",
+      "prev": "Poprzednie zdjęcie",
+      "next": "Następne zdjęcie",
+      "zoomIn": "Przybliż",
+      "zoomOut": "Oddal",
+      "dialog": "Podgląd zdjęć",
+      "gallery": "Galeria zdjęć",
+      "slide": "Zdjęcie",
+      "counter": "{index} z {total}"
+    }
+  },
+  "forWhom": {
+    "items": {
+      "couples": "Pary",
+      "families": "Rodziny",
+      "groups": "Grupy",
+      "stag": "Wieczory kawalerskie"
+    },
+    "familiesHint": "Buggy 6-osobowe"
+  },
+  "whyUs": {
+    "items": {
+      "longest": "Najdłużej działająca firma tego typu w Zakopanem",
+      "legal": "Legalne, sprawdzone trasy z widokiem na Tatry",
+      "local": "Lokalni instruktorzy, którzy znają te góry",
+      "near": "Blisko centrum Zakopanego",
+      "rating": "4,8★ i ponad 800 opinii w Google"
+    }
+  },
+  "directions": {
+    "intro": "Jesteśmy blisko centrum Zakopanego, przy Rybkówce 16/2.",
+    "outro": "Nie wiesz, jak dojechać? Zadzwoń — powiemy dokładnie.",
+    "approx": "ok. {minutes} min",
+    "seePage": "Zobacz stronę",
+    "place": "Miejscowość",
+    "time": "Dojazd samochodem",
+    "navigate": "Nawiguj",
+    "mapTitle": "Mapa dojazdu do ZakoExtreme, Rybkówka 16/2, Zakopane"
+  },
+  "steps": {
+    "title": "Jak przebiega wyprawa",
+    "items": {
+      "briefing": "Krótkie szkolenie i omówienie pojazdu",
+      "practice": "Przejażdżka próbna, żeby złapać czucie",
+      "trail": "Wyjazd na trasę — instruktor prowadzi, jedziesz w swoim tempie"
+    }
+  },
+  "contactClose": {
+    "title": "Kontakt — masz pytania? Zadzwoń",
+    "openMap": "Otwórz w Google Maps",
+    "address": "Adres"
+  },
+  "footer": {
+    "privacy": "Polityka prywatności",
+    "navTitle": "Strony",
+    "contactTitle": "Kontakt",
+    "socialTitle": "ZakoExtreme w social mediach"
+  },
+  "consent": {
+    "text": "Używamy plików cookie do pomiaru skuteczności reklam i statystyk odwiedzin.",
+    "accept": "Akceptuj",
+    "reject": "Odrzuć",
+    "region": "Zgoda na pliki cookie"
+  },
+  "quady": {
+    "h1": "Quady i ATV w Zakopanem — wyprawy z instruktorem",
+    "lead": "Wycieczka quadem po widokowych trasach nad Zakopanem. Godzina, dwie albo trzy — zależnie od tego, ile masz czasu. Bez prawa jazdy, z lokalnym instruktorem, legalnymi trasami.",
+    "atv": "Quad i ATV to ten sam pojazd — ATV to po prostu angielski skrót (all-terrain vehicle). Jeśli szukasz „wypożyczalni ATV w Zakopanem”, jesteś we właściwym miejscu.",
+    "sections": {
+      "pricing": "Warianty i ceny",
+      "booking": "Zarezerwuj termin",
+      "gallery": "Jak wyglądają nasze trasy",
+      "forWhom": "Dla kogo są wyprawy quadami",
+      "steps": "Jak przebiega wyprawa",
+      "directions": "Skąd do nas dojedziesz",
+      "faq": "Pytania, które dostajemy najczęściej",
+      "reviews": "Opinie"
+    },
+    "meta": {
+      "title": "Quady Zakopane — wyprawy od 250 zł",
+      "description": "Wyprawy quadami i ATV nad Zakopanem z instruktorem. Bez prawa jazdy, legalne trasy, od 250 zł za godzinę. Blisko centrum. Rezerwacja online 24 h."
+    }
+  },
+  "buggy": {
+    "h1": "Buggy 4×4 w Zakopanem — górska przygoda z napędem na cztery koła",
+    "lead": "Buggy prowadzisz sam, ale nie jedziesz sam — instruktor prowadzi grupę na sprawdzonej, legalnej trasie. Napęd 4×4 radzi sobie tam, gdzie quad już nie wjedzie.",
+    "leadShoulder": "Sezon skuterowy się skończył, trasy są przejezdne. Buggy z napędem 4×4 na widokowych trasach nad Zakopanem — z instruktorem, bez prawa jazdy.",
+    "placesLine": "Dojeżdżają do nas goście z Białki Tatrzańskiej, Bukowiny Tatrzańskiej, Poronina, Kościeliska i Murzasichla.",
+    "placesLink": "Sprawdź dojazd",
+    "sections": {
+      "pricing": "Buggy Zakopane — cennik i co zawiera cena",
+      "buggy6": "Buggy 6-osobowe — cała rodzina jednym pojazdem",
+      "maverick": "Maverick XRS — 240 KM",
+      "booking": "Zarezerwuj termin",
+      "gallery": "Jak wyglądają nasze trasy",
+      "directions": "Skąd do nas dojedziesz",
+      "forWhom": "Dla kogo są wyprawy buggy",
+      "howItWorks": "Wynajem buggy w Zakopanem — jak to działa",
+      "faq": "Pytania o buggy",
+      "reviews": "Opinie"
+    },
+    "buggy6Intro": "Prowadzi jedna dorosła osoba, reszta jedzie razem — jeden pojazd dla całej rodziny albo grupy, która nie chce dzielić się na osobne maszyny. Cena za buggy, dla maksymalnie 4 albo 6 osób.",
+    "howItWorksIntro": "Buggy, kask i sprzęt ochronny, szkolenie i paliwo są w cenie. Nie potrzebujesz prawa jazdy — przyjeżdżasz, przechodzisz szkolenie i ruszasz na trasę z instruktorem.",
+    "meta": {
+      "title": "Buggy 4×4 Zakopane — wyprawy od 500 zł",
+      "description": "Wyprawy buggy 4×4 nad Zakopanem z instruktorem, po legalnych trasach. Od 500 zł za godzinę za buggy dla dwóch osób, buggy 6-osobowe od 550 zł. Bez prawa jazdy. Blisko centrum. Rezerwacja online 24 h.",
+      "descriptionShoulder": "Sezon skuterowy się skończył, trasy są przejezdne. Buggy z napędem 4×4 na widokowych trasach nad Zakopanem — z instruktorem, bez prawa jazdy. Od 500 zł za godzinę za buggy dla dwóch osób. Blisko centrum. Rezerwacja online 24 h."
+    }
+  },
+  "skutery": {
+    "h1": "Skutery śnieżne w Zakopanem — wyprawy w Tatry",
+    "lead": "Wyprawa skuterem śnieżnym w góry nad Zakopanem, po legalnych trasach, z instruktorem. Zimą to jest najpopularniejsza rzecz, jaką robimy.",
+    "leadOffSeason": "Sezon skuterowy zaczyna się w listopadzie. Do tego czasu jeździmy buggy i quadami — <link>zobacz ofertę letnią</link>.",
+    "placesLine": "Dojeżdżają do nas goście z Białki Tatrzańskiej, Bukowiny Tatrzańskiej, Poronina, Kościeliska i Murzasichla.",
+    "placesLink": "Sprawdź dojazd",
+    "sections": {
+      "pricing": "Skutery śnieżne Zakopane — cennik i co obejmuje cena",
+      "booking": "Zarezerwuj termin",
+      "gallery": "Jak wyglądają nasze zimowe trasy",
+      "directions": "Skąd do nas dojedziesz",
+      "forWhom": "Dla kogo są wyprawy skuterami",
+      "howItWorks": "Wypożyczalnia skuterów śnieżnych — jak to działa",
+      "faq": "Pytania o skutery śnieżne",
+      "reviews": "Opinie"
+    },
+    "howItWorksIntro": "Skuter, kask, szkolenie, paliwo i poczęstunek są w cenie. Nie potrzebujesz prawa jazdy — przyjeżdżasz, przechodzisz szkolenie i ruszasz na trasę z instruktorem.",
+    "booking": {
+      "offSeasonLead": "Sezon skuterowy zaczyna się w listopadzie i zależy od śniegu. Zadzwoń — powiemy, kiedy ruszamy.",
+      "summerOffer": "Zobacz ofertę letnią"
+    },
+    "meta": {
+      "title": "Skutery śnieżne Zakopane — od 200 zł",
+      "description": "Wyprawy skuterami śnieżnymi w Tatrach, z instruktorem, po legalnych trasach. Od 200 zł za 30 minut, bez prawa jazdy. Blisko centrum Zakopanego. Rezerwacja online 24 h.",
+      "titleOffSeason": "Skutery śnieżne Zakopane — sezon od listopada",
+      "descriptionOffSeason": "Sezon skuterowy zaczyna się w listopadzie. Wyprawy skuterami śnieżnymi w Tatrach z instruktorem, od 200 zł za 30 minut, bez prawa jazdy. Blisko centrum Zakopanego. Rezerwacja online 24 h."
+    }
+  },
+  "vouchers": {
+    "h1": "Voucher na wyprawę w Tatry — prezent, który robi wrażenie",
+    "lead": "Quady, buggy 4×4 albo skutery śnieżne w prezencie. Ty wybierasz wariant albo kwotę, a obdarowana osoba sama decyduje, kiedy pojedzie.",
+    "eyebrow": "Zakopane · Voucher prezentowy",
+    "orderCta": "Zamów voucher",
+    "sections": {
+      "variants": "Warianty voucherów",
+      "variantsIntro": "Voucher odpowiada wprost naszym wariantom wypraw, więc obdarowana osoba od razu wie, co dostaje — nie tylko ile to kosztowało.",
+      "howTo": "Jak zamówić voucher",
+      "occasions": "Na jaką okazję",
+      "booking": "Zarezerwuj termin",
+      "faq": "Pytania o vouchery"
+    },
+    "cards": {
+      "tripCaption": "Voucher na wyprawę {tier} — {hours} h w Tatrach.",
+      "order": "Zamów ten voucher",
+      "anyAmount": "Dowolna kwota",
+      "anyAmountCaption": "Nie musisz wybierać wariantu. Ustalamy kwotę, a obdarowana osoba dobiera wyprawę sama.",
+      "anyAmountNote": "Kwotę dopasujemy do Twoich potrzeb i budżetu."
+    },
+    "howTo": {
+      "steps": {
+        "call": "Zadzwoń do nas — voucher ustalamy telefonicznie, bez formularzy i bez płatności online.",
+        "amount": "Wspólnie wybieramy wariant wyprawy albo kwotę vouchera.",
+        "date": "Ustalamy termin realizacji albo zostawiamy go otwartym — wtedy obdarowana osoba dzwoni wtedy, kiedy jej pasuje.",
+        "handover": "Umawiamy się na formę przekazania vouchera."
+      },
+      "anyAmount": "Kwota vouchera może być dowolna — dopasujemy ją do Twoich potrzeb i budżetu.",
+      "artworkCaption": "Tak wygląda voucher, który dostaniesz"
+    },
+    "occasions": {
+      "items": {
+        "birthday": {
+          "title": "Urodziny",
+          "body": "Zamiast kolejnego gadżetu — dzień, który zostaje w pamięci."
+        },
+        "stag": {
+          "title": "Wieczór kawalerski",
+          "body": "Coś, co się potem opowiada. Z instruktorem, na sprawdzonych trasach."
+        },
+        "anniversary": {
+          "title": "Rocznica",
+          "body": "Wyprawa we dwoje, w tatrzańskiej scenerii."
+        },
+        "holidays": {
+          "title": "Święta",
+          "body": "Prezent, który nie kończy w szufladzie."
+        },
+        "noOccasion": {
+          "title": "Bez okazji",
+          "body": "Czasem najlepszy moment na prezent to zwykły wtorek."
+        }
+      }
+    },
+    "meta": {
+      "title": "Voucher na quady i buggy — Zakopane",
+      "description": "Voucher prezentowy na wyprawę quadem lub buggy 4×4 nad Zakopanem. Wybierz wariant STANDARD, PREMIUM albo ULTRA lub dowolną kwotę — termin ustalicie później."
+    }
+  },
+  "galleryPage": {
+    "h1": "Galeria — quady, buggy 4×4 i skutery śnieżne w Tatrach",
+    "lead": "Zdjęcia z naszych wypraw nad Zakopanem: quady, buggy 4×4 i skutery śnieżne na legalnych, widokowych trasach z instruktorem.",
+    "groups": {
+      "quady": "Quady i ATV",
+      "buggy": "Buggy 4×4",
+      "skutery": "Skutery śnieżne"
+    },
+    "sections": {
+      "booking": "Zarezerwuj termin"
+    },
+    "meta": {
+      "title": "Galeria — quady, buggy i skutery w Zakopanem",
+      "description": "Zdjęcia z wypraw quadami, buggy 4×4 i skuterami śnieżnymi nad Zakopanem. Widokowe trasy w Tatrach z instruktorem. Rezerwacja online 24 h."
+    }
+  },
+  "contactPage": {
+    "h1": "Kontakt — ZakoExtreme Zakopane",
+    "lead": "Zadzwoń, jeśli masz pytanie, na które kalendarz nie odpowie. Termin zarezerwujesz sam — rezerwacja online 24 h.",
+    "copyPhone": "Skopiuj numer",
+    "copied": "Skopiowano",
+    "sections": {
+      "booking": "Zarezerwuj online",
+      "where": "Gdzie nas znajdziesz"
+    },
+    "meta": {
+      "title": "Kontakt — ZakoExtreme Zakopane | 539 320 700",
+      "description": "Rybkówka 16/2, 34-500 Zakopane, blisko centrum. Zadzwoń: +48 539 320 700 albo rezerwuj online 24 h."
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "text": "Tej strony nie ma, ale my jesteśmy.",
+    "home": "Strona główna"
   }
 }

@@ -29,8 +29,9 @@ w którymś przypadku — a to jest informacja o bezpieczeństwie dzieci.
 > i inne zapytania o wiek. Musisz na tę intencję odpowiedzieć — ale bez podawania liczby.
 > Gotowy tekst jest w `03-COPY-NAGLOWKI.md`.
 
-### ❌ Nigdy nie pisz ceny wejściowej innej niż 250 zł
-Cena wejściowa quada/buggy to **od 250 zł**. Nie 300. Nie 280.
+### ❌ Nigdy nie pisz ceny wejściowej quada innej niż 250 zł
+Cena wejściowa quada to **od 250 zł**. Nie 300. Nie 280.
+**Buggy to osobny cennik** (potwierdzony 2026-09-11, §3.2): 2-os. od **500 zł** za buggy (do 2 osób) — nigdy „od 250 zł" przy buggy.
 
 **Dlaczego:** stara notatka mówiła 300 zł i ta liczba rozlała się po wszystkich materiałach.
 Właściciel zareagował na to bardzo stanowczo. **250 to cena nagłówkowa.**
@@ -70,6 +71,11 @@ o eksport, jeśli będziesz ich potrzebować.
 Marcel to **były** przewodnik (występuje w starych opiniach). Obecny przewodnik chwalony
 w opiniach to **Wojtek (Wojciech)**.
 
+### ❌ Nie pisz, że firma jest „czynna 24 h"
+To nieprawda (decyzja właścicielki 2026-09-10). Całą dobę działa **strona i rezerwacja online** — jedyne dozwolone
+sformułowanie to „Rezerwacja online 24 h" / „Book online 24/7". Zero „czynne 24 h", „open 24/7", „odbieramy całą dobę"
+w treści, meta, schema (bez `openingHoursSpecification`). Bramka `A8` w `scripts/check-content.mjs` to blokuje.
+
 ### ❌ Nie używaj nazwy „Snowdoo"
 `snowdoo` i `snowdoo adventure zakopane` to marka **konkurencji**, na którą konto zbiera ruch.
 Nie umieszczaj jej na stronie.
@@ -83,11 +89,16 @@ Nie umieszczaj jej na stronie.
 | Nazwa | **ZakoExtreme** |
 | Domena | `zakoextreme.pl` |
 | Telefon | **+48 539 320 700** |
-| Godziny | **czynne 24 h** |
+| Godziny | **nie podajemy** — „czynne 24 h" to nieprawda (decyzja właścicielki 2026-09-10); całą dobę działa tylko strona i rezerwacja online. Prawdziwe godziny pracy bazy i odbierania telefonu: `[[DO POTWIERDZENIA]]` |
 | Adres | **Rybkówka 16/2, 34-500 Zakopane** |
 | Ocena Google | **4,8★, ponad 800 opinii** |
 | System rezerwacji | SlotWise (`bookings.slotwise.pl`, business-id `cmpo09er30083og01xobb2992`) |
 | Właściciel / kontakt | Piotrek |
+| Profile społecznościowe | potwierdzone 2026-09-10 — Instagram `https://www.instagram.com/zako_extreme_/`, Facebook `https://www.facebook.com/zakoextreme`, TikTok `https://www.tiktok.com/@zako_extreme`, YouTube `https://www.youtube.com/@ZAKOEXTREME` |
+
+> Facebook zapisujemy **bez** `?locale=pl_PL`. Parametr wymusza polski interfejs u anglojęzycznego
+> użytkownika i zaśmieca kanoniczny adres w `sameAs`. Te cztery adresy są jedynym źródłem
+> dla ikon w stopce i dla `sameAs` w schema — jedno miejsce w kodzie: `config/site.ts` (`SOCIAL_PROFILES`).
 
 > Adres to **16/2**, nie „13". Starsze notatki miały tu błąd.
 
@@ -107,9 +118,7 @@ Nie umieszczaj jej na stronie.
 > **To jest cennik obowiązujący.** Zastępuje wszystkie wcześniejsze wersje.
 > Wszystkie ceny są „od" — to ceny wejściowe, nie sztywne.
 
-### 3.1 Wycieczka Quad / Buggy — jedna wspólna drabinka cenowa
-
-**Ważne: quad i buggy mają TĘ SAMĄ drabinkę.** Nie rozdzielaj ich na osobne cenniki.
+### 3.1 Wycieczka Quad / ATV
 
 | Wariant | Czas | Cena | Uwagi |
 |---|---|---:|---|
@@ -117,33 +126,57 @@ Nie umieszczaj jej na stronie.
 | **PREMIUM** | 2 h | od 450 zł | |
 | **ULTRA** | 3 h | od 650 zł | opcja ogniska z grillem |
 
-### 3.2 Buggy 6-osobowe
+> ~~Quad i buggy mają tę samą drabinkę~~ — **nieaktualne od 2026-09-11.** Buggy ma własny cennik (§3.2), droższy i liczony
+> za pojazd. Publikowanie „od 250 zł" przy buggy odtwarzało mechanizm z opinii 1★ („na stronie inna cena niż na miejscu",
+> `docs/strony/BUGGY.md` §6). Otwarte zostaje, czy 250 zł quada to cena za osobę, czy za pojazd (`03-COPY` §8 poz. 18).
+
+### 3.2 Buggy 4×4 — cennik potwierdzony przez właściciela 2026-09-11 (cena ZA POJAZD)
+
+**Buggy 2-osobowe** — cena za buggy, do 2 osób:
 
 | Wariant | Czas | Cena |
 |---|---|---:|
-| STANDARD | 1 h | od 550 zł |
-| PREMIUM | 2 h | od 1000 zł |
+| **STANDARD** | 1 h | **od 500 zł** |
+| **PREMIUM** | 2 h | od 900 zł |
+| **ULTRA** | 3 h | od 1200 zł |
+
+**Buggy 6-osobowe** — cena za buggy, zależna od liczby osób i czasu:
+
+| Osoby | 1 h | 2 h |
+|---|---:|---:|
+| do 4 osób | od 550 zł | od 1000 zł |
+| do 6 osób | od 650 zł | od 1200 zł |
 
 To jest produkt **dla rodzin z dziećmi i większych grup** — cała rodzina jedzie jednym
 pojazdem, prowadzi dorosły. Warto go wyeksponować, bo rozwiązuje problem „co z dzieckiem"
-bez podawania wieku.
+bez podawania wieku. „Do", nie „dokładnie": trzy osoby płacą stawkę „do 4 osób" (decyzja 2026-09-11).
+
+Opisy tras buggy i to, czy „trasa 12–15 km" / „ognisko" dotyczą też buggy — nadal niepotwierdzone (nie publikujemy).
 
 ### 3.3 Maverick XRS
 
-| Pojazd | Moc | Czas | Cena |
-|---|---|---|---:|
-| Maverick XRS | 240 KM | 1 h | od 750 zł |
+| Pojazd | Moc | Czas | Osoby | Cena |
+|---|---|---|---|---:|
+| Maverick XRS | 240 KM | 1 h | do 2 osób | od 750 zł |
 
-Produkt premium / „wow". Dobry jako górna kotwica cenowa.
+Produkt premium / „wow". Dobry jako górna kotwica cenowa. Cena za pojazd (potwierdzone 2026-09-11).
 
 ### 3.4 Skutery śnieżne (sezon zimowy)
 
-Zakres **200–600 zł**.
+**Potwierdzone 2026-09-11** (drabinka ze starej strony, cena **za skuter**):
 
-> Dokładna drabinka wariantów skuterów **nie jest potwierdzona** na tym poziomie
-> szczegółowości co quady. **Dopytaj Piotrka** przed sezonem zimowym.
-> Skutery to najważniejszy produkt zimą i najlepiej konwertujący w całym koncie —
-> nie wolno ich wystawić z niepewnym cennikiem.
+| Wariant | Czas | Cena od | Druga osoba na tym samym skuterze |
+|---|---|---:|---:|
+| STANDARD | 30 min | 200 zł | +50 zł |
+| PREMIUM | 60 min | 300 zł | +50 zł |
+| ULTRA | 120 min | 550 zł | +50 zł |
+
+**W cenie:** skuter śnieżny · kask · szkolenie przed wyjazdem · paliwo · poczęstunek.
+**Bez prawa jazdy**, **z instruktorem na każdej wyprawie** (oba potwierdzone 2026-09-11).
+
+> Czasy skuterów (30/60/120 min) są inne niż quadów (60/120/180). PREMIUM 300 zł to legalna cena skuterów —
+> zakaz „300 zł" z §1 dotyczy wyłącznie ceny wejściowej quada/buggy (bramka A2 pomija kontekst skuterów).
+> Nadal otwarte: co klient bierze ze sobą na skuter (`skutery-co-zabrac`), polityka pogodowa.
 
 ### 3.5 Sezonowość
 

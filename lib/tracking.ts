@@ -8,8 +8,8 @@
  * - Zero danych osobowych w dataLayer.
  * - Nie wysyłamy `generate_lead` przy telefonie, nie wysyłamy scroll depth.
  */
-export type CtaLocation = "hero" | "sticky" | "faq" | "footer" | "pricing" | "contact" | "menu";
-export type PageType = "home" | "product" | "local" | "pricing" | "qualifier" | "contact" | "reviews";
+export type CtaLocation = "hero" | "sticky" | "faq" | "footer" | "pricing" | "contact" | "menu" | "voucher";
+export type PageType = "home" | "product" | "local" | "pricing" | "qualifier" | "contact" | "reviews" | "vouchers" | "gallery";
 export type TrackedProduct = "quady" | "buggy" | "skutery" | "mixed";
 export type TrackedLanguage = "pl" | "en";
 
@@ -25,6 +25,25 @@ function push(event: DataLayerEvent) {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer ?? [];
   window.dataLayer.push(event);
+}
+
+/**
+ * Consent Mode v2 — aktualizacja zgód po decyzji w banerze. `gtag` z layoutu to `dataLayer.push(arguments)`,
+ * więc push obiektu `arguments` jest jedyną poprawną formą (tablica NIE zadziała).
+ */
+export function updateConsent(granted: boolean) {
+  if (typeof window === "undefined") return;
+  window.dataLayer = window.dataLayer ?? [];
+  const state = granted ? "granted" : "denied";
+  const consent = { ad_storage: state, ad_user_data: state, ad_personalization: state, analytics_storage: state };
+  // GTM rozpoznaje polecenia consent TYLKO po obiekcie `arguments` (nie tablicy) — stąd klasyczna funkcja.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function gtagLike(..._args: unknown[]) {
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer!.push(arguments as unknown as DataLayerEvent);
+  }
+  gtagLike("consent", "update", consent);
+  push({ event: "consent_update", consent_state: state });
 }
 
 /** Unikalny event_id — ten sam dla GA4/Ads/Meta (deduplikacja CAPI). Dla purchase użyj transaction_id ze SlotWise. */

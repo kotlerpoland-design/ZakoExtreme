@@ -24,6 +24,18 @@ export const SEASON_BOUNDS = {
   summerStart: { month: 7, day: 1 },
 } as const;
 
+/**
+ * Okno, w którym „Vouchery" są w menu głównym: 1 XI – 31 XII. Poza nim link żyje wyłącznie w stopce.
+ * Celowo NIE jest to `Season` — listopad i grudzień to podzbiór zimy, a zima trwa do lutego.
+ */
+export const VOUCHER_MENU_BOUNDS = {
+  start: { month: 11, day: 1 },
+  end: { month: 12, day: 31 },
+} as const;
+
+/** Ręczne nadpisanie okna voucherów w kodzie (jak SEASON_OVERRIDE — ustępuje zmiennej środowiskowej). */
+export const VOUCHER_MENU_OVERRIDE: boolean | null = null;
+
 const SEASONS: readonly Season[] = ["winter", "shoulder", "summer"];
 
 function isSeason(value: unknown): value is Season {
@@ -49,6 +61,25 @@ export function getSeason(date: Date = new Date()): Season {
   if (today >= winter || today < shoulder) return "winter";
   if (today < summer) return "shoulder";
   return "summer";
+}
+
+/**
+ * Czy „Vouchery" są teraz w menu głównym (1 XI – 31 XII). Poza oknem link zostaje w stopce — nie znika ze strony.
+ * Nadpisanie do testów i na wypadek decyzji właścicielki: NEXT_PUBLIC_VOUCHER_MENU=on|off.
+ */
+export function isVoucherMenuSeason(date: Date = new Date()): boolean {
+  const envOverride = process.env.NEXT_PUBLIC_VOUCHER_MENU;
+  if (envOverride === "on") return true;
+  if (envOverride === "off") return false;
+  if (VOUCHER_MENU_OVERRIDE !== null) return VOUCHER_MENU_OVERRIDE;
+
+  const year = date.getUTCFullYear();
+  const today = dayOfYear(date.getUTCMonth() + 1, date.getUTCDate(), year);
+  const start = dayOfYear(VOUCHER_MENU_BOUNDS.start.month, VOUCHER_MENU_BOUNDS.start.day, year);
+  const end = dayOfYear(VOUCHER_MENU_BOUNDS.end.month, VOUCHER_MENU_BOUNDS.end.day, year);
+
+  // okno może kiedyś przejść przez Nowy Rok (np. XII–I) — wtedy start > end i warunek się odwraca
+  return start <= end ? today >= start && today <= end : today >= start || today <= end;
 }
 
 /** Kolejność kart oferty i pozycji w menu, per sezon. Skutery poza zimą są ukryte. */

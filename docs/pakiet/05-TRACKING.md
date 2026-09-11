@@ -119,13 +119,17 @@ Nazwy są zgodne z GA4 i z tym, co już działa w koncie — nie wymyślaj włas
 // Kliknięcie w numer telefonu — GDZIEKOLWIEK na stronie
 dataLayer.push({
   event: 'phone_click',
-  cta_location: 'hero' | 'sticky' | 'faq' | 'footer' | 'pricing' | 'contact',
-  page_type: 'home' | 'product' | 'local' | 'pricing' | 'qualifier' | 'contact',
+  cta_location: 'hero' | 'sticky' | 'faq' | 'footer' | 'pricing' | 'contact' | 'menu' | 'voucher',
+  page_type: 'home' | 'product' | 'local' | 'pricing' | 'qualifier' | 'contact' | 'reviews' | 'vouchers' | 'gallery',
   product: 'quady' | 'buggy' | 'skutery' | 'mixed',
   language: 'pl' | 'en'
 });
 ```
 
+> `menu` i `voucher` doszły przy wdrożeniu (kod: `CtaLocation` w `lib/tracking.ts`). `voucher` oznacza CTA „Zamów voucher”
+> na `/vouchery/` — jedyne miejsce poza stopką, sekcją Kontakt i tekstami „masz pytania?”, gdzie telefon jest CTA, bo
+> vouchera nie da się kupić przez SlotWise.
+>
 > **`cta_location` jest obowiązkowe.** Bez niego nie dowiesz się, który przycisk generuje
 > telefony — a to jest jedyna rzecz, która realnie odpowiada za sprzedaż w tej firmie.
 > Po miesiącu ta jedna zmienna powie ci, czy sticky bar był dobrą decyzją.

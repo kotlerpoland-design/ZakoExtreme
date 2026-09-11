@@ -20,7 +20,9 @@ Tam, gdzie sekcja zależy od faktu, którego nie mamy, stoi znacznik `[[DO POTWI
    Wszystko dla osoby planującej wyjazd (25%) jest **pod pierwszym zgięciem** — bogate, wizualne,
    ale nigdy nie zasłania ceny i telefonu.
 3. **Premium bierze się z hierarchii, zdjęć i spokoju, nie z efektów.** 96% ruchu to telefon na LTE
-   w górach. Zero karuzel, pop-upów i interstitiali. Jedno mocne zdjęcie, jedna cena, jeden numer.
+   w górach. Zero karuzel, pop-upów i interstitiali (wyjątki właścicielki: CLAUDE.md „Mobile-first"). Jedno mocne zdjęcie, jedna cena, jeden numer.
+   Wyjątek (decyzja 2026-09-09): hero strony głównej rotuje trzy zdjęcia filarów (quady → buggy → skutery) co 3 s,
+   zsynchronizowane z listą 01/02/03; pauza na hover/fokus/kartę w tle, brak rotacji przy `prefers-reduced-motion`.
 
 ### Liczby, które projektują tę stronę
 
@@ -28,7 +30,7 @@ Tam, gdzie sekcja zależy od faktu, którego nie mamy, stoi znacznik `[[DO POTWI
 |---|---|
 | 95,9% ruchu to telefon | Projekt na 390×844. Desktop to widok kontrolny. |
 | 72% użytkowników jest już na Podhalu | Cena, telefon, „wolne terminy dziś", odległość — w ekranie 1. |
-| ~18 200 kliknięć w telefon vs 119 zakupów online (153:1) | „Zadzwoń" jest CTA nr 1. „Rezerwuj" jest CTA nr 2. Zawsze. |
+| ~18 200 kliknięć w telefon vs 119 zakupów online (153:1) | Rekomendacja analizy: „Zadzwoń" nr 1. **Decyzja właścicielki 2026-09-09: „Rezerwuj online" jest CTA nr 1 (akcent — pomarańcz), „Zadzwoń" nr 2 (kontur, zawsze obok).** |
 | 1 516 rozpoczętych płatności → 119 zakupów | Rezerwacja online to jedna ścieżka, jeden komponent, zbadana na telefonie zanim powstanie projekt. |
 | Kobiety konwertują o 27% lepiej | Ton: bezpieczna, widokowa, zorganizowana przygoda. Nie „ekstremalnie i męsko". |
 | Marzec–czerwiec pali budżet | Strona ma **trzy** stany sezonowe, nie dwa. |
@@ -97,34 +99,47 @@ i dobór**, nie kod.
 Pakiet nie definiuje nawigacji — poniżej propozycja, która wynika z priorytetów.
 
 **Header (mobile, 56 px, sticky u góry):**
-`[logo]  ·  [PL/EN]  ·  [ikona telefonu → tel:]  ·  [☰]`
+`[☰]  ·  [LOGO na środku]  ·  [Rezerwuj → #rezerwacja]`
 
-Telefon jest w headerze zawsze, także przed przewinięciem do sticky bara. Menu otwiera pełnoekranową
-listę (nie dropdown), z dużymi polami dotyku.
+W headerze nie ma telefonu (decyzja właścicielki 2026-09-10 — nie zachęcamy do dzwonienia; numer zostaje w stopce,
+w sekcji Kontakt i przy tekstach „masz pytania?"). Menu otwiera pełnoekranową listę (nie dropdown), z dużymi polami
+dotyku; PL/EN jest w menu.
 
-**Menu główne (kolejność sterowana sezonem):**
+**Menu główne (stałe, decyzja 2026-09-09 — logo pośrodku, trzy filary po lewej, trzy intencje po prawej):**
 
-| Zima (XI–II) | Przejściowy (III–VI) | Lato (VII–IX) |
-|---|---|---|
-| Skutery śnieżne | Buggy 4×4 | Quady |
-| Buggy 4×4 | Quady | Buggy 4×4 |
-| Quady | *(skutery ukryte w menu)* | *(skutery ukryte w menu)* |
-| Cennik | Cennik | Cennik |
-| Opinie | Opinie | Opinie |
-| Kontakt | Kontakt | Kontakt |
+`Skutery śnieżne · Quady · Buggy 4×4 · [LOGO] · Vouchery · Galeria · Kontakt`
 
-Pod listą w menu: duży przycisk **Zadzwoń: 539 320 700** i mniejszy **Sprawdź wolne terminy**.
+Skutery są w menu przez cały rok (sezon komunikuje strona produktu). „Galeria" to podstrona `/galeria/`
+(`/en/gallery/`) — decyzja 2026-09-10: przejmuje indeksowany adres starej strony; sekcja „Jak to wygląda" na stronie
+głównej i produktowych zostaje 5-zdjęciową zajawką z linkiem „Zobacz galerię →", a kotwica `#galeria` zostaje pomocniczo.
+„Vouchery" to `/vouchery/` (`/en/vouchers/`) — pełna strona, indeksowana. **Jedyna pozycja sezonowa w menu**
+(decyzja 2026-09-10): jest w nagłówku tylko **1 XI – 31 XII**, w szczycie sprzedaży prezentów; przez resztę roku
+prowadzi do niej wyłącznie stopka. Steruje tym `isVoucherMenuSeason()` z `config/season.ts`, nadpisanie
+`NEXT_PUBLIC_VOUCHER_MENU=on|off`. Poza oknem menu ma pięć pozycji, nie sześć.
+Ta sama lista (01–06) w menu mobilnym **i w stopce**.
 
-**Menu drugorzędne (stopka + linki kontekstowe w treści):**
-Bez prawa jazdy · Dla dzieci i młodzieży · Białka Tatrzańska · Bukowina Tatrzańska ·
-Buggy Białka i Bukowina · Polityka prywatności.
+Pod listą w menu: jeden duży przycisk **Rezerwuj online** (bez telefonu od 2026-09-10).
+
+**Sekcja „Strony" w stopce (decyzja 2026-09-10, skorygowana przy wdrożeniu voucherów): menu główne
+w tej samej kolejności, plus Polityka prywatności.** Bez dopisek, bez drugiego menu — stopka ma potwierdzać
+strukturę, którą użytkownik zna z nagłówka, a nie proponować alternatywnej mapy serwisu.
+**Jeden wyjątek od „1:1": „Vouchery" są w stopce przez cały rok**, także wtedy, gdy wypadły z menu (I–X).
+Inaczej strona voucherów byłaby przez dziesięć miesięcy nieosiągalna z nawigacji.
+
+**Menu drugorzędne (wyłącznie linki kontekstowe w treści — od 2026-09-10 nie ma go w stopce):**
+Cennik · Opinie · Bez prawa jazdy · Dla dzieci i młodzieży · Białka Tatrzańska · Bukowina Tatrzańska ·
+Buggy Białka i Bukowina.
 
 Strony kwalifikacyjne i lokalne **nie idą do menu głównego** — mają ruch z reklam i SEO, a w menu
 rozmywałyby trzy filary. Linkujemy do nich z FAQ („Czy można jechać z dzieckiem?" → strona dzieci)
 i z sekcji „Skąd do nas dojedziesz" (Białka → strona Białki).
 
-**Desktop:** ten sam header, menu rozwinięte poziomo, telefon jako tekst z numerem po prawej,
-„Rezerwuj" jako przycisk. Bez megamenu.
+> ⚠️ `/cennik/` i `/opinie/` po wypadnięciu ze stopki **nie mają dziś żadnego linku wewnętrznego**
+> (są tylko w sitemapie). Budując te strony, załatw im link kontekstowy — cennik z sekcji cenowej
+> na stronach produktowych, opinie z bloku dowodu społecznego. Inaczej zostaną sierotami.
+
+**Desktop (72 px):** `[filary] · LOGO · [intencje] ……… 539 320 700 (od 1280 px) · [Rezerwuj online] · EN`.
+Bez megamenu.
 
 ---
 
@@ -132,12 +147,12 @@ i z sekcji „Skąd do nas dojedziesz" (Białka → strona Białki).
 
 | Element | Co robi | Reguła |
 |---|---|---|
-| **Header** | logo, język, telefon, menu | 56 px, sticky, nie zasłania H1 |
-| **Sticky bar (mobile)** | `[📞 Zadzwoń]` + `[Rezerwuj]` | pojawia się po przewinięciu ekranu 1; „Zadzwoń" większe i bardziej kontrastowe; `padding-bottom` na `<main>` |
-| **Pasek zaufania** | 4 ikony: legalne trasy · instruktor na każdym wyjeździe · bez prawa jazdy · czynne 24 h | zaraz pod hero na każdej stronie z hero |
+| **Header** | logo, język, „Rezerwuj online", menu — bez telefonu (2026-09-10) | 56 px, sticky, nie zasłania H1 |
+| **Sticky bar (mobile)** | `[Rezerwuj online]` na całą szerokość — bez telefonu (2026-09-10) | pojawia się po przewinięciu ekranu 1; `padding-bottom` na `<main>` |
+| **Pasek zaufania** | ★ 4,8 · ponad 800 opinii (pierwsza pozycja, przeniesiona z hero 2026-09-09) + 4 ikony: legalne trasy · instruktor na każdym wyjeździe · bez prawa jazdy · rezerwacja online 24 h („czynne 24 h" to nieprawda — decyzja 2026-09-10) | zaraz pod hero na każdej stronie z hero |
 | **Blok dowodu społecznego** | ★ 4,8 · ponad 800 opinii · najdłużej działająca firma w Zakopanem | w hero (skrót) i przed stopką (pełny); nigdy dokładna liczba opinii |
-| **Stopka** | NAP (Rybkówka 16/2, 34-500 Zakopane), telefon `tel:`, godziny 24 h, mapa, menu drugorzędne, polityka prywatności, PL/EN | NAP identyczny z wizytówką i ze schema |
-| **Baner zgód** | Consent Mode v2, „Akceptuj" i „Odrzuć" równorzędne | **nie zasłania** przycisku „Zadzwoń" na 390×844 |
+| **Stopka** | NAP (Rybkówka 16/2, 34-500 Zakopane), telefon `tel:`, mapa (bez godzin — decyzja 2026-09-10), ikony social (IG · FB · TikTok · YT, bez trackingu), menu główne 1:1 + polityka prywatności — na mobile zwinięte pod strzałką „Strony” (decyzja 2026-09-10, natywne `<details>`, od `md` rozwinięte na stałe); bez przełącznika PL/EN (jest w headerze i menu mobilnym) | NAP identyczny z wizytówką i ze schema; adresy profili z `site.social` = te same co `sameAs` |
+| **Baner zgód** | Consent Mode v2, „Akceptuj" i „Odrzuć" równorzędne | **nie zasłania** przycisku „Rezerwuj online" na 390×844 |
 | **Przełącznik sezonu** | `config/season.ts` z datami i ręcznym nadpisaniem | steruje hero, kolejnością kart, menu, FAQ, `availability`, `og:image`, meta |
 | **Schema globalna** | `LocalBusiness` w `layout.tsx` | bez `aggregateRating`, bez `Review` |
 
@@ -152,19 +167,23 @@ Sekcje oznaczone ⭐ są obowiązkowe dla szablonu. Sekcje w nawiasie `(sezon)` 
 
 Strona główna ma **trzy stany**; różni je hero i kolejność kart. Reszta sekcji jest wspólna.
 
+Numeracja (decyzja 2026-09-10): hero = 01, ale numeru nie drukuje (01/02/03 w hero to filary), pasek zaufania
+bez numeru; **widoczna numeracja startuje od `02` przy „Wybierz swoją wyprawę"** i rośnie o 1 na sekcję
+(kontakt = 10, albo 09 gdy sekcja opinii się nie renderuje). Kolumna `#` poniżej = numer drukowany na stronie.
+
 | # | Sekcja | Po co | Zawartość | CTA | Event |
 |---|---|---|---|---|---|
-| 1 ⭐ | **Hero sezonowy** | test 5 sekund dla persony A | H1 sezonowy · jedno zdanie · **cena od** (duża) · ★ 4,8 · ponad 800 opinii · „Blisko centrum Zakopanego · czynne 24 h" · jedno zdjęcie/wideo pełnoekranowe | **Zadzwoń** (główny) · Sprawdź wolne terminy | `phone_click{hero}` · `cta_click{book_online,hero}` |
-| 2 ⭐ | **Pasek zaufania** | zamknąć 4 lęki zanim zaczną się pytania | 4 ikony (2.) | — | — |
-| 3 ⭐ | **Wybierz swoją wyprawę** | rozdzielić ruch na trzy filary | karty produktów w kolejności sezonu: nazwa · czas · cena od · jedno zdjęcie · link do strony produktu. Zima: skutery → buggy → quady. Przejściowy: buggy → quady → buggy 6-os. (+ zdanie „Skutery wracają w listopadzie"). Lato: quady → buggy → buggy 6-os. → Maverick | „Zobacz warianty" na karcie | `select_item` |
-| 4 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka zakupu | selektor **Dziś / Jutro / Inny termin** + widżet SlotWise ładowany leniwie | Rezerwuj | `view_item` → `add_to_cart` → `begin_checkout` |
-| 5 | **Jak to wygląda** | persona B chce zobaczyć | 4–6 zdjęć w siatce + wideo z Meta („Video #1") bez autoplay dźwięku; realne trasy, Tatry w tle | — | — |
-| 6 | **Dla kogo to jest** | pokazać, że to nie „męska rozrywka" | pary · rodziny (→ buggy 6-os.) · grupy · wieczory kawalerskie · ognisko z grillem | Zadzwoń | `phone_click{pricing}` |
-| 7 | **Dlaczego ZakoExtreme** | zaufanie dla persony B | 5 punktów: najdłużej działająca firma · legalne, sprawdzone trasy · lokalni instruktorzy · blisko centrum · 4,8★ i ponad 800 opinii | — | — |
-| 8 ⭐ | **Skąd do nas dojedziesz** | 579 fraz lokalnych bez własnych stron | tabela: Zakopane centrum, Białka, Bukowina, Poronin, Kościelisko, Murzasichle → „ok. X min" `[[DO POTWIERDZENIA]]`; linki do stron lokalnych | Zadzwoń | `directions_click` |
-| 9 ⭐ | **Najczęstsze pytania** | ostatnie obiekcje + AI search | 6 pytań z banku FAQ (prawo jazdy, dzieci, co w cenie, ile trwa, pogoda, jak zarezerwować); akordeon otwarty na pierwsze pytanie | „Nie wiesz, co wybrać? Zadzwoń." | `faq_open{id}` · `phone_click{faq}` |
-| 10 | **Opinie** | dowód | 3 prawdziwe cytaty z Google z imieniem i datą + link „Zobacz wszystkie" | — | — |
-| 11 ⭐ | **Zadzwoń i ustalmy termin** | domknięcie | NAP · duży telefon · mapa · „czynne 24 h" | Zadzwoń | `phone_click{footer}` |
+| 01 ⭐ | **Hero sezonowy** | test 5 sekund dla persony A | lista 01 Quady · 02 Buggy · 03 Skutery jako dominanta (H1 sezonowy tylko w sr-only) · „Blisko centrum Zakopanego · Tatry" · jedno zdanie · rotacja 3 zdjęć filarów. Bez ceny „od" i bez ★ 4,8 w hero (decyzja właścicielki 2026-09-09: cena na kartach ofert, proof w pasku zaufania) | **Rezerwuj online** (jedyne, od 2026-09-10 bez telefonu) | `cta_click{book_online,hero}` |
+| — ⭐ | **Pasek zaufania** | zamknąć 4 lęki zanim zaczną się pytania | 4 ikony (2.) | — | — |
+| 02 ⭐ | **Wybierz swoją wyprawę** | rozdzielić ruch na trzy filary | karty produktów w kolejności sezonu: nazwa · czas · cena od · jedno zdjęcie · link do strony produktu. Zima: skutery → buggy → quady. Przejściowy: buggy → quady → buggy 6-os. (+ zdanie „Skutery wracają w listopadzie"). Lato: quady → buggy → buggy 6-os. → Maverick. Karty pod grzbietem góry (`products-ridge.webp`): linia trasy biegnie po skyline, markery siedzą na szczytach — desktop cena od + nazwa, mobile numer 01/02/03 (`graphics/RidgeRoute`); marker = kotwica do karty (`#oferta-<id>`, scroll + fokus natywnie). Mobile: karty w poziomym scrollu ze snapem, kolejna wystaje (decyzja 2026-09-10) | „Zobacz szczegóły" na karcie → podstrona produktu (buggy 6-os. i Maverick: `/buggy-zakopane/#buggy-6-osobowe`, `#maverick-xrs`) | `select_item` |
+| 03 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka zakupu | selektor **Dziś / Jutro / Inny termin** + widżet SlotWise ładowany leniwie | Rezerwuj | `view_item` → `add_to_cart` → `begin_checkout` |
+| 04 | **Jak to wygląda** | persona B chce zobaczyć | 4–6 zdjęć w siatce + wideo z Meta („Video #1") bez autoplay dźwięku; realne trasy, Tatry w tle | — | — |
+| 05 | **Dla kogo to jest** | pokazać, że to nie „męska rozrywka" | pary · rodziny (→ buggy 6-os.) · grupy · wieczory kawalerskie · ognisko z grillem | Rezerwuj online | `cta_click{book_online,pricing}` |
+| 06 | **Dlaczego ZakoExtreme** | zaufanie dla persony B | 5 punktów: najdłużej działająca firma · legalne, sprawdzone trasy · lokalni instruktorzy · blisko centrum · 4,8★ i ponad 800 opinii | — | — |
+| 07 ⭐ | **Skąd do nas dojedziesz** | 579 fraz lokalnych bez własnych stron | mapa Google z pinezką na Rybkówce 16/2 (leniwy iframe po doscrollowaniu, `contact/MapEmbed`) + adres + przycisk **Nawiguj** (kontur, `site.googleMapsDirectionsUrl`; decyzja 2026-09-10) · tabela: Zakopane centrum, Białka, Bukowina, Poronin, Kościelisko, Murzasichle → „ok. X min" `[[DO POTWIERDZENIA]]`; linki do stron lokalnych. Mobile: wstęp → mapa → tabela; desktop: tabela lewo, mapa prawo | Nawiguj · Zadzwoń | `directions_click` · `phone_click{pricing}` |
+| 08 ⭐ | **Najczęstsze pytania** | ostatnie obiekcje + AI search | 6 pytań z banku FAQ (prawo jazdy, dzieci, co w cenie, ile trwa, pogoda, jak zarezerwować); akordeon otwarty na pierwsze pytanie. Desktop (lg+): po prawej render buggy o zmierzchu (`media.sections.faq`) zatopiony w tło jak hero (`WashImage`, ziarno 37, lazy, q62); mobile bez zdjęcia — decyzja 2026-09-10 | „Nie wiesz, co wybrać? Zadzwoń." | `faq_open{id}` · `phone_click{faq}` |
+| 09 | **Opinie** | dowód | 3 prawdziwe cytaty z Google z imieniem i datą + link „Zobacz wszystkie" | — | — |
+| 10 ⭐ | **Kontakt — masz pytania? Zadzwoń** | domknięcie = sekcja Kontakt (jedno z trzech miejsc z numerem) | NAP · duży telefon · mapa | telefon | `phone_click{footer}` |
 
 > „Dlaczego ZakoExtreme" jest celowo nisko. 72% ruchu chce ceny i telefonu, nie historii firmy.
 > Persona planująca doczyta.
@@ -173,13 +192,13 @@ Strona główna ma **trzy stany**; różni je hero i kolejność kart. Reszta se
 
 | # | Sekcja | Po co | Zawartość | CTA | Event |
 |---|---|---|---|---|---|
-| 1 ⭐ | **Hero** | message match 100/100 z reklamą | H1 z frazą i lokalizacją · jedno zdanie (co to jest, ile trwa) · **cena od** · ★ 4,8 · ponad 800 opinii · „Blisko centrum Zakopanego · czynne 24 h" · zdjęcie produktu | **Zadzwoń** · Sprawdź wolne terminy | `phone_click{hero}` |
+| 1 ⭐ | **Hero** | message match 100/100 z reklamą | H1 z frazą i lokalizacją · jedno zdanie (co to jest, ile trwa) · **cena od** · ★ 4,8 · ponad 800 opinii · „Blisko centrum Zakopanego · Tatry" · zdjęcie produktu | **Zadzwoń** · Sprawdź wolne terminy | `phone_click{hero}` |
 | 2 ⭐ | **Pasek zaufania** | jw. | 4 ikony | — | — |
-| 3 ⭐ | **Warianty i ceny** | intencja cenowa | karty STANDARD / PREMIUM / ULTRA (czas · cena od · co wyróżnia, np. trasa 12–15 km, ognisko przy ULTRA). Buggy: dodatkowo **Buggy 6-osobowe** (550 / 1000) i **Maverick XRS** (750) jako górna kotwica. Skutery: `[[DO POTWIERDZENIA: pełna drabinka]]` | „Zarezerwuj ten wariant" → `#rezerwacja` | `select_item{item_id}` |
+| 3 ⭐ | **Warianty i ceny** | intencja cenowa | karty STANDARD / PREMIUM / ULTRA (czas · cena od · co wyróżnia, np. trasa 12–15 km, ognisko przy ULTRA) pod grzbietem góry (`products-ridge.webp`, ten sam co w sekcji 02 strony głównej): linia trasy biegnie po skyline, markery siedzą na szczytach — desktop czas + nazwa wariantu, mobile sam czas (`graphics/RidgeRoute`); marker = kotwica do karty (`#wariant-<id>`, scroll + fokus natywnie). Mobile: karty w poziomym scrollu ze snapem **na środek**, sąsiedzi wystają z obu stron; karuzela otwiera się na wariancie wyróżnionym (`offer/PricingTrack`, jedyna karuzela z JS — kotwica w adresie ma pierwszeństwo). Buggy: dodatkowo **Buggy 6-osobowe** (550 / 1000) i **Maverick XRS** (750) jako górna kotwica. Skutery: `[[DO POTWIERDZENIA: pełna drabinka]]` | „Zarezerwuj ten wariant" → `#rezerwacja` | `select_item{item_id}` |
 | 4 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka | Dziś / Jutro / Inny termin + SlotWise (lazy) | Rezerwuj | lejek e-commerce |
 | 5 ⭐ | **Jak wyglądają trasy** | „to nie błotnista pętla, to Tatry" | galeria 4–6 zdjęć + opcjonalnie wideo; opis trasy tylko taki, jaki klient naprawdę dostanie (`[[DO POTWIERDZENIA: nazwy tras, mapa]]`) | — | — |
 | 6 | **Dla kogo** | pary · rodziny · grupy · wieczór kawalerski | 4 kafle z jednym zdaniem; rodziny → link do strony dzieci lub buggy 6-os. | Zadzwoń | `phone_click{pricing}` |
-| 7 | **Jak przebiega wyprawa** | obniżyć wysiłek/lęk (persona B) | 3 kroki: szkolenie i omówienie pojazdu → przejażdżka próbna → wyjazd na trasę z instruktorem. Skutery: zamiast tego „Co zabrać ze sobą" `[[DO POTWIERDZENIA]]` | — | — |
+| 7 | **Jak przebiega wyprawa** | obniżyć wysiłek/lęk (persona B) | 3 kroki: szkolenie i omówienie pojazdu → przejażdżka próbna → wyjazd na trasę z instruktorem — od 2026-09-11 lista belkowa (indeks, pomarańczowa belka na aktywnej pozycji, hover CSS) + zdjęcie produktu po prawej (`media.sections.steps`, `content/Steps`). Skutery: te same kroki pod H2 „Wypożyczalnia skuterów śnieżnych — jak to działa"; „Co zabrać ze sobą" nadal `[[DO POTWIERDZENIA]]` | — | — |
 | 8 ⭐ | **Skąd do nas dojedziesz** | frazy lokalne | tabela dojazdu | Zadzwoń | `directions_click` |
 | 9 ⭐ | **FAQ** | snippet + obiekcje | quady: FAQ-1, 2, 3, 4, 5, 6, 8 · buggy: 1, 2, 3, 4, 5, 6 · skutery: FAQ zimowe (5.2) | „Nie wiesz, co wybrać? Zadzwoń." | `faq_open` |
 | 10 ⭐ | **Opinie** | dowód | 3 cytaty z Google (bez Marcela; obecny przewodnik: Wojtek) | — | — |
@@ -263,13 +282,25 @@ z krótkim tłumaczeniem kursywą.
 
 Telefon w pierwszych 100 px. Strona ma być najszybsza w serwisie.
 
+Wdrożone 2026-09-10 (`app/[locale]/kontakt/page.tsx`). Tabela poniżej to **stan faktyczny**, nie szkic.
+
 | # | Sekcja | Zawartość | Event |
 |---|---|---|---|
-| 1 ⭐ | **Karta kontaktu** | **+48 539 320 700** (ogromny, `tel:`) · czynne 24 h · Rybkówka 16/2, 34-500 Zakopane · przycisk kopiowania numeru (desktop) | `contact_page_view` · `phone_click{contact}` · `phone_copy` |
-| 2 ⭐ | **Gdzie nas znajdziesz** | mapa (statyczny obraz z linkiem do Google Maps, nie ciężki embed) · „blisko centrum Zakopanego" | `directions_click` |
-| 3 ⭐ | **Skąd do nas dojedziesz** | tabela dojazdu | |
-| 4 | **Zarezerwuj online** | Dziś / Jutro / Inny termin + SlotWise | lejek |
-| 5 | **Godziny i sezon** | „czynne 24 h" + aktualny stan sezonu (co dziś jeździ) | |
+| 1 ⭐ | **Karta kontaktu** (`contact/ContactHero`) | H1 · **539 320 700** (ogromny, `tel:`, `variant="giant"`) · Rybkówka 16/2, 34-500 Zakopane · „Otwórz w Google Maps" · „Skopiuj numer" (tylko desktop, `contact/CopyPhoneButton`) · jedyny przycisk: **Rezerwuj online**. Zmierzone na 390×844: numer startuje na **192 px**, CTA kończy się na 524 px | `contact_page_view` · `phone_click{contact}` · `phone_copy` · `directions_click` |
+| 2 | **Zarezerwuj online** | Dziś / Jutro / Inny termin + SlotWise | lejek |
+| 3 ⭐ | **Gdzie nas znajdziesz** | jedna sekcja: mapa Google (`contact/MapEmbed`: iframe leniwie po doscrollowaniu, stała wysokość, **Nawiguj** w konturze) + tabela dojazdu — `content/DirectionsTable` zawiera już `MapEmbed`, rozdzielenie zdublowałoby mapę | `directions_click` |
+
+**Odstępstwa od pierwotnego szkicu T6 (decyzje 2026-09-10):**
+
+- **Rezerwacja idzie przed dojazdem**, jak na starej stronie WordPress — odwrotnie niż zakładał szkic.
+- **Sekcja „Godziny i sezon" nie powstała.** Godzin nie podajemy (`03-COPY` §8 poz. 17), a co dziś jeździ,
+  widać w kalendarzu SlotWise. Efekt: nic na stronie nie zależy od sezonu, więc strona jest w pełni
+  statyczna (bez `revalidate`) — a mapa Google wypada poza próg leniwego montowania i **nie ładuje się
+  przy wczytaniu strony**, co domyka wymóg „najszybsza w serwisie".
+- **Bez `ContactClose` na dole** — powielałby gigantyczny telefon z ekranu 1.
+- **Bez formularza i bez e-maila** (żadnego z nich nie ma w `01-BRIEF-I-FAKTY.md`).
+- **Schema bez zmian**: `LocalBusiness` renderuje się globalnie w `[locale]/layout.tsx`, a `04-SEO` §3 ma
+  zamkniętą listę czterech typów — `ContactPage` na niej nie ma.
 
 ### Wersja EN — czym różni się od PL
 
@@ -290,23 +321,26 @@ Jeden zestaw komponentów, siedem szablonów. Nazwy robocze pod Next.js App Rout
 |---|---|---|---|
 | `SiteHeader` | wszystkie | `season`, `lang` | telefon zawsze widoczny |
 | `StickyCallBar` | wszystkie (mobile) | `product`, `page_type` | pojawia się po ekranie 1 |
-| `Hero` | T0–T3 | `variant: home\|product\|qualifier\|local`, `price`, `media` | obraz `priority`, wysokość zarezerwowana |
-| `TrustBar` | T0–T3 | `lang` | 4 ikony, jedna linia na mobile (scroll poziomy tylko tu, bez karuzeli) |
-| `ProofBadge` | Hero, Footer | `size` | „★ 4,8 · ponad 800 opinii" |
+| `Hero` | T0–T3 | `variant: home\|product\|qualifier\|local`, `price`, `media`, `numbered?` | obraz `priority`, wysokość zarezerwowana; `/galeria/` bez numerów sekcji (`numbered={false}`, `Section` bez `n`, decyzja 2026-09-10) |
+| `TrustBar` | T0–T3 | `lang` | 4 ikony, jedna linia na mobile: wolna pętla auto-scroll ~24 px/s (`TrustMarquee`; treść ×2, klon aria-hidden), ręczny scroll zachowany, pauza na dotyk/fokus/kartę w tle/poza ekranem, `prefers-reduced-motion` = bez ruchu — decyzja 2026-09-10, drugi wyjątek od „zero karuzel" obok HeroSlides; desktop bez ruchu |
+| `ProofBadge` | TrustBar, Footer | `size` | „★ 4,8 · ponad 800 opinii" |
 | `ProductCards` | T0, T5 | `order` z `season` | 3–4 karty |
-| `PricingCards` | T1, T3, T4 | `ladder: quad\|buggy6\|maverick\|snowmobile` | jedno źródło cen: `content/prices.ts` |
+| `PricingCards` | T1, T3, T4 | `ladder: quad\|buggy6\|maverick\|snowmobile` · `layout: route\|stack` | jedno źródło cen: `content/prices.ts`; `route` (T1) = karty pod grzbietem z markerami-kotwicami, sekcja musi mieć `isolate overflow-hidden`; `stack` (T4) = sama siatka |
 | `BookingSection` | T0–T3, T4, T6 | `dateChips: today\|tomorrow\|other` | SlotWise lazy (`IntersectionObserver`); **jedyny** punkt wejścia do rezerwacji |
-| `Gallery` | T0, T1 | `images[]`, `video?` | siatka, nie karuzela; `next/image` |
+| `Gallery` | T0, T1 | `images[]`, `video?`, `layout: mosaic\|grid`, `more?` (link „Zobacz galerię →") | siatka, nie karuzela; `next/image`; kafle = linki do `/galeria/#grupa` (zero JS) |
+| `LightboxGallery` | `/galeria/` | `images[]`, `layout` | osobny komponent (nie prop `Gallery`), bo import klienckiego `GalleryGrid` dociągałby chunk na `/`; klik → lightbox YARL (`GalleryGrid` → `GalleryLightbox`, chunk po 1. kliknięciu — wyjątek (4) CLAUDE.md) |
 | `ForWhom` | T0, T1 | | 4–5 kafli |
 | `Steps` | T1, T2 | `steps[3]` | „jak przebiega wyprawa" |
 | `WhyUs` | T0 | | 5 punktów |
 | `DirectionsTable` | T0, T1, T3, T6 | `highlight?: 'bialka'\|'bukowina'` | „ok. X min", linki do stron lokalnych |
-| `FAQ` | wszystkie z FAQ | `ids[]` | generuje treść **i** `FAQPage` z tego samego obiektu `content/faq.ts` |
+| `FAQ` | wszystkie z FAQ | `ids[]`, `media?` | generuje treść **i** `FAQPage` z tego samego obiektu `content/faq.ts`; `media` = zdjęcie po prawej na lg+ (strona główna) |
 | `Reviews` | T0–T3, T5 | `limit`, `filter?` | dane z `content/reviews.json` (eksport z Google) |
-| `ContactClose` | wszystkie | | NAP + telefon + mapa |
+| `ContactClose` | wszystkie **poza** T6 | | NAP + telefon + mapa (na `/kontakt/` jego rolę pełni `ContactHero`) |
+| `ContactHero` | T6 | | ekran 1 `/kontakt/`: H1 + ogromny `tel:` + adres + jedyne CTA; `data-contact-hero` (nie `data-hero` — test pilnuje, że `[data-hero]` nie zawiera `tel:`), własny `data-hero-sentinel` dla `StickyCallBar` |
+| `CopyPhoneButton` | T6 (desktop) | `label`, `copiedLabel` | „Skopiuj numer" → `phone_copy`; bez schowka nic nie robi, `tel:` obok działa dalej |
 | `SeasonNotice` | T1 skutery, T3, T4 | `season` | „Skutery wracają w listopadzie" |
 | `ConsentBanner` | layout | | nie zasłania CTA |
-| `SiteFooter` | wszystkie | | NAP, menu drugorzędne, PL/EN |
+| `SiteFooter` | wszystkie | | NAP, menu drugorzędne zwijane na mobile |
 
 **Źródła treści (jedno miejsce na każdy fakt):**
 - `config/season.ts` — daty graniczne + ręczne nadpisanie.
@@ -345,10 +379,11 @@ z twardymi ograniczeniami (mobile, LTE, 30 sekund do telefonu):
 2. **Hierarchia zamiast dekoracji.** Trzy poziomy typografii: H1 (display, ciasny tracking),
    cena (największa liczba na ekranie), reszta. Maksymalnie dwie rodziny fontów, `display: swap`.
 3. **Spokój = luksus.** Duże marginesy, sekcje oddzielone przestrzenią, nie liniami i tłem.
-   Jeden akcent kolorystyczny na CTA telefonu, nigdzie indziej.
+   Jeden akcent kolorystyczny na CTA nr 1 („Rezerwuj online", decyzja 2026-09-09) i numerach sekcji, nigdzie indziej.
 4. **Ruch tylko tam, gdzie prowadzi wzrok.** Delikatne wejście sekcji przy scrollu (opacity +
    8–12 px), liczniki w cenniku, hover na kartach. Wszystko z `prefers-reduced-motion`.
-   Zero parallaxu na mobile, zero animowanych teł, zero autoplay z dźwiękiem.
+   Zero parallaxu na mobile, zero animowanych teł, zero autoplay z dźwiękiem. Jedyny ruch tła: crossfade
+   trzech zdjęć w hero strony głównej (wyjątek z §1, `prefers-reduced-motion` go wyłącza).
 5. **Wideo jako tło, nie jako treść.** Krótka pętla bez dźwięku w hero na desktopie, poster na
    mobile (LTE). Wideo z Meta w galerii, uruchamiane dotknięciem.
 6. **Karty cenowe jak bilety, nie jak tabela.** Trzy warianty obok siebie (na mobile stos),
@@ -358,10 +393,16 @@ z twardymi ograniczeniami (mobile, LTE, 30 sekund do telefonu):
    niż przymiotnik.
 8. **Ton.** Bezpiecznie · widokowo · z instruktorem · dla par, rodzin i grup · w swoim tempie.
    Adrenalina zostaje jako tło, nie jako obietnica.
-9. **Ciemny motyw tylko jeśli przejdzie kontrast na słońcu.** Obecny landing `/start` ma ciemne
-   tło + limonkę `#8CC63F`. Na telefonie w górach w południe ciemne tło z jasnym tekstem czyta
-   się gorzej niż jasne. Decyzja projektowa do testu na urządzeniu, nie w Figmie.
-10. **Wydajność jest częścią estetyki.** LCP < 2 s, CLS < 0,05, pierwszy ekran < 300 kB.
+9. **Ciemny motyw — decyzja właścicielki 2026-09-09.** Strona ma jeden, ciemny motyw: chłodny grafit
+   `#101418`, karty `#181d23`, biały tekst `#f3f5f7`, jeden pomarańczowy akcent `--brand #f5a524` (referencja
+   OFFTIEM, zastąpił koral tego samego dnia; 9,1:1 na tle, 8,3:1 na karcie) na tekst, kreski i przycisk CTA nr 1.
+   Napis na pomarańczowym przycisku jest **ciemny** (`#101418`, 9,1:1) — biały miałby 2,0:1. Tokeny i policzone
+   kontrasty: `app/globals.css`. Audyt WCAG 2026-09-09: cały tekst ≥ 4,5:1, fokus pełny ring, obwódki kart dekoracyjne.
+   Wcześniejsza rekomendacja (jasne tło, bo w górach w południe ciemne tło z jasnym tekstem czyta się
+   gorzej) została świadomie odrzucona — nie wracać bez decyzji właścicielki. **Test czytelności na
+   telefonie w pełnym słońcu nadal do zrobienia** na urządzeniu, nie w Figmie; jeśli nie przejdzie,
+   pierwszy krok to podbicie `--muted-foreground` i `--ink-2`, nie powrót do jasnego.
+10. **Wydajność jest częścią estetyki.** LCP < 2 s, CLS < 0,05, pierwszy ekran < 310 kB (od 2026-09-10, wcześniej 300 kB).
     Strona, która skacze albo ładuje się 5 s, nie jest premium niezależnie od projektu.
 
 ---

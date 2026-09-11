@@ -31,6 +31,10 @@ export const routing = defineRouting({
     "/cennik": { pl: "/cennik", en: "/prices" },
     "/opinie": { pl: "/opinie", en: "/reviews" },
     "/kontakt": { pl: "/kontakt", en: "/contact" },
+    // galeria — podstrona (decyzja 2026-09-10); adres /galeria/ istnieje na starej stronie i jest w indeksie, więc go przejmujemy
+    "/galeria": { pl: "/galeria", en: "/gallery" },
+    // vouchery — pełna strona; w menu głównym tylko 1 XI – 31 XII (config/season.ts), przez resztę roku w stopce
+    "/vouchery": { pl: "/vouchery", en: "/vouchers" },
     // techniczne (noindex)
     "/dziekujemy": { pl: "/dziekujemy", en: "/thank-you" },
     "/polityka-prywatnosci": { pl: "/polityka-prywatnosci", en: "/privacy-policy" },

@@ -47,27 +47,38 @@ Marka `| ZakoExtreme` na końcu title (nie na początku — pierwsze słowa maj�
 | URL | Title | Description |
 |---|---|---|
 | `/` (lato) | Quady i buggy Zakopane — od 250 zł \| ZakoExtreme | Wyprawy quadami i buggy 4×4 nad Zakopanem. Bez prawa jazdy, z instruktorem, legalne trasy. Od 250 zł. Zadzwoń: 539 320 700. Wolne terminy na dziś. |
-| `/` (zima) | Skutery śnieżne Zakopane — wyprawy \| ZakoExtreme | Wyprawy skuterami śnieżnymi w Tatrach z lokalnym instruktorem. Legalne trasy, blisko centrum Zakopanego, czynne 24 h. Zadzwoń: 539 320 700. |
+| `/` (zima) | Skutery śnieżne Zakopane — wyprawy \| ZakoExtreme | Wyprawy skuterami śnieżnymi w Tatrach z lokalnym instruktorem. Legalne trasy, blisko centrum Zakopanego. Zadzwoń: 539 320 700. |
 | `/` (przejściowy) | Buggy 4×4 i quady Zakopane — od 250 zł \| ZakoExtreme | Buggy z napędem 4×4 i quady na widokowych trasach nad Zakopanem. Bez prawa jazdy, z instruktorem. Od 250 zł. Zadzwoń: 539 320 700. |
 | `/quady-zakopane/` | Quady Zakopane — wyprawy od 250 zł \| ZakoExtreme | Wyprawy quadami i ATV nad Zakopanem: 1, 2 lub 3 godziny. Bez prawa jazdy, z lokalnym instruktorem, legalne trasy. Od 250 zł. 4,8★ i ponad 800 opinii. |
-| `/buggy-zakopane/` | Buggy 4×4 Zakopane — od 250 zł \| ZakoExtreme | Wyprawy buggy 4×4 nad Zakopanem z instruktorem. Buggy 6-osobowe dla całej rodziny od 550 zł. Bez prawa jazdy. Zadzwoń: 539 320 700. |
-| `/skutery-sniezne-zakopane/` | Skutery śnieżne Zakopane — wypożyczalnia \| ZakoExtreme | Wyprawy skuterami śnieżnymi w Tatrach, z instruktorem, po legalnych trasach. Blisko centrum Zakopanego, czynne 24 h. Sprawdź wolne terminy. |
+| `/buggy-zakopane/` | Buggy 4×4 Zakopane — wyprawy od 500 zł \| ZakoExtreme | Wyprawy buggy 4×4 nad Zakopanem z instruktorem, po legalnych trasach. Od 500 zł za godzinę za buggy dla dwóch osób, buggy 6-osobowe od 550 zł. Bez prawa jazdy. Blisko centrum. Rezerwacja online 24 h. *(wdrożone 2026-09-11; ceny za pojazd, telefon nie jest CTA)* |
+| `/skutery-sniezne-zakopane/` | Skutery śnieżne Zakopane — od 200 zł \| ZakoExtreme | Wyprawy skuterami śnieżnymi w Tatrach, z instruktorem, po legalnych trasach. Od 200 zł za 30 minut, bez prawa jazdy. Blisko centrum Zakopanego. Rezerwacja online 24 h. *(poza sezonem: „Skutery śnieżne Zakopane — sezon od listopada", opis zaczyna się od startu sezonu — `messages/*.json` → `skutery.meta`)* |
 | `/quady-bez-prawa-jazdy/` | Quady bez prawa jazdy — Zakopane \| ZakoExtreme | Na wyprawę quadem nie potrzebujesz prawa jazdy. Krótkie szkolenie, przejażdżka próbna i jazda z instruktorem po legalnych trasach. Od 250 zł. |
 | `/quady-dla-dzieci-i-mlodziezy/` | Quady dla dzieci i młodzieży — Zakopane \| ZakoExtreme | Osobny, ogrodzony tor pod opieką instruktora, przejazd z osobą dorosłą na trasie głównej albo buggy 6-osobowe dla całej rodziny. Zadzwoń i ustalmy wariant. |
 | `/quady-bialka-tatrzanska/` | Quady Białka Tatrzańska — wyprawy \| ZakoExtreme | Wyprawy quadami i buggy dla gości z Białki Tatrzańskiej. Legalne trasy, instruktor, bez prawa jazdy. Od 250 zł. Zadzwoń: 539 320 700. |
 | `/quady-bukowina-tatrzanska/` | Quady Bukowina Tatrzańska \| ZakoExtreme | Wyprawy quadami i buggy dla gości z Bukowiny Tatrzańskiej. Legalne trasy z widokiem na Tatry, z instruktorem. Od 250 zł. |
-| `/buggy-bialka-bukowina/` | Buggy Białka i Bukowina Tatrzańska \| ZakoExtreme | Buggy 4×4 z napędem na cztery koła — wyjazd z Zakopanego, blisko Białki i Bukowiny. Od 250 zł, buggy 6-osobowe od 550 zł. |
-| `/cennik/` | Cennik — quady, buggy, skutery \| ZakoExtreme Zakopane | Quady i buggy od 250 zł za godzinę, 450 zł za 2 h, 650 zł za 3 h. Buggy 6-osobowe od 550 zł. Maverick XRS 240 KM od 750 zł. |
+| `/buggy-bialka-bukowina/` | Buggy Białka i Bukowina Tatrzańska \| ZakoExtreme | Buggy 4×4 z napędem na cztery koła — wyjazd z Zakopanego, blisko Białki i Bukowiny. Od 500 zł za buggy, buggy 6-osobowe od 550 zł. |
+| `/cennik/` | Cennik — quady, buggy, skutery \| ZakoExtreme Zakopane | Quady od 250 zł za godzinę, 450 zł za 2 h, 650 zł za 3 h. Buggy od 500 zł za godzinę (za buggy). Buggy 6-osobowe od 550 zł. Maverick XRS 240 KM od 750 zł. |
 | `/opinie/` | Opinie o ZakoExtreme — Zakopane \| 4,8★ | Ponad 800 opinii w Google i ocena 4,8. Prawdziwe opinie klientów o wyprawach quadami, buggy i skuterami śnieżnymi w Zakopanem. |
-| `/kontakt/` | Kontakt — ZakoExtreme Zakopane \| 539 320 700 | Rybkówka 16/2, 34-500 Zakopane. Czynne 24 h. Zadzwoń: +48 539 320 700 albo zarezerwuj termin online. |
+| `/kontakt/` | Kontakt — ZakoExtreme Zakopane \| 539 320 700 | Rybkówka 16/2, 34-500 Zakopane, blisko centrum. Zadzwoń: +48 539 320 700 albo rezerwuj online 24 h. ⟵ zaktualizowane 2026-09-10 |
 | `/en/` | Quad, Buggy & Snowmobile Tours Zakopane \| ZakoExtreme | Guided quad, buggy and snowmobile tours in the Tatras. No driving licence required, local English-speaking instructors, legal routes. From 250 PLN. |
 | `/en/quad-tours-zakopane/` | Quad Tours Zakopane — from 250 PLN \| ZakoExtreme | Guided quad and ATV tours above Zakopane: 1, 2 or 3 hours. No driving licence required. Local instructors, legal routes. 4.8★, 800+ reviews. |
-| `/en/buggy-tours-zakopane/` | Buggy 4×4 Tours Zakopane \| ZakoExtreme | Drive a 4×4 buggy on legal mountain trails above Zakopane, led by a local instructor. 6-seater buggy for families from 550 PLN. |
-| `/en/snowmobile-tours-zakopane/` | Snowmobile Tours Zakopane, Tatras \| ZakoExtreme | Guided snowmobile trips in the mountains above Zakopane. Legal routes, local English-speaking instructors, near the town center. Open 24/7. |
+| `/en/buggy-tours-zakopane/` | Buggy 4×4 Tours Zakopane — from 500 PLN \| ZakoExtreme | Guided 4×4 buggy tours above Zakopane on legal routes. From 500 PLN per hour per buggy for two people, 6-seater buggy from 550 PLN. No driving licence required. Near the town center. Book online 24/7. |
+| `/en/snowmobile-tours-zakopane/` | Snowmobile Tours Zakopane, Tatras \| ZakoExtreme | Guided snowmobile trips in the mountains above Zakopane. Legal routes, local English-speaking instructors, near the town center. |
 | `/en/no-drivers-licence-required/` | Quad Tours Without a Licence — Zakopane \| ZakoExtreme | You do not need a driving licence for our quad tours. Short briefing, practice ride and an instructor leading the group. From 250 PLN. |
 | `/en/prices/` | Prices — Quad, Buggy, Snowmobile \| ZakoExtreme | Quad and buggy tours from 250 PLN per hour, 450 PLN for 2 h, 650 PLN for 3 h. 6-seater buggy from 550 PLN. Maverick XRS 240 HP from 750 PLN. |
 | `/en/reviews/` | ZakoExtreme Reviews — 4.8★ \| Zakopane | 800+ Google reviews and a 4.8 rating. Real guest reviews of our quad, buggy and snowmobile tours in Zakopane. |
-| `/en/contact/` | Contact — ZakoExtreme Zakopane \| +48 539 320 700 | Rybkówka 16/2, 34-500 Zakopane, Poland. Open 24/7. Call +48 539 320 700 or book your date online. |
+| `/en/contact/` | Contact — ZakoExtreme Zakopane \| +48 539 320 700 | Rybkówka 16/2, 34-500 Zakopane, Poland. Call +48 539 320 700 or book online 24/7. ⟵ zaktualizowane 2026-09-10 |
+| `/vouchery/` | Voucher na quady i buggy — Zakopane \| ZakoExtreme | Voucher prezentowy na wyprawę quadem lub buggy 4×4 nad Zakopanem. Wybierz wariant STANDARD, PREMIUM albo ULTRA lub dowolną kwotę — termin ustalicie później. ⟵ dodane 2026-09-10 |
+| `/en/vouchers/` | Gift Vouchers — Quad & Buggy Zakopane \| ZakoExtreme | A gift voucher for a quad or buggy 4×4 trip above Zakopane. Choose the STANDARD, PREMIUM or ULTRA option, or any amount — the date can be set later. ⟵ dodane 2026-09-10 |
+
+> **Opisy voucherów NIE kończą się „Rezerwacja online 24 h”**, mimo że bramka A8 dopuszcza to sformułowanie.
+> Vouchera nie da się kupić online — obietnica rezerwacji w opisie prezentu byłaby treścią wprowadzającą w błąd (bramka C2).
+
+> **Opisy `/kontakt/` i `/en/contact/` kończą się rezerwacją online, nie telefonem** (decyzja 2026-09-10,
+> `03-COPY-NAGLOWKI.md` §2.1: meta zamiast „Zadzwoń: 539 320 700" kończą się „Rezerwacja online 24 h").
+> Na tych dwóch stronach numer w opisie **zostaje** — to strona kontaktowa i po numer ludzie tu wchodzą —
+> ale zdanie domyka rezerwacja. Wdrożone w `messages/*.json` → `contactPage.meta`. Nie cofaj tego do
+> wcześniejszej wersji „albo zarezerwuj termin online".
 
 > **Sezonowość w metadanych.** Title i description strony głównej zmieniają się razem
 > ze stanem sezonu z `config/season.ts`. W Next.js App Router robisz to przez
@@ -105,12 +116,7 @@ Cztery typy, w tej kolejności ważności:
     "latitude": "49.3177",
     "longitude": "19.9962"
   },
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-    "opens": "00:00",
-    "closes": "23:59"
-  }],
+  // bez openingHoursSpecification — „czynne 24 h" to nieprawda (decyzja 2026-09-10), prawdziwych godzin nie znamy
   "areaServed": [
     { "@type": "City", "name": "Zakopane" },
     { "@type": "Place", "name": "Białka Tatrzańska" },
@@ -120,7 +126,12 @@ Cztery typy, w tej kolejności ważności:
     { "@type": "Place", "name": "Murzasichle" }
   ],
   "priceRange": "250–1000 PLN",
-  "sameAs": ["[[DO POTWIERDZENIA: wizytówka Google, Facebook, Instagram]]"]
+  "sameAs": [
+    "https://www.instagram.com/zako_extreme_/",
+    "https://www.facebook.com/zakoextreme",
+    "https://www.tiktok.com/@zako_extreme",
+    "https://www.youtube.com/@ZAKOEXTREME"
+  ]
 }
 ```
 
@@ -136,6 +147,11 @@ Cztery typy, w tej kolejności ważności:
 > `sameAs` uzupełnij o realne, istniejące profile. Nie wpisuj tam katalogów
 > ani zaplecza linkowego, nawet jeśli ktoś to zaproponuje — to nie jest to,
 > do czego `sameAs` służy, i nie pomaga.
+>
+> **Cztery profile potwierdzone 2026-09-10** (01-BRIEF-I-FAKTY.md §2). W kodzie mają jedno źródło:
+> `SOCIAL_PROFILES` w `config/site.ts` — ta sama tablica zasila ikony w stopce i `sameAs` w schema,
+> więc adresy nie mogą się rozjechać. Pole nadal renderuje się warunkowo (`lib/schema.ts`):
+> pusta lista = brak `sameAs` w JSON-LD, nie pusta tablica.
 
 ### 3.1a `aggregateRating` — NIE wystawiaj go. To jest celowe.
 
@@ -204,8 +220,8 @@ ma **812 opinii i ocenę 4,8**. Liczba 4,8 jest więc prawdziwa i można ją pis
 | Strona | `lowPrice` | `highPrice` | `alternateName` |
 |---|---:|---:|---|
 | `/quady-zakopane/` | 250 | 650 | „Wyprawa ATV Zakopane", „quady zakopane" |
-| `/buggy-zakopane/` | 250 | 1000 | „buggy zakopane", „bugi zakopane" |
-| `/skutery-sniezne-zakopane/` | `[[DO POTWIERDZENIA]]` | `[[DO POTWIERDZENIA]]` | **„skutery sniezne zakopane"** (bez diakrytyki), „skuter śnieżny Zakopane" |
+| `/buggy-zakopane/` | 500 | 1200 | „buggy zakopane", „bugi zakopane", „wynajem buggy Zakopane" — trzy węzły `Product` (buggy / buggy 6-os. / Maverick), ceny za pojazd potwierdzone 2026-09-11, `Offer.description` niesie jednostkę („za buggy · do 2 osób") |
+| `/skutery-sniezne-zakopane/` | 200 | 550 | **„skutery sniezne zakopane"** (bez diakrytyki), „skuter śnieżny Zakopane", „wypożyczalnia skuterów śnieżnych Zakopane"; EN: „snowmobile zakopane", „zakopane snowmobile rental" |
 
 > **`alternateName` bez polskich znaków to jedyne miejsce, gdzie obsługujesz wariant
 > bez diakrytyki.** Fraza `skutery sniezne zakopane` ma 682 kliki rocznie — więcej niż
@@ -354,7 +370,7 @@ i rosnącą liczbą klientów, którzy go czytają.
 # ZakoExtreme
 
 > Wyprawy quadami, buggy 4×4 i skuterami śnieżnymi w Zakopanem i Tatrach.
-> Rybkówka 16/2, 34-500 Zakopane. Telefon: +48 539 320 700. Czynne 24 h.
+> Rybkówka 16/2, 34-500 Zakopane. Telefon: +48 539 320 700.
 > Ocena 4,8 i ponad 800 opinii w Google. Najdłużej działająca firma tego typu w Zakopanem.
 
 ## Oferta
@@ -420,7 +436,7 @@ Core Web Vitals nie są tu „dobrą praktyką". Są warunkiem, żeby ktokolwiek
 | LCP | < 2,0 s (4G) | obraz hero to zwykle LCP — `priority`, AVIF/WebP, właściwy rozmiar |
 | INP | < 200 ms | uwaga na widżet SlotWise |
 | CLS | < 0,05 | rezerwuj wysokość na hero, sticky bar i widżet rezerwacji |
-| Waga pierwszego ekranu | < 300 kB | łącznie z fontami |
+| Waga pierwszego ekranu | < 310 kB | łącznie z fontami (od 2026-09-10, wcześniej 300 kB) |
 
 **Konkretnie w Next.js:**
 - `next/image` wszędzie, `priority` **tylko** na obrazie hero.
@@ -442,7 +458,7 @@ Core Web Vitals nie są tu „dobrą praktyką". Są warunkiem, żeby ktokolwiek
 
 Zasady:
 - **Tylko strony indeksowalne.** Bez `/dziekujemy/`, bez stron technicznych.
-- **Wszystkie 20 stron** (12 PL + 8 EN), każda raz, w wersji kanonicznej.
+- **Wszystkie strony indeksowalne**, każda raz, w wersji kanonicznej. Liczba rośnie razem z serwisem — po dołożeniu `/galeria/` i `/vouchery/` jest ich **24**. Nie przepisuj jej z pamięci: `curl -s https://zakoextreme.pl/sitemap.xml | grep -c "<loc>"`.
 - `lastmod` z realnej daty modyfikacji treści, nie z daty deploya.
 - **Nie wpisuj `priority` ręcznie na oko.** Google to ignoruje, a nierówne wartości
   potrafią wprowadzić w błąd przy audycie.

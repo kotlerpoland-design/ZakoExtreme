@@ -1,0 +1,6 @@
+/* Lightbox galerii (YARL) — ładowany razem z chunkiem GalleryLightbox, nigdy w CSS trasy.
+   Wskaźnik fokusu jak w reszcie strony (ring = brand, ≥ 3:1 na ciemnym tle). */
+.yarl__button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}

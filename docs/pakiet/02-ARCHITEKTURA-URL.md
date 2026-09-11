@@ -40,6 +40,8 @@ Murzasichle) to **579 fraz, 1 851 klików i 3 002 zł rocznie bez ani jednego de
 ├── /cennik/                               Intencja cenowa
 ├── /opinie/                               Intencja reputacyjna
 ├── /kontakt/                              Domknięcie + NAP
+├── /galeria/                              Galeria (wyjątek od reguły klastra: adres istnieje na starej stronie i jest w indeksie — decyzja 2026-09-10)
+├── /vouchery/                             Vouchery prezentowe (w menu tylko 1 XI – 31 XII, poza oknem wejście ze stopki — decyzja 2026-09-10)
 │
 └── /en/                                   Pełne lustro EN (własne teksty, nie tłumaczenie)
     ├── /en/quad-tours-zakopane/
@@ -48,10 +50,14 @@ Murzasichle) to **579 fraz, 1 851 klików i 3 002 zł rocznie bez ani jednego de
     ├── /en/no-drivers-licence-required/
     ├── /en/prices/
     ├── /en/reviews/
-    └── /en/contact/
+    ├── /en/contact/
+    ├── /en/gallery/
+    └── /en/vouchers/
 ```
 
-**12 stron PL + 8 stron EN.** Nie więcej. Każda dodatkowa strona bez własnego klastra fraz
+**12 stron PL + 8 stron EN**, plus dwa wyjątki od reguły klastra: `/galeria/` (przejęty, zaindeksowany adres starej strony)
+i `/vouchery/` (prezent to osobna intencja zakupowa, nie wariant wyprawy — ale własnego klastra fraz nie ma, dlatego link
+w menu żyje tylko w sezonie prezentowym XI–XII). Poza tym nic więcej. Każda dodatkowa strona bez własnego klastra fraz
 to rozcieńczenie, nie zysk.
 
 ## 2.2 Mapa: klaster → URL → grupa reklam
@@ -107,7 +113,7 @@ kolejności użytkownik zadaje pytania.
 │  ★ 4,8 · ponad 800 opinii                               │
 │  [ ZADZWOŃ ]  ← główne CTA, tel:                        │
 │  [ Sprawdź wolne terminy ] ← drugie CTA, do SlotWise    │
-│  „Blisko centrum Zakopanego · czynne 24 h"              │
+│  „Blisko centrum Zakopanego · Tatry"                    │
 └──────────────────────────────────────────────────────────┘
    ↓
 2.  Pasek zaufania: legalne trasy · instruktor · bez prawa jazdy · kask w cenie
