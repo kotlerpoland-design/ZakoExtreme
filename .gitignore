@@ -42,3 +42,9 @@ next-env.d.ts
 
 # env — przykład commitujemy
 !.env.example
+
+# zdjęcia-kandydaci ze starego WP (scripts/fetch-media.mjs) — nie commitujemy, wybrane trafiają do assets/images/
+/assets/images/candidates/
+# playwright
+/test-results/
+/playwright-report/

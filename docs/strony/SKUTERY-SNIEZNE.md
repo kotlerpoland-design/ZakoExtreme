@@ -1,8 +1,16 @@
 # `/skutery-sniezne-zakopane/` — architektura treści
 
-**Wersja:** 1.0 · **Data:** 2026-09-11 · **Status:** podstawa do projektu layoutu
+**Wersja:** 1.1 · **Data:** 2026-09-11 · **Status:** **wdrożone** (`app/[locale]/skutery-sniezne-zakopane/page.tsx`, copy w `messages/*.json` → `skutery`, testy `tests/snowmobiles.spec.ts`)
 **Szablon:** T1 (produktowy) z `docs/ARCHITEKTURA-INFORMACJI.md` §3, z odstępstwami opisanymi niżej
 **Lustro EN:** `/en/snowmobile-tours-zakopane/` — patrz §10, to osobny produkt, nie tłumaczenie
+
+> **Co zmieniło się przy wdrożeniu (2026-09-11):** cennik, lista „w cenie", brak prawa jazdy i instruktor **potwierdzone** przez
+> właścicielkę (blokady A–D zamknięte, §12). Zgodnie z decyzją 2026-09-10 (CLAUDE.md) **telefon nie jest CTA** — tam, gdzie tabela §4
+> pisze „Zadzwoń", na stronie jest „Rezerwuj online" → `#rezerwacja`; numer zostaje w fallbacku rezerwacji poza sezonem, FAQ, dojeździe,
+> Kontakcie i stopce. Zero „24 h" poza „Rezerwacja online 24 h" (bramka A8) — zapisy „czynne 24 h" w §4 i §9 są nieaktualne.
+> Poza sezonem cena „od 200 zł" **zostaje w hero** (to fakt i klaster cenowy nr 1); notkę o listopadzie niesie lead hero z linkiem
+> do oferty letniej i sekcja rezerwacji (bez kalendarza: notka + telefon + „Zobacz ofertę letnią"). Sekcja 8 „Zanim przyjedziesz"
+> weszła jako „Wypożyczalnia skuterów śnieżnych — jak to działa" (trzy kroki wyprawy); „co zabrać" nadal niepotwierdzone (blokada E).
 
 ---
 
@@ -177,13 +185,16 @@ H3: Ile kosztują skutery śnieżne w Zakopanem?
 
 ## 6. Cennik — struktura i status
 
-### Kandydat ze starej strony — DO POTWIERDZENIA
+### Drabinka ze starej strony — POTWIERDZONA 2026-09-11 (`content/prices.ts`)
 
 | Wariant | Czas | 1 osoba | 2 osoby |
 |---|---|---:|---:|
 | STANDARD | 30 min | 200 zł | 250 zł |
 | PREMIUM | 60 min | 300 zł | 350 zł |
 | ULTRA | 120 min | 550 zł | 600 zł |
+
+> Właścicielka potwierdziła 2026-09-11 cały cennik, dopłatę +50 zł za drugą osobę i listę „w cenie" (skuter · kask · szkolenie ·
+> paliwo · poczęstunek). Poniższe uzasadnienie ostrożności zostaje jako historia decyzji. Bramka A2 („nigdy 300 zł") pomija kontekst skuterów.
 
 **Dlaczego to jest mocna poszlaka:** brief podaje dla skuterów wyłącznie „zakres 200–600 zł".
 Ten cennik zaczyna się na 200 i kończy na 600. Zgadza się co do złotówki.
@@ -372,10 +383,10 @@ Kontekst strony dla wszystkich zdarzeń:
 
 | # | Czego brakuje | Blokuje | Priorytet |
 |---|---|---|---|
-| **A** | **Potwierdzenie cennika 200/300/550** | hero, cennik, FAQ-1, meta, schema, `llms.txt`, **cały sezon zimowy** | **1** |
-| **B** | Czy są wyprawy bez przewodnika | H1, pasek zaufania, FAQ | **2** |
-| C | Co obejmuje cena (potwierdzenie listy) | cennik, FAQ-2 | 3 |
-| D | Prawo jazdy na skuter — inne przepisy niż quad | FAQ-3 | 3 |
+| ~~**A**~~ | ~~Potwierdzenie cennika 200/300/550~~ — **zamknięte 2026-09-11** | — | — |
+| ~~**B**~~ | ~~Czy są wyprawy bez przewodnika~~ — **zamknięte 2026-09-11**: instruktor na każdej wyprawie (H1 zostaje bez „z instruktorem" — fraza w leadzie, pasku zaufania i kartach) | — | — |
+| ~~C~~ | ~~Co obejmuje cena~~ — **zamknięte 2026-09-11**: skuter · kask · szkolenie · paliwo · poczęstunek | — | — |
+| ~~D~~ | ~~Prawo jazdy na skuter~~ — **zamknięte 2026-09-11**: nie jest wymagane | — | — |
 | E | Co zabrać ze sobą | sekcja 8, FAQ-5 | 4 |
 | F | Czasy dojazdu z 6 miejscowości | sekcja 2 i 6 | 4 |
 | G | Zdjęcia skuterów w rozdzielczości na stronę | hero, galeria | 4 |

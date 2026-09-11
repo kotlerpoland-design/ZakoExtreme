@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { getPathname } from "@/i18n/navigation";
 import { NOINDEX_PAGES, PL_ONLY_PAGES, routing, type Locale, type PageKey } from "@/i18n/routing";
+import { localizedPath } from "@/i18n/paths";
 import { site } from "@/config/site";
 
-/** Pełny URL kanoniczny dla strony w danym języku, z końcowym ukośnikiem. */
+/**
+ * Pełny URL kanoniczny dla strony w danym języku, z końcowym ukośnikiem.
+ * Celowo bez `createNavigation` z next-intl — jego `getPathname` ciągnie kliencki BaseLink (+ runtime use-intl)
+ * do chunków każdej strony, co kosztuje ~13 kB gz w budżecie pierwszego ekranu.
+ */
 export function absoluteUrl(page: PageKey, locale: Locale): string {
-  const path = getPathname({ href: page, locale });
-  const withSlash = path.endsWith("/") ? path : `${path}/`;
-  return `${site.url}${withSlash}`;
+  return `${site.url}${localizedPath(page, locale)}`;
 }
 
 /**

@@ -1,20 +1,47 @@
 {
   "common": {
     "call": "Call: {phone}",
-    "callShort": "Call",
     "checkAvailability": "Check availability",
     "book": "Book now",
+    "bookOnline": "Book online",
     "bookThisOption": "Book this option",
     "notSureCall": "Not sure? Call us.",
-    "nearCenter": "Near Zakopane center · open 24/7",
-    "proof": "★ 4.8 · 800+ Google reviews",
-    "priceFrom": "from {price} PLN"
+    "nearCenter": "Near Zakopane center · Tatras",
+    "proof": "4.8 · 800+ Google reviews",
+    "proofLine": "The longest-running company of its kind in Zakopane",
+    "priceFrom": "from {price} PLN",
+    "hours": "{hours} h",
+    "minutes": "{minutes} min"
   },
   "trust": {
     "legal": "Legal routes",
     "instructor": "Instructor on every trip",
     "noLicence": "No licence needed",
-    "open24": "Open 24/7"
+    "bookOnline24": "Book online 24/7"
+  },
+  "header": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuTitle": "Menu",
+    "switchLocale": "Polski",
+    "switchLocaleAria": "Przełącz na polski",
+    "home": "Home"
+  },
+  "nav": {
+    "quads": "Quad tours",
+    "buggy": "Buggy 4×4",
+    "snowmobiles": "Snowmobiles",
+    "prices": "Prices",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "vouchers": "Gift vouchers",
+    "gallery": "Gallery",
+    "kids": "Kids and teens",
+    "noLicence": "No licence needed"
+  },
+  "hero": {
+    "eyebrowHome": "Zakopane · Tatra Mountains",
+    "eyebrowProduct": "Zakopane · Rybkówka 16/2"
   },
   "home": {
     "winter": {
@@ -28,14 +55,292 @@
     "summer": {
       "h1": "Quad & Buggy Tours in Zakopane — No Licence Needed",
       "lead": "One, two or three hours on scenic mountain trails above Zakopane. No driving licence required, always with a local instructor, always on legal routes."
+    },
+    "sections": {
+      "products": "Pick your trip",
+      "booking": "Book your date",
+      "gallery": "What our trails look like",
+      "forWhom": "Who these trips are for",
+      "whyUs": "Why ZakoExtreme",
+      "directions": "Where to find us",
+      "faq": "FAQ",
+      "reviews": "Reviews",
+      "contact": "Contact — questions? Call us"
     }
   },
-  "nav": {
-    "quads": "Quad tours",
-    "buggy": "Buggy 4×4",
-    "snowmobiles": "Snowmobiles",
-    "prices": "Prices",
-    "reviews": "Reviews",
-    "contact": "Contact"
+  "products": {
+    "names": {
+      "quady": "Quad & ATV",
+      "buggy": "Buggy 4×4",
+      "buggy6": "6-seater buggy",
+      "maverick": "Maverick XRS",
+      "skutery": "Snowmobiles"
+    },
+    "taglines": {
+      "quady": "guided tours",
+      "buggy": "drive it yourself",
+      "buggy6": "the whole family in one vehicle",
+      "maverick": "240 HP",
+      "skutery": "ride the Tatras"
+    },
+    "seeDetails": "See details",
+    "snowNotice": "Snowmobiles are back in November.",
+    "priceOnRequest": "Call us for prices"
+  },
+  "pricing": {
+    "title": "Options and prices",
+    "included": "Included in every option",
+    "secondRider": "+{price} PLN for a second rider",
+    "spec": {
+      "duration": "Duration",
+      "route": "Route",
+      "instructor": "Instructor on every trip",
+      "noLicence": "No licence needed"
+    }
+  },
+  "booking": {
+    "title": "Book your date",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "other": "Another date",
+    "lead": "Pick a day and the calendar will show free slots.",
+    "fallbackLead": "The fastest way is to call — we answer every day and can tell you right away what is available.",
+    "loading": "Loading the booking calendar…"
+  },
+  "gallery": {
+    "playVideo": "Play video",
+    "seeAll": "See the gallery",
+    "lightbox": {
+      "open": "Enlarge photo",
+      "close": "Close",
+      "prev": "Previous photo",
+      "next": "Next photo",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "dialog": "Photo viewer",
+      "gallery": "Photo gallery",
+      "slide": "Photo",
+      "counter": "{index} of {total}"
+    }
+  },
+  "forWhom": {
+    "items": {
+      "couples": "Couples",
+      "families": "Families",
+      "groups": "Groups",
+      "stag": "Stag parties"
+    },
+    "familiesHint": "6-seater buggy"
+  },
+  "whyUs": {
+    "items": {
+      "longest": "The longest-running company of its kind in Zakopane",
+      "legal": "Safe and legal rides on scenic, verified routes",
+      "local": "Experienced local instructors who know these mountains",
+      "near": "Near Zakopane center",
+      "rating": "4.8★ and 800+ Google reviews"
+    }
+  },
+  "directions": {
+    "intro": "We are at Rybkówka 16/2 in Zakopane, close to the town center.",
+    "outro": "Not sure how to get here? Call us and we will tell you exactly.",
+    "approx": "approx. {minutes} min",
+    "seePage": "See page",
+    "place": "Place",
+    "time": "By car",
+    "navigate": "Navigate",
+    "mapTitle": "Map: ZakoExtreme, Rybkówka 16/2, Zakopane"
+  },
+  "steps": {
+    "title": "How your ride works",
+    "items": {
+      "briefing": "Short briefing and vehicle walkthrough",
+      "practice": "A practice ride to get the feel of it",
+      "trail": "Out on the trail — the instructor leads, you ride at your own pace"
+    }
+  },
+  "contactClose": {
+    "title": "Contact — questions? Call us",
+    "openMap": "Open in Google Maps",
+    "address": "Address"
+  },
+  "footer": {
+    "privacy": "Privacy policy",
+    "navTitle": "Pages",
+    "contactTitle": "Contact",
+    "socialTitle": "ZakoExtreme on social media"
+  },
+  "consent": {
+    "text": "We use cookies to measure ad performance and site statistics.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "region": "Cookie consent"
+  },
+  "quady": {
+    "h1": "Quad & ATV Tours in Zakopane — No Driving Licence Required",
+    "lead": "Ride a quad on scenic, legal trails above Zakopane with a local instructor. One, two or three hours — you pick how much time you have. Most of our guests ride a quad for the first time in their life.",
+    "atv": "A quad and an ATV are the same vehicle — ATV is simply short for all-terrain vehicle. If you are looking for ATV rental in Zakopane, you are in the right place.",
+    "sections": {
+      "pricing": "Options and prices",
+      "booking": "Book your date",
+      "gallery": "What our trails look like",
+      "forWhom": "Who these trips are for",
+      "steps": "How your ride works",
+      "directions": "Where to find us",
+      "faq": "FAQ",
+      "reviews": "Reviews"
+    },
+    "meta": {
+      "title": "Quad Tours Zakopane — from 250 PLN",
+      "description": "Guided quad and ATV tours above Zakopane. No driving licence required, legal routes, from 250 PLN per hour. Near the town center. Book online 24/7."
+    }
+  },
+  "buggy": {
+    "h1": "Buggy 4×4 Tours in Zakopane — Drive It Yourself",
+    "lead": "You drive the buggy, but you are not on your own — an instructor leads the group on a verified, legal route. The 4×4 drivetrain goes where a quad no longer will.",
+    "leadShoulder": "Snowmobile season is over and the trails are open again. 4×4 buggy tours on scenic routes above Zakopane — with an instructor, no driving licence needed.",
+    "placesLine": "Guests reach us from Białka Tatrzańska, Bukowina Tatrzańska, Poronin, Kościelisko and Murzasichle.",
+    "placesLink": "How to get here",
+    "sections": {
+      "pricing": "Buggy tours in Zakopane — prices and what's included",
+      "buggy6": "6-seater buggy — the whole family in one vehicle",
+      "maverick": "Maverick XRS — 240 HP",
+      "booking": "Book your date",
+      "gallery": "What our trails look like",
+      "directions": "Where to find us",
+      "forWhom": "Who buggy tours are for",
+      "howItWorks": "How buggy rental in Zakopane works",
+      "faq": "Buggy FAQ",
+      "reviews": "Reviews"
+    },
+    "buggy6Intro": "One adult drives, everyone else rides along — one vehicle for the whole family, or a group that would rather not split up. The price is per buggy, for up to 4 or 6 people.",
+    "howItWorksIntro": "The buggy, helmet and protective gear, briefing and fuel are included. No driving licence needed — you arrive, get a briefing and head out on the route with an instructor.",
+    "meta": {
+      "title": "Buggy 4×4 Tours Zakopane — from 500 PLN",
+      "description": "Guided 4×4 buggy tours above Zakopane on legal routes. From 500 PLN per hour per buggy for two people, 6-seater buggy from 550 PLN. No driving licence required. Near the town center. Book online 24/7.",
+      "descriptionShoulder": "Snowmobile season is over and the trails are open again. 4×4 buggy tours on scenic routes above Zakopane with an instructor, no licence needed. From 500 PLN per hour per buggy for two people. Near Zakopane center. Book online 24/7."
+    }
+  },
+  "skutery": {
+    "h1": "Snowmobile Tours in Zakopane and the Tatras",
+    "lead": "Guided snowmobile trips in the mountains above Zakopane, on legal routes, with an instructor. Winter is what we do best — it is our most booked trip of the year.",
+    "leadOffSeason": "Snowmobile season starts in November. Until then we ride quads and buggies — <link>see the summer offer</link>.",
+    "placesLine": "Guests reach us from Białka Tatrzańska, Bukowina Tatrzańska, Poronin, Kościelisko and Murzasichle.",
+    "placesLink": "How to get here",
+    "sections": {
+      "pricing": "Snowmobile rental in Zakopane — prices and what's included",
+      "booking": "Book your date",
+      "gallery": "What the winter routes look like",
+      "directions": "Where to find us",
+      "forWhom": "Who snowmobile trips are for",
+      "howItWorks": "How snowmobile rental works",
+      "faq": "Snowmobile FAQ",
+      "reviews": "Reviews"
+    },
+    "howItWorksIntro": "The snowmobile, helmet, briefing, fuel and refreshments are included. No driving licence needed — you arrive, get a briefing and head out on the route with an instructor.",
+    "booking": {
+      "offSeasonLead": "Snowmobile season starts in November and depends on snow. Call us and we will tell you when we start.",
+      "summerOffer": "See the summer offer"
+    },
+    "meta": {
+      "title": "Snowmobile Tours Zakopane — from 200 PLN",
+      "description": "Guided snowmobile trips in the mountains above Zakopane. Legal routes, no licence needed, from 200 PLN for 30 minutes. Near the town center. Book online 24/7.",
+      "titleOffSeason": "Snowmobile Tours Zakopane — season from November",
+      "descriptionOffSeason": "Snowmobile season starts in November. Guided snowmobile trips in the Tatras, from 200 PLN for 30 minutes, no licence needed. Near Zakopane center. Book online 24/7."
+    }
+  },
+  "vouchers": {
+    "h1": "Gift Vouchers for a Tatra Ride — a Present People Remember",
+    "lead": "A quad, buggy 4×4 or snowmobile trip as a gift. You pick the option or the amount, and the person who receives it decides when to ride.",
+    "eyebrow": "Zakopane · Gift voucher",
+    "orderCta": "Order a voucher",
+    "sections": {
+      "variants": "Voucher options",
+      "variantsIntro": "Each voucher maps straight onto one of our trips, so the person receiving it knows what they are getting — not just what it cost.",
+      "howTo": "How to order a voucher",
+      "occasions": "Good for any occasion",
+      "booking": "Book your date",
+      "faq": "Questions about vouchers"
+    },
+    "cards": {
+      "tripCaption": "A voucher for the {tier} trip — {hours} h in the Tatras.",
+      "order": "Order this voucher",
+      "anyAmount": "Any amount",
+      "anyAmountCaption": "You do not have to pick an option. We agree on the amount and the person chooses their own trip.",
+      "anyAmountNote": "We match the amount to your budget."
+    },
+    "howTo": {
+      "steps": {
+        "call": "Call us — every voucher is arranged by phone, with no forms and no online payment.",
+        "amount": "Together we choose the trip option or the voucher amount.",
+        "date": "We set a date or leave it open — then the person simply calls us when it suits them.",
+        "handover": "We agree how you receive the voucher."
+      },
+      "anyAmount": "A voucher can be issued for any amount — we match it to your needs and your budget.",
+      "artworkCaption": "This is the voucher you receive"
+    },
+    "occasions": {
+      "items": {
+        "birthday": {
+          "title": "Birthday",
+          "body": "Instead of another gadget — a day they actually remember."
+        },
+        "stag": {
+          "title": "Stag party",
+          "body": "A story to tell afterwards. With an instructor, on routes we know."
+        },
+        "anniversary": {
+          "title": "Anniversary",
+          "body": "A ride for two, with the Tatras all around you."
+        },
+        "holidays": {
+          "title": "Christmas",
+          "body": "A present that does not end up in a drawer."
+        },
+        "noOccasion": {
+          "title": "No occasion at all",
+          "body": "Sometimes the best moment for a gift is an ordinary Tuesday."
+        }
+      }
+    },
+    "meta": {
+      "title": "Gift Vouchers — Quad & Buggy Zakopane",
+      "description": "A gift voucher for a quad or buggy 4×4 trip above Zakopane. Choose the STANDARD, PREMIUM or ULTRA option, or any amount — the date can be set later."
+    }
+  },
+  "galleryPage": {
+    "h1": "Gallery — Quads, 4×4 Buggies and Snowmobiles in the Tatras",
+    "lead": "Photos from our trips above Zakopane: quads, 4×4 buggies and snowmobiles on legal, scenic trails with an instructor.",
+    "groups": {
+      "quady": "Quads & ATVs",
+      "buggy": "4×4 Buggies",
+      "skutery": "Snowmobiles"
+    },
+    "sections": {
+      "booking": "Book your date"
+    },
+    "meta": {
+      "title": "Gallery — Quad, Buggy & Snowmobile Tours Zakopane",
+      "description": "Photos from guided quad, 4×4 buggy and snowmobile tours above Zakopane. Scenic trails in the Tatras with an instructor. Book online 24/7."
+    }
+  },
+  "contactPage": {
+    "h1": "Contact — ZakoExtreme Zakopane",
+    "lead": "Call us if you have a question the calendar cannot answer. Otherwise pick your date yourself — book online 24/7.",
+    "copyPhone": "Copy number",
+    "copied": "Copied",
+    "sections": {
+      "booking": "Book online",
+      "where": "Where to find us"
+    },
+    "meta": {
+      "title": "Contact — ZakoExtreme Zakopane | +48 539 320 700",
+      "description": "Rybkówka 16/2, 34-500 Zakopane, Poland. Call +48 539 320 700 or book online 24/7."
+    }
+  },
+  "notFound": {
+    "title": "404",
+    "text": "This page does not exist, but we do.",
+    "home": "Home"
   }
 }

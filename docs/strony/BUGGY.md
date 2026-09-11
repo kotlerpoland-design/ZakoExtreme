@@ -1,9 +1,23 @@
 # `/buggy-zakopane/` — architektura treści
 
-**Wersja:** 1.0 · **Data:** 2026-09-11 · **Status:** podstawa do projektu layoutu
+**Wersja:** 1.2 · **Data:** 2026-09-11 · **Status:** **wdrożona 2026-09-11** (`app/[locale]/buggy-zakopane/page.tsx`, testy `tests/buggy.spec.ts`), **cennik potwierdzony** (§6)
 **Szablon:** T1 (produktowy) z `docs/ARCHITEKTURA-INFORMACJI.md` §3, z odstępstwami opisanymi w §4
 **Lustro EN:** `/en/buggy-tours-zakopane/`
 **Strona pokrewna:** `/buggy-bialka-bukowina/` — patrz §8, dane zmieniają jej rangę
+
+> **Odstępstwa wdrożenia od tego dokumentu (2026-09-11):**
+> - **Telefon nie jest CTA** (decyzja właścicielki 2026-09-10, CLAUDE.md) — „Zadzwoń" z tabeli w §4 zastępuje „Rezerwuj online";
+>   numer zostaje w tabeli dojazdu, sekcji Kontakt i przy FAQ. Z meta description (§10) wypadł numer telefonu.
+> - **Hero = ten sam render co slajd buggy na stronie głównej** (`media.hero.buggy`), nie zdjęcie ze starej strony.
+> - **Cennik = trzy bloki pod sobą**: buggy 2-os. na grzbiecie góry z listą „W cenie", 6-os. pod `#buggy-6-osobowe`, Maverick
+>   pod `#maverick-xrs`. Id wariantów buggy: `buggy-standard-1h` … (osobne `item_id` w `select_item`, §11).
+> - **H2 „Wynajem buggy w Zakopanem"** (§5) = sekcja 8 „— jak to działa" z trzema krokami wyprawy (jak na skuterach); bez zdjęcia.
+> - **Sezon przejściowy**: lead z §5 + zdanie „Skutery śnieżne wracają w listopadzie"; meta description = to samo zdanie leadu
+>   (title wspólny — §10 nie daje osobnego copy). Zima = stan standardowy (blokada F otwarta).
+> - **Link do `/buggy-bialka-bukowina/`** (§6, §8) czeka na tę stronę; w tabeli dojazdu Białka jest podświetlona (`highlight="bialka"`).
+> - Ceny potwierdzone 2026-09-11 (§6): za pojazd, 2-os. od 500 zł; 6-os. jako **cztery karty** osoby × czas („DO 4 OSÓB" / „DO 6 OSÓB",
+>   decyzja: „do", nie „dokładnie"). Blokady A/B/C zamknięte; otwarte zostaje, czy cena quada jest za osobę (03-COPY §8 poz. 18).
+> - Galeria: 5 pierwszych zdjęć grupy buggy podstrony `/galeria/`; kafle i „Zobacz galerię" → `/galeria/#buggy`.
 
 ---
 
@@ -173,7 +187,21 @@ na widokowych trasach nad Zakopanem — z instruktorem, bez prawa jazdy.
 
 ## 6. Cennik — rozbieżność, którą trzeba rozstrzygnąć przed publikacją
 
-**To jest najpoważniejszy problem tej strony i najważniejsza pozycja do wyjaśnienia
+> **Rozstrzygnięte 2026-09-11 — właściciel potwierdził cennik, cena ZA POJAZD.** Odpowiada na wszystkie trzy pytania
+> poniżej (A: za pojazd; B: ULTRA 3 h istnieje; C: 6-os. od 550 zł, z wariantami na osoby i czas):
+>
+> | Produkt | Wariant | Cena od |
+> |---|---|---:|
+> | Buggy 2-os. (do 2 osób) | 1 h · 2 h · 3 h | 500 · 900 · 1200 zł |
+> | Buggy 6-os., do 4 osób | 1 h · 2 h | 550 · 1000 zł |
+> | Buggy 6-os., do 6 osób | 1 h · 2 h | 650 · 1200 zł |
+> | Maverick XRS (do 2 osób) | 1 h | 750 zł |
+>
+> Wdrożone w `content/prices.ts` (jedno źródło), na kartach (`unit` „za buggy · do 2 osób", nagłówki „DO 4 OSÓB"/„DO 6 OSÓB"),
+> w FAQ `cena-buggy`, meta i schema. Brief §3 i CLAUDE.md zaktualizowane: quad i buggy **nie** mają już wspólnej drabinki.
+> Reszta tej sekcji to zapis stanu sprzed odpowiedzi — zostaje jako uzasadnienie, dlaczego to było pilne.
+
+**To był najpoważniejszy problem tej strony i najważniejsza pozycja do wyjaśnienia
 w całym projekcie po cenniku skuterów.**
 
 ### Co mówi brief
@@ -405,15 +433,15 @@ To zmienia priorytet — z „trzeba zorganizować zdjęcia" na „trzeba popros
 
 | # | Czego brakuje | Blokuje | Priorytet |
 |---|---|---|---|
-| **A** | **Czy 250 zł to cena za osobę, czy za pojazd** | hero, cennik, meta, schema, FAQ-1, FAQ-2 | **1** |
-| **B** | **Czy buggy ma wariant ULTRA (3 h)** | cennik | **1** |
-| **C** | **Cena buggy 6-osobowego: 500 czy 550** | cennik, sekcja „Dla kogo" | **1** |
-| D | Co zawiera cena — **własna lista dla buggy** | cennik, FAQ-3 | 2 |
+| ~~**A**~~ | ~~Czy 250 zł to cena za osobę, czy za pojazd~~ — **zamknięte 2026-09-11**: cena za pojazd, 2-os. od 500 zł (§6) | — | — |
+| ~~**B**~~ | ~~Czy buggy ma wariant ULTRA (3 h)~~ — **zamknięte 2026-09-11**: tak, od 1200 zł | — | — |
+| ~~**C**~~ | ~~Cena buggy 6-osobowego~~ — **zamknięte 2026-09-11**: 550 / 650 zł za 1 h (do 4 / do 6 osób), 1000 / 1200 zł za 2 h | — | — |
+| D | Co zawiera cena — **własna lista dla buggy** (dziś: lista quad/buggy z `content/included.ts`, potwierdzona 2026-09-10) | cennik, FAQ-3 | 2 |
 | E | Czy są wyprawy bez przewodnika | H1, pasek zaufania, FAQ | 2 |
 | F | Czy buggy jeżdżą zimą | stan zimowy, `availability` | 3 |
 | G | Czasy dojazdu z Białki i Bukowiny | sekcja 2 i 6 | 3 |
 | H | Zdjęcia buggy w wysokiej rozdzielczości | hero, galeria — **pliki istnieją**, §12 | 3 |
 | I | Skąd dokładnie startują wyprawy | FAQ-10 | 4 |
 
-**A, B i C to jedno pytanie do Piotrka: „pokaż mi aktualny cennik buggy".**
-Bez tego pierwszy ekran tej strony nie może powstać, bo nie wiemy, jaką liczbę na nim postawić.
+~~**A, B i C to jedno pytanie do Piotrka: „pokaż mi aktualny cennik buggy".**~~ Odpowiedziane 2026-09-11 (§6).
+Pierwszy ekran stoi na „od 500 zł" — cenie za buggy, którą klient faktycznie zapłaci.

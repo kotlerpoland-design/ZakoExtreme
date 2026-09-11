@@ -33,10 +33,14 @@ Dozwolone zamienniki są w `03-COPY-NAGLOWKI.md` §5.3.
 ```bash
 grep -rn '300 zł\|300zł\|od 300\|300 PLN' ./out
 ```
-**Oczekiwany wynik: zero trafień** w kontekście ceny wejściowej.
+**Oczekiwany wynik: zero trafień** w kontekście ceny wejściowej quada/buggy.
 
 Poprawna drabinka: **250 / 450 / 650** (quad i buggy), **550 / 1000** (buggy 6-os.),
-**750** (Maverick XRS).
+**750** (Maverick XRS), **200 / 300 / 550** (skutery śnieżne, 30/60/120 min, potwierdzone 2026-09-11).
+
+> **Wyjątek skuterów:** PREMIUM 60 min to legalne **300 zł**. `pnpm check:content` pomija pliki stron
+> `/skutery-sniezne-zakopane/` i `/en/snowmobile-tours-zakopane/` oraz trafienia, przed którymi w 200 znakach
+> stoi „skuter"/„snowmobil" (odpowiedź FAQ, przyszły `/cennik/`). Wszędzie indziej „300 zł" nadal blokuje.
 
 > Stara podstrona na WordPressie **nadal pokazuje 300/450/650**. To jest błąd na żywej
 > stronie, nie źródło prawdy. Nie kopiuj z niej cennika.
@@ -73,6 +77,16 @@ Zakazane bez pokrycia: „zaufało nam X turystów", „promocja do", „został
 grep -rni 'snowdoo\|marcel' ./out
 ```
 `Snowdoo` = konkurencja. `Marcel` = były przewodnik. Obecny, chwalony w opiniach: **Wojtek**.
+
+## A8. Firma nie jest czynna 24 h
+
+```bash
+grep -rniE "czynn[ea] *24|całą dobę|open *24 *h|around the clock" ./out
+grep -rniE "24 */ *7" ./out | grep -viE "online *24 */ *7"
+```
+Zero trafień. „Czynne 24 h" było nieprawdą (decyzja właścicielki 2026-09-10) — całą dobę działa tylko strona
+i rezerwacja online. Jedyne dozwolone sformułowanie: **„Rezerwacja online 24 h" / „Book online 24/7"**.
+Schema bez `openingHoursSpecification`. `pnpm check:content` sprawdza to jako bramkę A8.
 
 ## A6. Przekierowania 301 działają
 
@@ -122,9 +136,9 @@ Nie `GTM-T3PTPJ4K`, nie `GTM-KGM2CNF4`. Dwa kontenery = podwójne konwersje
 Otwórz każdą stronę produktową na 390×844. **Nie przewijaj.**
 
 - [ ] Widzę **frazę główną** w H1 (tę samą, która jest w reklamie)
-- [ ] Widzę **cenę od**
+- [ ] Widzę **cenę od** (strony produktowe; hero strony głównej celowo bez ceny — decyzja 2026-09-09)
 - [ ] Widzę **przycisk „Zadzwoń"** i jest to najbardziej widoczny element po H1
-- [ ] Widzę **ocenę 4,8 i „ponad 800 opinii"**
+- [ ] Widzę **ocenę 4,8 i „ponad 800 opinii"** (pierwsza pozycja paska zaufania tuż pod hero)
 - [ ] Widzę **„blisko centrum Zakopanego"**
 - [ ] Baner zgód **nie zasłania** przycisku „Zadzwoń"
 
@@ -136,7 +150,8 @@ Jeśli którakolwiek pozycja wypada — pierwszy ekran jest do przeprojektowania
 ## B2. Ścieżka telefoniczna
 
 - [ ] Kliknięcie w numer **otwiera dialer** z poprawnym `+48539320700`
-- [ ] Numer działa w hero, w sticky barze, w FAQ, w cenniku, w stopce, na `/kontakt/`
+- [ ] Numer działa w FAQ („Nie wiesz, co wybrać? Zadzwoń."), przy dojeździe, w stopce i w sekcji Kontakt — i **nigdzie indziej** (header, menu, sticky bar, hero, „Dla kogo" prowadzą wyłącznie do `#rezerwacja`; decyzja 2026-09-10)
+- [ ] **Wyjątek: `/vouchery/`.** Tam telefon JEST CTA („Zamów voucher”, `cta_location: 'voucher'`, przycisk konturowy w ekranie 1 i w sekcji „Jak zamówić voucher”), bo voucher ustala się telefonicznie — SlotWise go nie sprzedaje, a adresu e-mail firma nie potwierdziła. Pomarańczowy `#rezerwacja` zostaje na tej stronie osobno i prowadzi do rezerwacji przejazdu.
 - [ ] `phone_click` strzela z **każdego** z tych miejsc, z poprawnym `cta_location`
 - [ ] Sticky bar pojawia się po przewinięciu i **nie zasłania treści**
 
@@ -234,8 +249,12 @@ Mierz na **prawdziwym telefonie średniej klasy, na LTE**. Nie na MacBooku na Wi
 | LCP | < 2,0 s | **tak** |
 | INP | < 200 ms | tak |
 | CLS | < 0,05 | tak |
-| Waga pierwszego ekranu | < 300 kB | tak |
+| Waga pierwszego ekranu | < 310 kB | tak |
 | Lighthouse mobile — Performance | ≥ 90 | nie, ale blisko |
+
+> Waga pierwszego ekranu: **310 kB od 2026-09-10** (decyzja właścicielki), wcześniej 300 kB. Powód: zdjęcie sekcji
+> FAQ na stronie głównej (`media.sections.faq`) dokłada ~2 kB gz do HTML, a strona stała dokładnie na progu.
+> Bramkę mierzy `tests/first-screen.spec.ts` („budżet pierwszego ekranu") — próg zmieniać w obu miejscach naraz.
 
 - [ ] Obraz hero: `next/image` + `priority` + AVIF/WebP
 - [ ] Widżet SlotWise ładowany **leniwie** (`IntersectionObserver`), nie w `<head>`
@@ -247,7 +266,12 @@ Mierz na **prawdziwym telefonie średniej klasy, na LTE**. Nie na MacBooku na Wi
 
 # F. Bramki dostępności i poprawności
 
-- [ ] Kontrast tekstu ≥ 4,5:1 (szczególnie na zdjęciach w hero)
+- [ ] Kontrast tekstu ≥ 4,5:1 (szczególnie na zdjęciach w hero). Ciemny motyw (2026-09-09): tokeny w `app/globals.css`
+      policzone (audyt 2026-09-09, 44 pary: foreground 16,9:1 · muted-foreground 8,1:1 · brand `#f5a524` 9,1:1 / 8,3:1 na karcie ·
+      grafit na primary 9,1:1 (biały miałby 2,0:1 — dlatego napis CTA jest ciemny) · najsłabszy tekst `text-muted-foreground/70`
+      4,56:1). UI ≥ 3:1: ring pełny 9,1:1, primary vs tło 9,1:1, obwódka karty PREMIUM `ring-brand/80` > 3:1. `--border` (1,5:1)
+      uznany za dekorację — żaden komponent nie jest identyfikowany samą obwódką. Przy zmianie tokenu przeliczyć pary skryptem
+      (skill contrast-checker).
 - [ ] Przyciski mają minimum **44×44 px** obszaru dotyku
 - [ ] Nawigacja klawiaturą działa, focus jest widoczny
 - [ ] Formularze mają etykiety powiązane z polami

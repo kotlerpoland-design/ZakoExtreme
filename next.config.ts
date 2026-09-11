@@ -27,6 +27,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // Next 16 wymusza listę dozwolonych jakości: 70 dla hero, 62 dla kart i galerii (budżet pierwszego ekranu < 310 kB).
+    qualities: [62, 70],
     // Obrazy trzymamy w repo (public/) albo w CDN hostingu. Zewnętrzne domeny dopisz tutaj.
     remotePatterns: [],
   },

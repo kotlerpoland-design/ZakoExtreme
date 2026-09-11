@@ -3,23 +3,44 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-import { getSeason, PRODUCT_ORDER } from "@/config/season";
-import { headlinePriceFrom } from "@/content/prices";
-import { site } from "@/config/site";
+import { localizedPath } from "@/i18n/paths";
+import { getSeason } from "@/config/season";
+import { faqSets } from "@/content/faq";
+import { confirmedMedia, galleryFor, media } from "@/content/media";
 import { pageAlternates } from "@/lib/seo";
+import { TrackingProvider } from "@/components/tracking/TrackingContext";
+import { Hero } from "@/components/hero/Hero";
+import { heroProductPages } from "@/components/hero/heroProducts";
+import { TrustBar } from "@/components/trust/TrustBar";
+import { Section } from "@/components/primitives/Section";
+import { ProductCards } from "@/components/offer/ProductCards";
+import { BookingSection } from "@/components/booking/BookingSection";
+import { bookingLabels } from "@/components/booking/bookingLabels";
+import { Gallery } from "@/components/media/Gallery";
+import { ForWhom } from "@/components/content/ForWhom";
+import { WhyUs } from "@/components/content/WhyUs";
+import { DirectionsTable } from "@/components/content/DirectionsTable";
+import { FAQ } from "@/components/content/FAQ";
+import { Reviews, hasReviews } from "@/components/content/Reviews";
+import { ContactClose } from "@/components/contact/ContactClose";
+import { StickyCallBar } from "@/components/layout/StickyCallBar";
 
 type Props = { params: Promise<{ locale: string }> };
+
+/** Sezon liczy się w build time (SSG) — odświeżamy co godzinę, żeby strona sama przełączyła stan. */
+export const revalidate = 3600;
 
 const HOME_META: Record<Locale, Record<ReturnType<typeof getSeason>, { title: string; description: string }>> = {
   pl: {
     summer: { title: "Quady i buggy Zakopane — od 250 zł", description: "Wyprawy quadami i buggy 4×4 nad Zakopanem. Bez prawa jazdy, z instruktorem, legalne trasy. Od 250 zł. Zadzwoń: 539 320 700. Wolne terminy na dziś." },
-    winter: { title: "Skutery śnieżne Zakopane — wyprawy", description: "Wyprawy skuterami śnieżnymi w Tatrach z lokalnym instruktorem. Legalne trasy, blisko centrum Zakopanego, czynne 24 h. Zadzwoń: 539 320 700." },
-    shoulder: { title: "Buggy 4×4 i quady Zakopane — od 250 zł", description: "Buggy z napędem 4×4 i quady na widokowych trasach nad Zakopanem. Bez prawa jazdy, z instruktorem. Od 250 zł. Zadzwoń: 539 320 700." },
+    winter: { title: "Skutery śnieżne Zakopane — wyprawy", description: "Wyprawy skuterami śnieżnymi w Tatrach z lokalnym instruktorem. Legalne trasy, blisko centrum Zakopanego. Zadzwoń: 539 320 700." },
+    /* buggy od 500 zł za pojazd (potwierdzone 2026-09-11), quady od 250 — w stanie przejściowym buggy jest pierwsze, więc „od 250" obok niego wprowadzałoby w błąd */
+    shoulder: { title: "Buggy 4×4 i quady Zakopane — wyprawy z instruktorem", description: "Buggy z napędem 4×4 i quady na widokowych trasach nad Zakopanem. Bez prawa jazdy, z instruktorem. Quady od 250 zł, buggy od 500 zł za pojazd. Zadzwoń: 539 320 700." },
   },
   en: {
     summer: { title: "Quad & Buggy Tours Zakopane — from 250 PLN", description: "Guided quad and buggy 4×4 tours in the Tatras. No driving licence required, local instructors, legal routes. From 250 PLN. Call +48 539 320 700." },
-    winter: { title: "Snowmobile Tours Zakopane, Tatras", description: "Guided snowmobile trips in the mountains above Zakopane. Legal routes, local instructors, near the town center. Open 24/7. Call +48 539 320 700." },
-    shoulder: { title: "Buggy 4×4 & Quad Tours Zakopane — from 250 PLN", description: "4×4 buggy and quad tours on scenic trails above Zakopane. No driving licence required, with an instructor. From 250 PLN. Call +48 539 320 700." },
+    winter: { title: "Snowmobile Tours Zakopane, Tatras", description: "Guided snowmobile trips in the mountains above Zakopane. Legal routes, local instructors, near the town center. Call +48 539 320 700." },
+    shoulder: { title: "Buggy 4×4 & Quad Tours Zakopane — guided rides", description: "4×4 buggy and quad tours on scenic trails above Zakopane. No driving licence required, with an instructor. Quads from 250 PLN, buggies from 500 PLN per vehicle. Call +48 539 320 700." },
   },
 };
 
@@ -37,43 +58,76 @@ export default async function HomePage({ params }: Props) {
   setRequestLocale(locale);
 
   const season = getSeason();
-  const t = await getTranslations("home");
-  const tc = await getTranslations("common");
-  const price = headlinePriceFrom(season);
+  const t = await getTranslations();
+  const heroMedia = confirmedMedia(media.hero.home[season]);
+  const gallery = galleryFor(season, 5);
+  const reviews = hasReviews();
+  const pillars = heroProductPages(season);
+  const products = pillars.map((p, i) => ({ n: i + 1, label: t(`nav.${p.labelKey}`), href: localizedPath(p.key, locale), product: p.product }));
+  // slajd na filar w kolejności listy; niepotwierdzone zdjęcie po prostu wypada z rotacji
+  const slides = pillars.flatMap((p) => {
+    const m = confirmedMedia(media.hero.slides[p.product]);
+    return m ? [{ id: p.product, src: m.src, alt: m.alt[locale], position: m.position }] : [];
+  });
 
-  /*
-   * EKRAN 1 (390×844) — szkielet, bez projektu. Musi być tu: H1 z frazą, cena od, telefon, 4,8★, „blisko centrum".
-   * Docelowy komponent: components/hero/Hero.tsx (variant="home"). Sekcje poniżej: docs/ARCHITEKTURA-INFORMACJI.md §3 T0.
-   */
   return (
-    <main className="flex-1 px-5 py-10 max-w-2xl mx-auto">
-      <p className="text-xs uppercase tracking-widest text-muted mb-3">
-        {site.name} · {season} · {PRODUCT_ORDER[season].join(" → ")}
-      </p>
-      <h1 className="font-display text-4xl font-semibold leading-tight text-balance">{t(`${season}.h1`)}</h1>
-      <p className="mt-4 text-lg">{t(`${season}.lead`)}</p>
-      {price !== null ? (
-        <p className="mt-6 font-display text-5xl font-semibold tabular-nums">{tc("priceFrom", { price })}</p>
-      ) : (
-        // Cena niepotwierdzona (skutery) — nie zgadujemy. [[DO POTWIERDZENIA]] nie może trafić na produkcję.
-        <p className="mt-6 text-warn">Cena do potwierdzenia — nie publikować tego stanu.</p>
-      )}
-      <p className="mt-2 text-muted">{tc("proof")}</p>
-      <div className="mt-8 flex flex-col gap-3">
-        <a
-          href={`tel:${site.phone.e164}`}
-          className="inline-flex justify-center rounded-md bg-accent px-6 py-4 font-display text-xl font-semibold text-accent-foreground"
-        >
-          {tc("call", { phone: site.phone.display })}
-        </a>
-        <a href="#rezerwacja" className="inline-flex justify-center rounded-md border border-foreground px-6 py-3 font-display text-lg">
-          {tc("checkAvailability")}
-        </a>
-      </div>
-      <p className="mt-4 text-sm text-muted">{tc("nearCenter")}</p>
-      <section id="rezerwacja" className="mt-16 border-t border-line pt-8 text-muted text-sm">
-        {/* BookingSection: chipy Dziś / Jutro / Inny termin + widżet SlotWise ładowany leniwie. */}
-      </section>
-    </main>
+    <TrackingProvider ctx={{ page_type: "home", product: "mixed", language: locale }}>
+      <main className="flex-1">
+        <Hero
+          variant="home"
+          locale={locale}
+          h1={t(`home.${season}.h1`)}
+          lead={t(`home.${season}.lead`)}
+          /* decyzja właścicielki 2026-09-09: hero strony głównej bez ceny i bez ★ 4,8 — cena „od" na kartach ofert, proof w TrustBar */
+          priceFrom={null}
+          media={heroMedia}
+          eyebrow={t("hero.eyebrowHome")}
+          products={products}
+          slides={slides}
+        />
+        <TrustBar />
+
+        {/* isolate: grzbiet góry w ProductCards leży na -z-10 za nagłówkiem, ale nad tłem sekcji; overflow-hidden: linia trasy wystaje poza pudełko */}
+        {/* numeracja: hero = 01 (nie drukuje numeru), pasek zaufania bez numeru, widoczna numeracja startuje od 02 (decyzja 2026-09-10) */}
+        <Section title={t("home.sections.products")} marginLabel="Zakopane · Tatry" tone="fog" className="isolate overflow-hidden">
+          <ProductCards season={season} locale={locale} />
+        </Section>
+
+        <BookingSection labels={await bookingLabels(t("home.sections.booking"))} />
+
+        {/* id="galeria": kotwica pomocnicza (stare linki /#galeria); menu i link pod siatką prowadzą na podstronę /galeria/ (2026-09-10) */}
+        <Section id="galeria" title={t("home.sections.gallery")} tone="fog">
+          <Gallery items={gallery} locale={locale} more={{ href: "/galeria", label: t("gallery.seeAll") }} />
+        </Section>
+
+        <Section title={t("home.sections.forWhom")} tone="paper">
+          <ForWhom />
+        </Section>
+
+        <Section title={t("home.sections.whyUs")} tone="fog" marginLabel="ZakoExtreme">
+          <WhyUs />
+        </Section>
+
+        <Section title={t("home.sections.directions")} tone="paper">
+          <DirectionsTable locale={locale} />
+        </Section>
+
+        <Section title={t("home.sections.faq")} tone="fog">
+          {/* zdjęcie po prawej tylko na lg+ (decyzja 2026-09-10), zatopione jak hero */}
+          <FAQ ids={faqSets.home} locale={locale} media={confirmedMedia(media.sections.faq)} />
+        </Section>
+
+        {reviews ? (
+          <Section title={t("home.sections.reviews")} tone="paper">
+            <Reviews limit={3} />
+          </Section>
+        ) : null}
+
+        <Section title={t("home.sections.contact")} tone="fog">
+          <ContactClose />
+        </Section>
+      </main>
+      <StickyCallBar labels={{ book: t("common.bookOnline") }} />
+    </TrackingProvider>
   );
 }
