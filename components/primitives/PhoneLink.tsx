@@ -10,7 +10,7 @@ import { usePageContext } from "@/components/tracking/TrackingContext";
 type Variant = "primary" | "outline" | "text" | "icon" | "sticky" | "giant";
 
 const VARIANTS: Record<Variant, string> = {
-  /* koral tylko tam, gdzie telefon jest jedyną drogą (fallback rezerwacji bez SlotWise). Od 2026-09-09 CTA nr 1 to BookCta. */
+  /* koral tylko tam, gdzie telefon jest jedyną drogą (fallback rezerwacji bez kalendarza). Od 2026-09-09 CTA nr 1 to BookCta. */
   primary:
     "inline-flex min-h-14 w-full items-center justify-center gap-3 rounded-lg bg-primary px-6 font-display text-xl font-semibold uppercase tracking-wide text-primary-foreground shadow-card transition-[transform,box-shadow] duration-200 ease-soft hover:shadow-lift active:translate-y-px md:w-auto md:min-h-16 md:px-8 md:text-2xl",
   outline:

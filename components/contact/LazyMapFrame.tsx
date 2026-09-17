@@ -11,7 +11,7 @@ type Props = {
 };
 
 /**
- * Jedyna kliencka część mapy: iframe montuje się po doscrollowaniu (IntersectionObserver, jak SlotWise w BookingSection).
+ * Jedyna kliencka część mapy: iframe montuje się po doscrollowaniu (IntersectionObserver, jak widżet rezerwacji w BookingSection).
  * Zero requestów do Google i zero wpływu na LCP, dopóki sekcja jest poza ekranem; pudełko o stałej wysokości = CLS 0.
  * Celowo minimalne (budżet ekranu 1 < 310 kB): ikony i tekst renderuje serwer w MapEmbed i podaje jako children.
  */

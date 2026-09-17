@@ -45,7 +45,7 @@ test.describe(`/vouchery/ [menu: ${MENU ? "on" : "off"}]`, () => {
   test("CTA: „Zamów voucher” dzwoni, a jedyny pomarańczowy przycisk to rezerwacja", async ({ page }) => {
     await page.goto("/vouchery/");
 
-    // ekran 1: zamówienie vouchera prowadzi do telefonu (vouchera nie da się kupić przez SlotWise)
+    // ekran 1: zamówienie vouchera prowadzi do telefonu (vouchera nie da się kupić przez rezerwację online)
     const orderCta = page.locator('[data-cta="phone"][data-location="voucher"]').first();
     await expect(orderCta).toBeVisible();
     await expect(orderCta).toHaveAttribute("href", "tel:+48539320700");
@@ -54,7 +54,7 @@ test.describe(`/vouchery/ [menu: ${MENU ? "on" : "off"}]`, () => {
     // bg-primary występuje na stronie także w headerze i sticky barze — to ten sam BookCta, więc liczby nie sprawdzamy.
     await expect(orderCta).not.toHaveClass(/bg-primary/);
 
-    // rezerwacja online zostaje na stronie jako osobna, jedyna ścieżka do SlotWise
+    // rezerwacja online zostaje na stronie jako osobna, jedyna ścieżka do kalendarza
     await expect(page.locator("#rezerwacja")).toHaveCount(1);
   });
 

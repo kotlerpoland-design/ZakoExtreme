@@ -9,7 +9,7 @@ import { SelectItemLink } from "./SelectItemLink";
 
 type Props = { locale: Locale };
 
-/** Kotwica sekcji „Jak zamówić" — karty prowadzą tam, a NIE do #rezerwacja (vouchera nie da się kupić przez SlotWise). */
+/** Kotwica sekcji „Jak zamówić" — karty prowadzą tam, a NIE do #rezerwacja (vouchera nie da się kupić przez rezerwację online). */
 export const VOUCHER_ORDER_ANCHOR = "jak-zamowic";
 
 /**

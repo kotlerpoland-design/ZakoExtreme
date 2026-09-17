@@ -6,7 +6,7 @@ Strona firmy [ZakoExtreme](https://zakoextreme.pl) (wyprawy quadami, buggy 4×4 
 
 ```bash
 pnpm install
-cp .env.example .env.local   # uzupełnij NEXT_PUBLIC_GTM_ID i NEXT_PUBLIC_SLOTWISE_BUSINESS_ID
+cp .env.example .env.local   # uzupełnij NEXT_PUBLIC_GTM_ID i NEXT_PUBLIC_ZAKOEXTREME_BOOKING_ID
 pnpm dev                     # http://localhost:3006
 ```
 
@@ -17,7 +17,7 @@ pnpm dev                     # http://localhost:3006
 | `pnpm dev` | dev server (Turbopack, port 3006) |
 | `pnpm lint` | ESLint, 0 ostrzeżeń |
 | `pnpm check-types` | typy routera + `tsc --noEmit` |
-| `pnpm build` | typecheck + `next build` |
+| `pnpm build` | typy routera + typecheck + `next build` |
 | `pnpm check:content` | bramki treści z checklisty jakości (po buildzie) |
 
 ## Struktura
@@ -25,7 +25,7 @@ pnpm dev                     # http://localhost:3006
 ```
 app/[locale]/        strony (PL bez prefiksu, EN pod /en/), sitemap.ts, robots.ts
 components/          komponenty wg docs/ARCHITEKTURA-INFORMACJI.md §4
-config/              site.ts (NAP, telefon, GTM, SlotWise) · season.ts (przełącznik sezonu)
+config/              site.ts (NAP, telefon, GTM, rezerwacja) · season.ts (przełącznik sezonu)
 content/             prices.ts · faq.ts · directions.ts · reviews.json — jedno źródło każdego faktu
 i18n/                routing.ts (lokalizowane ścieżki) · request.ts · navigation.ts
 lib/                 tracking.ts (kontrakt zdarzeń) · seo.ts (canonical, hreflang) · schema.ts · utils.ts
