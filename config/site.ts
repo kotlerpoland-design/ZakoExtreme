@@ -13,13 +13,33 @@ const SOCIAL_PROFILES = [
 export type SocialKey = (typeof SOCIAL_PROFILES)[number]["key"];
 
 /**
+ * Adres publiczny strony. Pusta zmienna w panelu hostingu to NIE to samo co brak zmiennej:
+ * `??` puszcza pusty string dalej i `new URL("")` wywala build na etapie zbierania danych stron
+ * (Vercel, 2026-09-17). Ucinamy też końcowy ukośnik, bo adresy sklejamy przez `${site.url}${sciezka}`.
+ * Wartość bez schematu zatrzymujemy czytelnym błędem — cicha podmiana dałaby kanoniczne adresy
+ * wskazujące inną domenę niż ta, na której stoi deploy.
+ */
+function resolveSiteUrl(): string {
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  const value = raw ? raw.replace(/\/+$/, "") : "https://zakoextreme.pl";
+  try {
+    new URL(value);
+  } catch {
+    throw new Error(
+      `NEXT_PUBLIC_SITE_URL="${raw}" nie jest poprawnym adresem. Podaj pełny adres ze schematem, np. https://zako-extreme.vercel.app (bez końcowego ukośnika), albo zostaw zmienną nieustawioną.`,
+    );
+  }
+  return value;
+}
+
+/**
  * Dane firmy — jedyne źródło prawdy (NAP). Muszą być identyczne z wizytówką Google.
  * Źródło: docs/pakiet/01-BRIEF-I-FAKTY.md §2 i docs/pakiet/04-SEO-GEO-SCHEMA.md §3.1.
  */
 export const site = {
   name: "ZakoExtreme",
   alternateNames: ["Zako Extreme", "ZakoExtreme Zakopane"],
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://zakoextreme.pl",
+  url: resolveSiteUrl(),
   phone: {
     /** Do href="tel:" — format międzynarodowy, bez spacji. */
     e164: "+48539320700",
