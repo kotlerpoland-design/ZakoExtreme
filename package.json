@@ -5,7 +5,7 @@
   "description": "Nowa strona ZakoExtreme (Zakopane) — Next.js, PL/EN, sezonowa, mobile-first",
   "scripts": {
     "dev": "next dev --turbopack -p 3006",
-    "build": "tsc --noEmit && next build",
+    "build": "next typegen && tsc --noEmit && next build",
     "start": "next start -p 3006",
     "lint": "eslint --max-warnings 0",
     "check-types": "next typegen && tsc --noEmit",
@@ -35,5 +35,8 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": "22.x"
+  }
 }
