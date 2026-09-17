@@ -1,6 +1,6 @@
 # ZakoExtreme — nowa strona
 
-Strona firmy [ZakoExtreme](https://zakoextreme.pl) (wyprawy quadami, buggy 4×4 i skuterami śnieżnymi w Zakopanem), budowana od zera na Next.js. PL/EN, trzy stany sezonowe, mobile-first, telefon jako główne CTA.
+Strona firmy [ZakoExtreme](https://zakoextreme.pl) (wyprawy quadami, buggy 4×4 i skuterami śnieżnymi w Zakopanem), budowana od zera na Next.js. PL/EN, trzy stany sezonowe, mobile-first, rezerwacja online jako główne CTA.
 
 ## Start
 
