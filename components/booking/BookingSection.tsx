@@ -26,14 +26,14 @@ function isoDate(offsetDays: number) {
 }
 
 /**
- * JEDYNY punkt wejścia do rezerwacji online. Chipy Dziś / Jutro / Inny termin + widżet SlotWise
+ * JEDYNY punkt wejścia do rezerwacji online. Chipy Dziś / Jutro / Inny termin + widżet rezerwacji
  * montowany leniwie (IntersectionObserver), z zarezerwowaną wysokością (CLS 0).
- * Brak NEXT_PUBLIC_SLOTWISE_BUSINESS_ID → fallback telefoniczny (nie udajemy kalendarza).
- * Parametr `date` w URL widżetu i tryb embed (iframe vs embed.js) — do potwierdzenia ze SlotWise (pytanie 14).
+ * Brak NEXT_PUBLIC_ZAKOEXTREME_BOOKING_ID → fallback telefoniczny (nie udajemy kalendarza).
+ * Parametr `date` w URL widżetu i tryb embed (iframe vs embed.js) — do potwierdzenia z dostawcą rezerwacji (pytanie 14).
  */
 /**
  * Poza sezonem produktu (skutery III–X, decyzja 2026-09-11): bez chipów i bez kalendarza — pusty kalendarz wygląda jak firma,
- * która nie działa (docs/strony/SKUTERY-SNIEZNE.md §3). Zamiast tego zdanie o starcie sezonu, telefon (jak fallback bez SlotWise)
+ * która nie działa (docs/strony/SKUTERY-SNIEZNE.md §3). Zamiast tego zdanie o starcie sezonu, telefon (jak fallback bez kalendarza)
  * i link do oferty letniej. `id="rezerwacja"` zostaje — CTA hero i sticky bar dalej mają cel.
  */
 export type BookingOffSeason = {

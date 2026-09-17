@@ -34,7 +34,7 @@ type Props = {
   slides?: HeroSlide[];
   /**
    * Nadpisanie CTA ekranu 1. Domyślnie „Rezerwuj online" (jedyny pomarańczowy przycisk).
-   * Używa tego wyłącznie /vouchery/, gdzie rezerwacja online nie jest właściwą akcją — vouchera nie da się kupić przez SlotWise.
+   * Używa tego wyłącznie /vouchery/, gdzie rezerwacja online nie jest właściwą akcją — vouchera nie da się kupić przez kalendarz.
    */
   cta?: ReactNode;
 };

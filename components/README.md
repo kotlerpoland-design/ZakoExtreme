@@ -38,9 +38,9 @@ components/
 │                SeasonNotice, SelectItemLink (select_item),
 │                VoucherCards (3 warianty z prices.quady + karta „dowolna kwota"; kotwica do #jak-zamowic, nie do #rezerwacja;
 │                mobile = ta sama karuzela ze snapem co ProductCards, CTA przypięte do dołu przez `mt-auto` jak cena w ProductCard)
-├── booking/     BookingSection (chipy Dziś / Jutro / Inny termin + SlotWise lazy) — JEDYNY punkt wejścia do rezerwacji;
+├── booking/     BookingSection (chipy Dziś / Jutro / Inny termin + widżet rezerwacji lazy) — JEDYNY punkt wejścia do rezerwacji;
 │                `offSeason` (skutery III–X, decyzja 2026-09-11): bez chipów i kalendarza — notka o listopadzie, telefon
-│                (jak fallback bez SlotWise) i link „Zobacz ofertę letnią"; `id="rezerwacja"` zostaje celem CTA
+│                (jak fallback bez kalendarza) i link „Zobacz ofertę letnią"; `id="rezerwacja"` zostaje celem CTA
 ├── media/       Gallery (server: zajawka, siatka nie karuzela, kafle = linki do /galeria/#grupa, zero JS;
 │                `more.hash` = grupa dla linku „Zobacz galerię", np. /galeria/#skutery);
 │                LightboxGallery (server, tylko /galeria/; osobny plik, bo import klienckiego GalleryGrid dociąga jego chunk na
@@ -68,7 +68,7 @@ Ruch: `Reveal` (znacznik) + `RevealObserver` (jeden IntersectionObserver w layou
 Zasady:
 - Każdy numer telefonu = `PhoneLink` (`href="tel:+48539320700"`, `trackPhoneClick(cta_location, ctx)`), nigdy goły `<a>`.
 - Telefon NIE jest CTA (decyzja 2026-09-10): nie wraca do headera, menu, sticky bara, hero ani pod sekcje. Zostaje w stopce, `ContactClose` i przy „masz pytania?" (FAQ, dojazd, fallback rezerwacji).
-- Wyjątek: `/vouchery/`. Tam telefon JEST CTA („Zamów voucher", `cta_location: "voucher"`, wariant `outline`) — voucher ustala się telefonicznie, SlotWise go nie sprzedaje, a adresu e-mail firma nie potwierdziła.
+- Wyjątek: `/vouchery/`. Tam telefon JEST CTA („Zamów voucher", `cta_location: "voucher"`, wariant `outline`) — voucher ustala się telefonicznie, rezerwacja online go nie sprzedaje, a adresu e-mail firma nie potwierdziła.
 - Zdjęcia wyłącznie z `content/media.ts` (`confirmed: false` → nie renderuje się). Ceny z `content/prices.ts`. FAQ z `content/faq.ts`.
 - Nie owijaj w `Reveal` niczego z ekranu 1 (hero, pasek zaufania, CTA).
 

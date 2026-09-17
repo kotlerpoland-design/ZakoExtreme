@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 /**
  * Szablon T6 (docs/ARCHITEKTURA-INFORMACJI.md §276) — punkt domknięcia, 2 742 konwersje rocznie (03-COPY §4.11).
  * Kolejność świadomie odchodzi od T6 (decyzja 2026-09-10): rezerwacja idzie PRZED dojazdem, jak na starej stronie.
- * Sekcji „Godziny i sezon" nie ma wcale — godzin nie podajemy, a co dziś jeździ, widać w kalendarzu SlotWise.
+ * Sekcji „Godziny i sezon" nie ma wcale — godzin nie podajemy, a co dziś jeździ, widać w kalendarzu rezerwacji.
  * Dzięki temu nic na stronie nie zależy od sezonu: strona jest w pełni statyczna, o co T6 prosi wprost
  * („ma być najszybsza w serwisie"), a mapa Google wypada poza próg leniwego montowania i nie ładuje się na starcie.
  * „Gdzie nas znajdziesz" łączy mapę i tabelę dojazdu, bo DirectionsTable ma już w sobie MapEmbed — rozdzielenie

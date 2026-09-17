@@ -28,7 +28,7 @@ const VARIANTS = {
     "inline-flex min-h-12 w-full items-center justify-center rounded-lg bg-foreground px-5 font-display text-lg font-medium uppercase tracking-wide text-background transition-colors hover:bg-ink-2",
 } as const;
 
-/** CTA rezerwacji nr 1 (od 2026-09-09; telefon jest nr 2). Prowadzi do #rezerwacja — jedynego wejścia do SlotWise. */
+/** CTA rezerwacji nr 1 (od 2026-09-09; telefon jest nr 2). Prowadzi do #rezerwacja — jedynego wejścia do kalendarza. */
 export function BookCta({ location, href = "#rezerwacja", variant = "outline", children, className }: Props) {
   return (
     <a href={href} onClick={() => trackBookCtaClick(location)} className={cn(VARIANTS[variant], className)} data-cta="book">

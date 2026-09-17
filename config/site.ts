@@ -63,8 +63,9 @@ export const site = {
     gtmId: process.env.NEXT_PUBLIC_GTM_ID ?? "",
   },
   booking: {
-    provider: "slotwise",
+    provider: "zakoextreme",
+    /** Adres wynajętego widżetu rezerwacji — jedyne miejsce w kodzie z nazwą zewnętrznego dostawcy. */
     host: "https://bookings.slotwise.pl",
-    businessId: process.env.NEXT_PUBLIC_SLOTWISE_BUSINESS_ID ?? "",
+    businessId: process.env.NEXT_PUBLIC_ZAKOEXTREME_BOOKING_ID ?? "",
   },
 } as const;

@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * T1 — strona produktowa skuterów śnieżnych (docs/strony/SKUTERY-SNIEZNE.md). Najlepiej konwertujący produkt w koncie.
  * Kolejność sekcji wynika z wolumenu intencji, nie z szablonu: cennik zaraz pod hero (klaster cenowy nr 1), pasek miejscowości
  * pod paskiem zaufania i tabela dojazdu przed „Dla kogo" (klaster lokalny 728 klików).
- * Dwa stany (config/season.ts): w sezonie SlotWise; poza sezonem lead hero z linkiem do oferty letniej i sekcja rezerwacji
+ * Dwa stany (config/season.ts): w sezonie kalendarz rezerwacji; poza sezonem lead hero z linkiem do oferty letniej i sekcja rezerwacji
  * bez pustego kalendarza. Strona istnieje cały rok i nigdy nie jest przekierowywana — pracuje na SEO także latem.
  * Galeria zimowa cały rok (pokazujemy, co będzie); kafle i „Zobacz galerię" → /galeria/#skutery.
  */

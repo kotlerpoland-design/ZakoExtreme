@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 /**
  * T1 skutery — /skutery-sniezne-zakopane/ (docs/strony/SKUTERY-SNIEZNE.md). Regresja na realny błąd: trasa była w routingu,
  * menu i sitemapie, ale bez pliku strony zwracała 404 (jak /kontakt/ wcześniej). Viewport 390×844 z playwright.config.ts.
- * Dwa stany sezonowe (config/season.ts): SEASON=winter → SlotWise; inaczej → notka o listopadzie zamiast kalendarza.
+ * Dwa stany sezonowe (config/season.ts): SEASON=winter → kalendarz rezerwacji; inaczej → notka o listopadzie zamiast kalendarza.
  */
 const SEASON = (process.env.SEASON ?? process.env.NEXT_PUBLIC_SEASON_OVERRIDE ?? "summer") as "winter" | "shoulder" | "summer";
 

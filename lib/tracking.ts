@@ -46,7 +46,7 @@ export function updateConsent(granted: boolean) {
   push({ event: "consent_update", consent_state: state });
 }
 
-/** Unikalny event_id — ten sam dla GA4/Ads/Meta (deduplikacja CAPI). Dla purchase użyj transaction_id ze SlotWise. */
+/** Unikalny event_id — ten sam dla GA4/Ads/Meta (deduplikacja CAPI). Dla purchase użyj transaction_id z systemu rezerwacji. */
 export function newEventId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
@@ -101,8 +101,8 @@ export type EcommerceItem = {
 };
 
 /**
- * Zdarzenia lejka SlotWise: view_item → add_to_cart → begin_checkout → purchase.
- * Jeśli oficjalny embed.js SlotWise sam pushuje te eventy — NIE dubluj ich stąd.
+ * Zdarzenia lejka rezerwacji: view_item → add_to_cart → begin_checkout → purchase.
+ * Jeśli oficjalny embed.js dostawcy rezerwacji sam pushuje te eventy — NIE dubluj ich stąd.
  * Ta funkcja jest fallbackiem dla surowego iframe.
  */
 export function trackEcommerce(

@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * literówka w H1, kwoty 300/600/900 zbudowane wokół błędnej ceny wejściowej, przycisk „Kup Voucher" obiecujący
  * nieistniejący e-commerce oraz mapa z błędnymi współrzędnymi (ContactClose bierze poprawne z config/site.ts).
  *
- * CTA: vouchera nie da się kupić przez SlotWise, więc ekran 1 prowadzi do telefonu („Zamów voucher", kontur) —
+ * CTA: vouchera nie da się kupić przez rezerwację online, więc ekran 1 prowadzi do telefonu („Zamów voucher", kontur) —
  * jedyny pomarańczowy przycisk na tej stronie zostaje w sekcji rezerwacji (06), gdzie realnie rezerwuje przejazd.
  *
  * Schema: BEZ Product/Offer. Warianty 250/450/650 są już wystawione na /quady-zakopane/; powielenie ich pod drugim
