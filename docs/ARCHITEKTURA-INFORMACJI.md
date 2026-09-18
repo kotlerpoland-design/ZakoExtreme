@@ -176,7 +176,7 @@ bez numeru; **widoczna numeracja startuje od `02` przy „Wybierz swoją wypraw�
 | 01 ⭐ | **Hero sezonowy** | test 5 sekund dla persony A | lista 01 Quady · 02 Buggy · 03 Skutery jako dominanta (H1 sezonowy tylko w sr-only) · „Blisko centrum Zakopanego · Tatry" · jedno zdanie · rotacja 3 zdjęć filarów. Bez ceny „od" i bez ★ 4,8 w hero (decyzja właścicielki 2026-09-09: cena na kartach ofert, proof w pasku zaufania) | **Rezerwuj online** (jedyne, od 2026-09-10 bez telefonu) | `cta_click{book_online,hero}` |
 | — ⭐ | **Pasek zaufania** | zamknąć 4 lęki zanim zaczną się pytania | 4 ikony (2.) | — | — |
 | 02 ⭐ | **Wybierz swoją wyprawę** | rozdzielić ruch na trzy filary | karty produktów w kolejności sezonu: nazwa · czas · cena od · jedno zdjęcie · link do strony produktu. Zima: skutery → buggy → quady. Przejściowy: buggy → quady → buggy 6-os. (+ zdanie „Skutery wracają w listopadzie"). Lato: quady → buggy → buggy 6-os. → Maverick. Karty pod grzbietem góry (`products-ridge.webp`): linia trasy biegnie po pagórkach w dolinie pod górami, markery siedzą na tej linii (decyzja 2026-09-11 po testach z użytkownikami — linia po szczytach sugerowała jazdę po graniach) — desktop cena od + nazwa, mobile numer 01/02/03 (`graphics/RidgeRoute`); marker = kotwica do karty (`#oferta-<id>`, scroll + fokus natywnie). Mobile: karty w poziomym scrollu ze snapem, kolejna wystaje (decyzja 2026-09-10) | „Zobacz szczegóły" na karcie → podstrona produktu (buggy 6-os. i Maverick: `/buggy-zakopane/#buggy-6-osobowe`, `#maverick-xrs`) | `select_item` |
-| 03 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka zakupu | selektor **Dziś / Jutro / Inny termin** + widżet SlotWise ładowany leniwie | Rezerwuj | `view_item` → `add_to_cart` → `begin_checkout` |
+| 03 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka zakupu | widżet SlotWise (`embed.js`) ładowany leniwie — termin wybiera się w widżecie, przy konkretnej ofercie | Rezerwuj | `view_item` → `add_to_cart` → `begin_checkout` |
 | 04 | **Jak to wygląda** | persona B chce zobaczyć | 4–6 zdjęć w siatce + wideo z Meta („Video #1") bez autoplay dźwięku; realne trasy, Tatry w tle | — | — |
 | 05 | **Dla kogo to jest** | pokazać, że to nie „męska rozrywka" | pary · rodziny (→ buggy 6-os.) · grupy · wieczory kawalerskie · ognisko z grillem | Rezerwuj online | `cta_click{book_online,pricing}` |
 | 06 | **Dlaczego ZakoExtreme** | zaufanie dla persony B | 5 punktów: najdłużej działająca firma · legalne, sprawdzone trasy · lokalni instruktorzy · blisko centrum · 4,8★ i ponad 800 opinii | — | — |
@@ -195,7 +195,7 @@ bez numeru; **widoczna numeracja startuje od `02` przy „Wybierz swoją wypraw�
 | 1 ⭐ | **Hero** | message match 100/100 z reklamą | H1 z frazą i lokalizacją · jedno zdanie (co to jest, ile trwa) · **cena od** · ★ 4,8 · ponad 800 opinii · „Blisko centrum Zakopanego · Tatry" · zdjęcie produktu | **Zadzwoń** · Sprawdź wolne terminy | `phone_click{hero}` |
 | 2 ⭐ | **Pasek zaufania** | jw. | 4 ikony | — | — |
 | 3 ⭐ | **Warianty i ceny** | intencja cenowa | karty STANDARD / PREMIUM / ULTRA (czas · cena od · co wyróżnia, np. trasa 12–15 km, ognisko przy ULTRA) pod grzbietem góry (`products-ridge.webp`, ten sam co w sekcji 02 strony głównej): linia trasy biegnie po pagórkach w dolinie pod górami, markery siedzą na tej linii (decyzja 2026-09-11) — desktop czas + nazwa wariantu, mobile sam czas (`graphics/RidgeRoute`); marker = kotwica do karty (`#wariant-<id>`, scroll + fokus natywnie). Mobile: karty w poziomym scrollu ze snapem **na środek**, sąsiedzi wystają z obu stron; karuzela otwiera się na wariancie wyróżnionym (`offer/PricingTrack`, jedyna karuzela z JS — kotwica w adresie ma pierwszeństwo). Buggy: dodatkowo **Buggy 6-osobowe** (550 / 1000) i **Maverick XRS** (750) jako górna kotwica. Skutery: `[[DO POTWIERDZENIA: pełna drabinka]]` | „Zarezerwuj ten wariant" → `#rezerwacja` | `select_item{item_id}` |
-| 4 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka | Dziś / Jutro / Inny termin + SlotWise (lazy) | Rezerwuj | lejek e-commerce |
+| 4 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka | widżet SlotWise (`embed.js`, lazy) | Rezerwuj | lejek e-commerce |
 | 5 ⭐ | **Jak wyglądają trasy** | „to nie błotnista pętla, to Tatry" | galeria 4–6 zdjęć + opcjonalnie wideo; opis trasy tylko taki, jaki klient naprawdę dostanie (`[[DO POTWIERDZENIA: nazwy tras, mapa]]`) | — | — |
 | 6 | **Dla kogo** | pary · rodziny · grupy · wieczór kawalerski | 4 kafle z jednym zdaniem; rodziny → link do strony dzieci lub buggy 6-os. | Zadzwoń | `phone_click{pricing}` |
 | 7 | **Jak przebiega wyprawa** | obniżyć wysiłek/lęk (persona B) | 3 kroki: szkolenie i omówienie pojazdu → przejażdżka próbna → wyjazd na trasę z instruktorem — od 2026-09-11 lista belkowa (indeks, pomarańczowa belka na aktywnej pozycji, hover CSS) + zdjęcie produktu po prawej (`media.sections.steps`, `content/Steps`). Skutery: te same kroki pod H2 „Wypożyczalnia skuterów śnieżnych — jak to działa"; „Co zabrać ze sobą" nadal `[[DO POTWIERDZENIA]]` | — | — |
@@ -223,7 +223,7 @@ do telefonu. Jest krótsza niż produktowa.
 | 2 ⭐ | **Pasek zaufania** | | 4 ikony | |
 | 3 ⭐ | **Jak to działa** | usunąć lęk krok po kroku | bez prawa jazdy: 3 kroki pierwszego razu. Dzieci: **trzy warianty** (ogrodzony tor pod opieką instruktora · trasa główna z osobą dorosłą · buggy 6-os.) — **bez żadnej liczby lat** | Zadzwoń |
 | 4 | **Alternatywy** | „wolisz nie prowadzić?" | buggy 6-os. · przejazd z instruktorem `[[DO POTWIERDZENIA: pasażer]]` | |
-| 5 | **Rezerwacja** `#rezerwacja` | | Dziś / Jutro / Inny termin + SlotWise | Rezerwuj |
+| 5 | **Rezerwacja** `#rezerwacja` | | widżet SlotWise (`embed.js`, lazy) | Rezerwuj |
 | 6 ⭐ | **FAQ tematyczne** | | bez prawa jazdy: FAQ-1, 1b, 9 · dzieci: FAQ-2, 2b, 3, 5 (+ „Deszczowy dzień?" `[[DO POTWIERDZENIA]]`) | „Nie wiesz, co wybrać? Zadzwoń." |
 | 7 | **Opinie** | | 2–3 cytaty pasujące tematycznie (pierwszy raz / z dziećmi) | |
 | 8 ⭐ | **Domknięcie** | | telefon + NAP | Zadzwoń |
@@ -242,7 +242,7 @@ z Zakopanego**, i odpowiada na „jak daleko".
 | 3 ⭐ | **Cennik** | intencja „cennik" w frazach lokalnych | te same karty co produkt (komponent współdzielony) | Zarezerwuj ten wariant |
 | 4 ⭐ | **Jak do nas dojechać z [miejscowości]** | unikalna treść | opis trasy dojazdu, czas, parking, mapa z dwoma pinezkami | `directions_click` |
 | 5 `(zima)` | **Zimą — skutery śnieżne** | „skutery śnieżne Białka" to mocny klaster zimowy | krótki blok + link do strony skuterów; tylko w sezonie zimowym | |
-| 6 | **Rezerwacja** `#rezerwacja` | | Dziś / Jutro / Inny termin + SlotWise | Rezerwuj |
+| 6 | **Rezerwacja** `#rezerwacja` | | widżet SlotWise (`embed.js`, lazy) | Rezerwuj |
 | 7 ⭐ | **FAQ** | | FAQ-7 (gdzie jesteście) + FAQ-1, 2, 6 | Zadzwoń |
 | 8 | **Opinie** | | 2–3 cytaty | |
 | 9 ⭐ | **Domknięcie** | | telefon + NAP | Zadzwoń |
@@ -287,7 +287,7 @@ Wdrożone 2026-09-10 (`app/[locale]/kontakt/page.tsx`). Tabela poniżej to **sta
 | # | Sekcja | Zawartość | Event |
 |---|---|---|---|
 | 1 ⭐ | **Karta kontaktu** (`contact/ContactHero`) | H1 · **539 320 700** (ogromny, `tel:`, `variant="giant"`) · Rybkówka 16/2, 34-500 Zakopane · „Otwórz w Google Maps" · „Skopiuj numer" (tylko desktop, `contact/CopyPhoneButton`) · jedyny przycisk: **Rezerwuj online**. Zmierzone na 390×844: numer startuje na **192 px**, CTA kończy się na 524 px | `contact_page_view` · `phone_click{contact}` · `phone_copy` · `directions_click` |
-| 2 | **Zarezerwuj online** | Dziś / Jutro / Inny termin + SlotWise | lejek |
+| 2 | **Zarezerwuj online** | widżet SlotWise (`embed.js`, lazy) | lejek |
 | 3 ⭐ | **Gdzie nas znajdziesz** | jedna sekcja: mapa Google (`contact/MapEmbed`: iframe leniwie po doscrollowaniu, stała wysokość, **Nawiguj** w konturze) + tabela dojazdu — `content/DirectionsTable` zawiera już `MapEmbed`, rozdzielenie zdublowałoby mapę | `directions_click` |
 
 **Odstępstwa od pierwotnego szkicu T6 (decyzje 2026-09-10):**

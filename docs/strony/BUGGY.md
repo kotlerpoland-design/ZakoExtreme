@@ -119,7 +119,7 @@ Sterowanie: `config/season.ts`.
 | 1 ⭐ | **Hero** | test 5 sekund + różnicowanie od quada | H1 · zdanie o 4×4 · **cena od** · ★ 4,8 · ponad 800 opinii · „blisko centrum · 24 h" · zdjęcie buggy | **Zadzwoń** · Sprawdź wolne terminy | `phone_click{hero}` |
 | 2 ⭐ | **Pasek zaufania + pasek miejscowości** | lęki + 28% ruchu lokalnego | 4 ikony; pod nimi linia z **Białką na pierwszym miejscu**, kotwica do §7 | — | — |
 | 3 ⭐ | **Cennik — trzy produkty** | to jest strona trójproduktowa | 3a buggy 2-os. (warianty czasowe) · 3b **buggy 6-osobowe** · 3c Maverick XRS · pod spodem „co zawiera cena" | Zarezerwuj ten wariant | `select_item` |
-| 4 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka | chipy Dziś / Jutro / Inny termin + SlotWise lazy | Rezerwuj | lejek |
+| 4 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka | widżet SlotWise (`embed.js`) lazy | Rezerwuj | lejek |
 | 5 ⭐ | **Jak wyglądają trasy** | 4×4 tam, gdzie quad nie wjedzie | galeria — **zdjęcia buggy istnieją**, §12 | — | — |
 | 6 ⭐ | **Skąd do nas dojedziesz** | **207 klików lokalnych** | tabela z czasami, link do `/buggy-bialka-bukowina/` | Zadzwoń | `directions_click` |
 | 7 | **Dla kogo** | tu mieszka buggy 6-osobowe | pary · **rodziny → buggy 6-os.** · grupy · wieczory kawalerskie | Zadzwoń | `phone_click{pricing}` |
