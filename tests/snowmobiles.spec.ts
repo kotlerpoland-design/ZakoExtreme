@@ -68,11 +68,11 @@ for (const p of PAGES) {
       await booking.scrollIntoViewIfNeeded();
       if (SEASON === "winter") {
         await expect(booking.locator("[data-booking-off-season]")).toHaveCount(0);
-        await expect(booking.getByRole("button", { pressed: true })).toHaveCount(1);
+        await expect(booking.locator("[data-booking-widget]")).toHaveCount(1);
       } else {
-        // poza sezonem: bez chipów i bez kalendarza, za to telefon i link do oferty letniej
+        // poza sezonem: bez kalendarza, za to telefon i link do oferty letniej
         await expect(booking.locator("[data-booking-off-season]")).toHaveCount(1);
-        await expect(booking.locator("button")).toHaveCount(0);
+        await expect(booking.locator("[data-booking-widget]")).toHaveCount(0);
         await expect(booking.locator("iframe")).toHaveCount(0);
         await expect(booking.locator('a[href^="tel:"]')).toHaveCount(1);
         await expect(booking.locator(`a[href="${p.summerPath}"]`)).toHaveCount(1);

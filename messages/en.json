@@ -100,9 +100,6 @@
   },
   "booking": {
     "title": "Book your date",
-    "today": "Today",
-    "tomorrow": "Tomorrow",
-    "other": "Another date",
     "lead": "Pick a day and the calendar will show free slots.",
     "fallbackLead": "The fastest way is to call — we answer every day and can tell you right away what is available.",
     "loading": "Loading the booking calendar…"

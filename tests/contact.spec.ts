@@ -36,7 +36,8 @@ for (const p of PAGES) {
       await expect(page.locator('[data-cta="phone-copy"]')).toBeHidden();
 
       // mapa Google jest daleko pod widżetem rezerwacji, więc LazyMapFrame nie montuje jej przy wczytaniu
-      await expect(page.locator("iframe")).toHaveCount(0);
+      // (sam widżet rezerwacji stoi tuż pod zgięciem i wchodzi w 200 px marginesu obserwatora — jego iframe nie liczymy)
+      await expect(page.locator('iframe[src*="google.com/maps"]')).toHaveCount(0);
 
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       expect(overflow).toBeLessThanOrEqual(0);

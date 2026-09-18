@@ -100,9 +100,6 @@
   },
   "booking": {
     "title": "Zarezerwuj termin",
-    "today": "Dziś",
-    "tomorrow": "Jutro",
-    "other": "Inny termin",
     "lead": "Wybierz dzień, a kalendarz pokaże wolne godziny.",
     "fallbackLead": "Najszybciej online — rezerwacja 24h, zobaczysz co jest wolne i dostaniesz potwierdzenie na maila.",
     "loading": "Ładujemy kalendarz rezerwacji…"

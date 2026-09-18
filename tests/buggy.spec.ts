@@ -112,7 +112,7 @@ for (const p of PAGES) {
       const booking = page.locator("#rezerwacja");
       await booking.scrollIntoViewIfNeeded();
       await expect(booking.locator("[data-booking-off-season]")).toHaveCount(0);
-      await expect(booking.getByRole("button", { pressed: true })).toHaveCount(1);
+      await expect(booking.locator("[data-booking-widget]")).toHaveCount(1);
 
       const hero = page.locator("[data-hero]");
       if (SEASON === "shoulder") {

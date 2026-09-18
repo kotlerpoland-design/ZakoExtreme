@@ -108,7 +108,7 @@ Kolejność wynika z wolumenu intencji, nie z przyzwyczajenia.
 | 1 ⭐ | **Hero** | test 5 sekund | H1 · zdanie · **cena od** · ★ 4,8 · ponad 800 opinii · „blisko centrum · 24 h" · zdjęcie zimowe | **Zadzwoń** · Sprawdź wolne terminy | `phone_click{hero}` |
 | 2 ⭐ | **Pasek zaufania + pasek miejscowości** | zamknąć lęki i obsłużyć lokalnych | 4 ikony; **pod nimi jedna linia**: „Dojeżdżają do nas z Białki, Bukowiny, Poronina, Kościeliska i Murzasichla" z kotwicą do §6 | — | — |
 | 3 ⭐ | **Cennik + co obejmuje cena** | intencja nr 2 w wolumenie | 3 karty · pod nimi lista „w cenie" | Zarezerwuj ten wariant | `select_item` |
-| 4 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka | chipy Dziś / Jutro / Inny termin + SlotWise lazy | Rezerwuj | lejek e-commerce |
+| 4 ⭐ | **Rezerwacja** `#rezerwacja` | jedna ścieżka | widżet SlotWise (`embed.js`) lazy | Rezerwuj | lejek e-commerce |
 | 5 ⭐ | **Jak wyglądają zimowe trasy** | persona planująca i ruch z Meta | 4–6 zdjęć + wideo z Meta, bez autoplay dźwięku | — | — |
 | 6 ⭐ | **Skąd do nas dojedziesz** | **728 klików lokalnych** | pełna tabela z czasami + linki do stron lokalnych | Zadzwoń | `directions_click` |
 | 7 | **Dla kogo** | pary · rodziny · grupy · wieczory kawalerskie | 4 kafle | Zadzwoń | `phone_click{pricing}` |
